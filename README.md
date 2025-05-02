@@ -81,3 +81,4 @@ This will create a `dist` folder with the production-ready files.
 ## License
 
 This project is licensed under the ISC License.
+# Test commit
