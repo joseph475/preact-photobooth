@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EmailJS Test (No Template)</title>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #3b82f6;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #d1fae5;
+      border: 1px solid #10b981;
+      color: #047857;
+    }
+    .error {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+      color: #b91c1c;
+    }
+    .credentials {
+      background-color: #f3f4f6;
+      padding: 15px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+    .note {
+      background-color: #fffbeb;
+      border: 1px solid #fbbf24;
+      color: #92400e;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>EmailJS Test (No Template)</h1>
+  
+  <div class="note">
+    <strong>Note:</strong> This test uses the "no template" approach. You only need to set up an email service in EmailJS, no template creation required.
+  </div>
+  
+  <div class="credentials">
+    <h2>EmailJS Credentials</h2>
+    <p>Enter your EmailJS credentials below:</p>
+    <div class="form-group">
+      <label for="serviceID">Service ID:</label>
+      <input type="text" id="serviceID" placeholder="e.g., service_abc123">
+    </div>
+    <div class="form-group">
+      <label for="userID">User ID (Public Key):</label>
+      <input type="text" id="userID" placeholder="e.g., user_abc123">
+    </div>
+  </div>
+  
+  <h2>Test Email Form</h2>
+  <form id="testForm">
+    <div class="form-group">
+      <label for="from_name">Your Name:</label>
+      <input type="text" id="from_name" placeholder="John Doe" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="from_email">Your Email:</label>
+      <input type="email" id="from_email" placeholder="john@example.com" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Your Phone:</label>
+      <input type="tel" id="phone" placeholder="123-456-7890">
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" rows="4" placeholder="This is a test message" required></textarea>
+    </div>
+    
+    <button type="submit">Send Test Email</button>
+  </form>
+  
+  <div id="result" class="result" style="display: none;"></div>
+  
+  <script>
+    document.getElementById('testForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const serviceID = document.getElementById('serviceID').value;
+      const userID = document.getElementById('userID').value;
+      
+      if (!serviceID || !userID) {
+        showResult('Please enter all EmailJS credentials', false);
+        return;
+      }
+      
+      // Initialize EmailJS with your user ID
+      emailjs.init(userID);
+      
+      // Create email content directly without a template
+      const emailContent = {
+        to_name: "Photo Booth Admin",
+        to_email: "markjoseph475@gmail.com",
+        from_name: document.getElementById('from_name').value,
+        from_email: document.getElementById('from_email').value,
+        subject: "Test Email - Photo Booth Booking",
+        message: `
+Name: ${document.getElementById('from_name').value}
+Email: ${document.getElementById('from_email').value}
+Phone: ${document.getElementById('phone').value}
+
+Message:
+${document.getElementById('message').value}
+
+This is a test email sent using the no-template approach.
+        `
+      };
+      
+      // Send the email using 'gmail' as the template identifier
+      emailjs.send(serviceID, 'gmail', emailContent)
+        .then(function(response) {
+          console.log('SUCCESS!', response.status, response.text);
+          showResult('Email sent successfully! Check markjoseph475@gmail.com to confirm receipt.', true);
+        }, function(error) {
+          console.log('FAILED...', error);
+          showResult('Failed to send email: ' + error.text, false);
+        });
+    });
+    
+    function showResult(message, isSuccess) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = message;
+      resultDiv.className = 'result ' + (isSuccess ? 'success' : 'error');
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

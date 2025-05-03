@@ -4,6 +4,7 @@ import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 
 const Contact = () => {
+  
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,29 +37,80 @@ const Contact = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // In a real application, you would send the form data to a server here
-    // For now, we'll just simulate a successful submission
     setFormStatus({
-      submitted: true,
+      submitted: false,
       error: false,
-      message: 'Thank you for your message! We will get back to you soon.'
+      message: 'Sending your message...'
     });
+
+    // Create form data to send via fetch
+    const formDataToSend = new FormData();
+    formDataToSend.append('to_email', 'markjoseph475@gmail.com');
+    formDataToSend.append('from_name', `${formData.firstName} ${formData.lastName}`);
+    formDataToSend.append('from_email', formData.email);
+    formDataToSend.append('phone', formData.phone);
+    formDataToSend.append('subject', 'New Photo Booth Booking Request');
     
-    // Reset form after submission
-    setFormData({
-      firstName: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      eventTime: '',
-      eventDate: '',
-      venueStreet: '',
-      city: '',
-      province: '',
-      postalCode: '',
-      guests: '',
-      service: '',
-      message: ''
+    // Format message content
+    const messageContent = `
+Name: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Phone: ${formData.phone}
+
+Event Details:
+- Date: ${formData.eventDate || 'Not specified'}
+- Time: ${formData.eventTime || 'Not specified'}
+- Estimated Guests: ${formData.guests || 'Not specified'}
+- Service: ${formData.service || 'Not specified'}
+
+Venue Address:
+${formData.venueStreet || 'Not specified'}
+${formData.city || 'Not specified'}, ${formData.province || 'Not specified'} ${formData.postalCode || 'Not specified'}
+
+Message:
+${formData.message}
+    `;
+    
+    formDataToSend.append('message', messageContent);
+    
+    // Use a free email sending service (formsubmit.co)
+    fetch(`https://formsubmit.co/ajax/markjoseph475@gmail.com`, {
+      method: 'POST',
+      body: formDataToSend
+    })
+    .then(response => response.json())
+    .then(data => {
+      console.log('SUCCESS!', data);
+      setFormStatus({
+        submitted: true,
+        error: false,
+        message: 'Thank you for your message! We will get back to you soon.'
+      });
+      
+      // Reset form after successful submission
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        eventTime: '',
+        eventDate: '',
+        venueStreet: '',
+        city: '',
+        province: '',
+        postalCode: '',
+        guests: '',
+        service: '',
+        message: ''
+      });
+    })
+    .catch(error => {
+      console.error('FAILED...', error);
+      setFormStatus({
+        submitted: false,
+        error: true,
+        message: 'There was an error sending your message. Please try again later.'
+      });
     });
   };
 
@@ -203,6 +255,14 @@ const Contact = () => {
                   
                   {formStatus.submitted ? (
                     <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                      {formStatus.message}
+                    </div>
+                  ) : formStatus.error ? (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                      {formStatus.message}
+                    </div>
+                  ) : formStatus.message ? (
+                    <div className="bg-blue-100 border border-blue-400 text-blue-700 px-4 py-3 rounded mb-4">
                       {formStatus.message}
                     </div>
                   ) : (

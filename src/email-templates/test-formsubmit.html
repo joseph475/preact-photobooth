@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FormSubmit.co Test</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    h1 {
+      color: #3b82f6;
+      text-align: center;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+    button {
+      background-color: #3b82f6;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #2563eb;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #d1fae5;
+      border: 1px solid #10b981;
+      color: #047857;
+    }
+    .error {
+      background-color: #fee2e2;
+      border: 1px solid #ef4444;
+      color: #b91c1c;
+    }
+    .note {
+      background-color: #fffbeb;
+      border: 1px solid #fbbf24;
+      color: #92400e;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>FormSubmit.co Test</h1>
+  
+  <div class="note">
+    <strong>Note:</strong> This test uses FormSubmit.co to send emails without requiring any API keys or setup. The first submission will send a confirmation email to markjoseph475@gmail.com that needs to be activated.
+  </div>
+  
+  <h2>Test Email Form</h2>
+  <form id="testForm">
+    <div class="form-group">
+      <label for="from_name">Your Name:</label>
+      <input type="text" id="from_name" name="from_name" placeholder="John Doe" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="from_email">Your Email:</label>
+      <input type="email" id="from_email" name="from_email" placeholder="john@example.com" required>
+    </div>
+    
+    <div class="form-group">
+      <label for="phone">Your Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="123-456-7890">
+    </div>
+    
+    <div class="form-group">
+      <label for="message">Message:</label>
+      <textarea id="message" name="message" rows="4" placeholder="This is a test message" required></textarea>
+    </div>
+    
+    <!-- Hidden fields -->
+    <input type="hidden" name="subject" value="Test Email - Photo Booth Booking">
+    
+    <button type="submit">Send Test Email</button>
+  </form>
+  
+  <div id="result" class="result" style="display: none;"></div>
+  
+  <script>
+    document.getElementById('testForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const resultDiv = document.getElementById('result');
+      resultDiv.style.display = 'none';
+      
+      // Create form data to send
+      const formData = new FormData(this);
+      
+      // Send to FormSubmit.co
+      fetch('https://formsubmit.co/ajax/markjoseph475@gmail.com', {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('SUCCESS!', data);
+        showResult('Email sent successfully! Check markjoseph475@gmail.com to confirm receipt. If this is your first submission, you\'ll need to confirm the email address.', true);
+      })
+      .catch(error => {
+        console.error('FAILED...', error);
+        showResult('Failed to send email: ' + error.message, false);
+      });
+    });
+    
+    function showResult(message, isSuccess) {
+      const resultDiv = document.getElementById('result');
+      resultDiv.textContent = message;
+      resultDiv.className = 'result ' + (isSuccess ? 'success' : 'error');
+      resultDiv.style.display = 'block';
+    }
+  </script>
+</body>
+</html>

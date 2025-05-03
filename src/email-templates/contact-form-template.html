@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photo Booth Booking Request</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    .header {
+      background-color: #3b82f6;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .content {
+      padding: 20px;
+    }
+    .footer {
+      background-color: #f3f4f6;
+      padding: 10px 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #666;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    td {
+      padding: 8px;
+      border-bottom: 1px solid #ddd;
+    }
+    .label {
+      font-weight: bold;
+      width: 40%;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>New Photo Booth Booking Request</h1>
+  </div>
+  
+  <div class="content">
+    <p>You have received a new booking request from your website contact form.</p>
+    
+    <h2>Contact Information</h2>
+    <table>
+      <tr>
+        <td class="label">Name:</td>
+        <td>{{from_name}}</td>
+      </tr>
+      <tr>
+        <td class="label">Email:</td>
+        <td>{{from_email}}</td>
+      </tr>
+      <tr>
+        <td class="label">Phone:</td>
+        <td>{{phone}}</td>
+      </tr>
+    </table>
+    
+    <h2>Event Details</h2>
+    <table>
+      <tr>
+        <td class="label">Event Date:</td>
+        <td>{{event_date}}</td>
+      </tr>
+      <tr>
+        <td class="label">Event Time:</td>
+        <td>{{event_time}}</td>
+      </tr>
+      <tr>
+        <td class="label">Service Requested:</td>
+        <td>{{service}}</td>
+      </tr>
+      <tr>
+        <td class="label">Number of Guests:</td>
+        <td>{{guests}}</td>
+      </tr>
+    </table>
+    
+    <h2>Venue Information</h2>
+    <table>
+      <tr>
+        <td class="label">Street:</td>
+        <td>{{venue_street}}</td>
+      </tr>
+      <tr>
+        <td class="label">City:</td>
+        <td>{{city}}</td>
+      </tr>
+      <tr>
+        <td class="label">Province:</td>
+        <td>{{province}}</td>
+      </tr>
+      <tr>
+        <td class="label">Postal Code:</td>
+        <td>{{postal_code}}</td>
+      </tr>
+    </table>
+    
+    <h2>Message</h2>
+    <p>{{message}}</p>
+  </div>
+  
+  <div class="footer">
+    <p>This email was sent from your Photo Booth website contact form.</p>
+  </div>
+</body>
+</html>
