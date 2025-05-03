@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
+import { Link } from 'preact-router/match';
 
 const Navigation = () => {
   const [isPhotoBoothOpen, setIsPhotoBoothOpen] = useState(false);
@@ -53,8 +54,8 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center max-w-[98%] xl:max-w-[1600px]">
         {/* Left section - first 3 tabs */}
         <div className="hidden md:flex space-x-8 flex-1">
-          <a href="/" className="font-medium hover:text-blue-500 transition-colors">HOME</a>
-          <a href="/about" className="font-medium hover:text-blue-500 transition-colors">ABOUT US</a>
+          <Link href="/" className="font-medium hover:text-blue-500 transition-colors">HOME</Link>
+          <Link href="/about" className="font-medium hover:text-blue-500 transition-colors">ABOUT US</Link>
           <div className="relative">
             <button 
               onClick={togglePhotoBoothDropdown}
@@ -66,9 +67,9 @@ const Navigation = () => {
             
             {isPhotoBoothOpen && (
               <div className="absolute top-full left-0 bg-white shadow-md py-2 w-48">
-                <a href="/packages/wedding" className="block px-4 py-2 hover:bg-gray-100">WEDDING</a>
-                <a href="/packages/events" className="block px-4 py-2 hover:bg-gray-100">EVENTS</a>
-                <a href="/packages/corporate" className="block px-4 py-2 hover:bg-gray-100">CORPORATE EVENTS</a>
+                <Link href="/packages/wedding" className="block px-4 py-2 hover:bg-gray-100">WEDDING</Link>
+                <Link href="/packages/events" className="block px-4 py-2 hover:bg-gray-100">EVENTS</Link>
+                <Link href="/packages/corporate" className="block px-4 py-2 hover:bg-gray-100">CORPORATE EVENTS</Link>
               </div>
             )}
           </div>
@@ -76,15 +77,15 @@ const Navigation = () => {
         
         {/* Middle section - logo */}
         <div className="flex justify-center">
-          <a href="/" className="text-2xl font-bold">
+          <Link href="/" className="text-2xl font-bold">
             <img src="/images/logo.png" alt="Jack PhotoBooth" className="h-20" />
-          </a>
+          </Link>
         </div>
         
         {/* Right section - remaining tabs */}
         <div className="hidden md:flex space-x-8 flex-1 justify-end">
-          <a href="/360-glam-booth" className="font-medium hover:text-blue-500 transition-colors">360 GLAM BOOTH</a>
-          <a href="/backdrops" className="font-medium hover:text-blue-500 transition-colors">BACKDROPS</a>
+          <Link href="/360-glam-booth" className="font-medium hover:text-blue-500 transition-colors">360 GLAM BOOTH</Link>
+          <Link href="/backdrops" className="font-medium hover:text-blue-500 transition-colors">BACKDROPS</Link>
           <div className="relative">
             <button 
               onClick={toggleMoreDropdown}
@@ -96,8 +97,8 @@ const Navigation = () => {
             
             {isMoreOpen && (
               <div className="absolute top-full right-0 bg-white shadow-md py-2 w-48">
-                <a href="/contact" className="block px-4 py-2 hover:bg-gray-100">CONTACT US</a>
-                <a href="/gallery" className="block px-4 py-2 hover:bg-gray-100">GALLERY</a>
+                <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">CONTACT US</Link>
+                <Link href="/gallery" className="block px-4 py-2 hover:bg-gray-100">GALLERY</Link>
               </div>
             )}
           </div>
@@ -125,20 +126,20 @@ const Navigation = () => {
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white shadow-lg">
           <div className="py-2 px-4 space-y-2">
-            <a 
+            <Link 
               href="/" 
               className="block py-2 font-medium hover:text-blue-500 transition-colors"
               onClick={closeMobileMenu}
             >
               HOME
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/about" 
               className="block py-2 font-medium hover:text-blue-500 transition-colors"
               onClick={closeMobileMenu}
             >
               ABOUT US
-            </a>
+            </Link>
             
             {/* Mobile Photo Booth Dropdown */}
             <div className="py-2">
@@ -152,45 +153,45 @@ const Navigation = () => {
               
               {isPhotoBoothOpen && (
                 <div className="pl-4 mt-2 space-y-2 border-l-2 border-gray-200">
-                  <a 
+                  <Link 
                     href="/packages/wedding" 
                     className="block py-1 hover:text-blue-500"
                     onClick={closeMobileMenu}
                   >
                     WEDDING
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/packages/events" 
                     className="block py-1 hover:text-blue-500"
                     onClick={closeMobileMenu}
                   >
                     EVENTS
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/packages/corporate" 
                     className="block py-1 hover:text-blue-500"
                     onClick={closeMobileMenu}
                   >
                     CORPORATE EVENTS
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>
             
-            <a 
+            <Link 
               href="/360-glam-booth" 
               className="block py-2 font-medium hover:text-blue-500 transition-colors"
               onClick={closeMobileMenu}
             >
               360 GLAM BOOTH
-            </a>
-            <a 
+            </Link>
+            <Link 
               href="/backdrops" 
               className="block py-2 font-medium hover:text-blue-500 transition-colors"
               onClick={closeMobileMenu}
             >
               BACKDROPS
-            </a>
+            </Link>
             
             {/* Mobile More Dropdown */}
             <div className="py-2">
@@ -204,20 +205,20 @@ const Navigation = () => {
               
               {isMoreOpen && (
                 <div className="pl-4 mt-2 space-y-2 border-l-2 border-gray-200">
-                  <a 
+                  <Link 
                     href="/contact" 
                     className="block py-1 hover:text-blue-500"
                     onClick={closeMobileMenu}
                   >
                     CONTACT US
-                  </a>
-                  <a 
+                  </Link>
+                  <Link 
                     href="/gallery" 
                     className="block py-1 hover:text-blue-500"
                     onClick={closeMobileMenu}
                   >
                     GALLERY
-                  </a>
+                  </Link>
                 </div>
               )}
             </div>

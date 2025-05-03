@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Link } from 'preact-router/match';
 
 const ServiceSection = ({ 
   title, 
@@ -27,12 +28,12 @@ const ServiceSection = ({
             
             {buttonText && buttonLink && (
               <div>
-                <a 
+                <Link 
                   href={buttonLink} 
                   className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-stylish py-3 px-8 rounded-full shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-lg"
                 >
                   {buttonText}
-                </a>
+                </Link>
               </div>
             )}
           </div>

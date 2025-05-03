@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import Router from 'preact-router';
+import { useEffect } from 'preact/hooks';
 
 // Import pages
 import Home from '../pages/Home';
@@ -13,8 +14,14 @@ import Events from '../pages/packages/Events';
 import Corporate from '../pages/packages/Corporate';
 
 const App = () => {
+  // Handler for route changes
+  const handleRouteChange = () => {
+    // Scroll to top when route changes
+    window.scrollTo(0, 0);
+  };
+
   return (
-    <Router>
+    <Router onChange={handleRouteChange}>
       <Home path="/" />
       <About path="/about" />
       <Contact path="/contact" />
