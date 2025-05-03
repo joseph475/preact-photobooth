@@ -19,6 +19,16 @@ const Footer = () => {
           </p>
         </div>
         
+        <div className="mb-4">
+          <ul className="flex justify-center space-x-6">
+            <li><a href="/" className="text-gray-600 hover:text-blue-500 transition-colors">Home</a></li>
+            <li><a href="/about" className="text-gray-600 hover:text-blue-500 transition-colors">About</a></li>
+            <li><a href="/gallery" className="text-gray-600 hover:text-blue-500 transition-colors">Gallery</a></li>
+            <li><a href="/contact" className="text-gray-600 hover:text-blue-500 transition-colors">Contact</a></li>
+            <li><a href="/privacy-policy" className="text-gray-600 hover:text-blue-500 transition-colors">Privacy Policy</a></li>
+          </ul>
+        </div>
+        
         <div className="text-center text-sm text-gray-500">
           <p>Copyright © 2025 Jack PhotoBoothCA - All Rights Reserved.</p>
         </div>

@@ -12,6 +12,7 @@ import Backdrops from '../pages/Backdrops';
 import Wedding from '../pages/packages/Wedding';
 import Events from '../pages/packages/Events';
 import Corporate from '../pages/packages/Corporate';
+import PrivacyPolicy from '../pages/PrivacyPolicy';
 
 const App = () => {
   // Handler for route changes
@@ -31,6 +32,7 @@ const App = () => {
       <Wedding path="/packages/wedding" />
       <Events path="/packages/events" />
       <Corporate path="/packages/corporate" />
+      <PrivacyPolicy path="/privacy-policy" />
       {/* Redirect to home if no route matches */}
       <Home default />
     </Router>
