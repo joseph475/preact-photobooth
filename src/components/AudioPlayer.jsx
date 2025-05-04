@@ -7,7 +7,7 @@ import { useState, useEffect, useRef } from 'preact/hooks';
  */
 const AudioPlayer = () => {
   // Simple state management
-  const [isMuted, setIsMuted] = useState(true); // Start muted by default
+  const [isMuted, setIsMuted] = useState(false); // Start unmuted by default
   const [hasInteracted, setHasInteracted] = useState(false);
   const audioRef = useRef(null);
   
