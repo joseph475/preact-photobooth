@@ -15,7 +15,7 @@ const Footer = () => {
             <br />
             +1 236-234-1229
             <br />
-            jackphotoboothca@gmail.com
+            info@jackphotobooth.ca
           </p>
         </div>
         

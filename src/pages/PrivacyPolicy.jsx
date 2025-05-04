@@ -171,7 +171,7 @@ const PrivacyPolicy = () => {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg mt-4">
                 <p className="font-semibold">Photobooth</p>
-                <p>Email: jackphotoboothca@gmail.com</p>
+                <p>Email: info@jackphotobooth.ca</p>
                 <p>Phone: +1 236-234-1229</p>
                 <p>Address: East Side, Saint John, NB, Canada, New Brunswick</p>
               </div>

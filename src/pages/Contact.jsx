@@ -45,7 +45,7 @@ const Contact = () => {
 
     // Create form data to send via fetch
     const formDataToSend = new FormData();
-    formDataToSend.append('to_email', 'markjoseph475@gmail.com');
+    formDataToSend.append('to_email', 'info@jackphotobooth.ca');
     formDataToSend.append('from_name', `${formData.firstName} ${formData.lastName}`);
     formDataToSend.append('from_email', formData.email);
     formDataToSend.append('phone', formData.phone);
@@ -74,7 +74,7 @@ ${formData.message}
     formDataToSend.append('message', messageContent);
     
     // Use a free email sending service (formsubmit.co)
-    fetch(`https://formsubmit.co/ajax/markjoseph475@gmail.com`, {
+    fetch(`https://formsubmit.co/ajax/info@jackphotobooth.ca`, {
       method: 'POST',
       body: formDataToSend
     })
@@ -213,7 +213,7 @@ ${formData.message}
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-1">Email</h3>
-                      <p className="text-gray-600">jackphotoboothca@gmail.com</p>
+                      <p className="text-gray-600">info@jackphotobooth.ca</p>
                     </div>
                   </div>
                   
