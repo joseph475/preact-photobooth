@@ -96,7 +96,7 @@ const Backdrops = () => {
               <h2 className="text-3xl font-bold mb-6 text-blue-500 text-center">Custom Backdrop Options</h2>
               
               <p className="text-lg mb-8 text-center">
-                If you don't see one that you like, please reach out to us at <a href="mailto:jackphotoboothca@gmail.com" className="text-blue-500 hover:underline">jackphotoboothca@gmail.com                </a>
+                If you don't see one that you like, please reach out to us at <a href="mailto:info@jackphotobooth.ca" className="text-blue-500 hover:underline">jackphotoboothca@gmail.com                </a>
               </p>
               
               <div className="bg-white p-8 rounded-lg shadow-md">
