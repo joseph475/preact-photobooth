@@ -1,47 +1,81 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { h, Fragment } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import FacebookGallery from '../components/FacebookGallery';
 import RecentImagesCarousel from '../components/RecentImagesCarousel';
 
+// No caching utilities - removed as requested
+
 const Gallery = () => {
-  // Define gallery categories
-  const categories = [
-    { id: 'all', name: 'All Photos' },
-    { id: 'wedding', name: 'Wedding' },
-    { id: 'corporate', name: 'Corporate Events' },
-    { id: 'party', name: 'Parties' },
-    { id: '360', name: '360° Glam Booth' }
-  ];
+  // Only Facebook albums are shown now
+  const [activeCategory] = useState('facebook');
 
-  // Define gallery images with categories
-  const galleryImages = [
-    { id: 1, src: '/images/1.jpeg', category: 'wedding' },
-    { id: 2, src: '/images/2.jpeg', category: 'wedding' },
-    { id: 3, src: '/images/3.jpeg', category: 'party' },
-    { id: 4, src: '/images/4.jpeg', category: 'party' },
-    { id: 5, src: '/images/5.jpeg', category: 'corporate' },
-    { id: 6, src: '/images/6.jpeg', category: 'corporate' },
-    { id: 7, src: '/images/7.jpg', category: 'wedding' },
-    { id: 8, src: '/images/8.jpg', category: 'wedding' },
-    { id: 9, src: '/images/9.jpg', category: 'party' },
-    { id: 10, src: '/images/10.jpg', category: 'corporate' },
-    { id: 11, src: '/images/11.jpg', category: '360' },
-    { id: 12, src: '/images/wedding-booth.jpg', category: 'wedding' },
-    { id: 13, src: '/images/corporate-booth.jpg', category: 'corporate' },
-    { id: 14, src: '/images/event-booth.jpg', category: 'party' },
-    { id: 15, src: '/images/360-booth.jpg', category: '360' },
-    { id: 16, src: '/images/mirror-booth.jpg', category: 'party' },
-    { id: 17, src: '/images/self-serve-booth.jpg', category: 'corporate' }
-  ];
+  // State for Facebook albums and album images
+  const [facebookAlbums, setFacebookAlbums] = useState([]);
+  const [currentAlbumImages, setCurrentAlbumImages] = useState([]);
+  const [refreshing, setRefreshing] = useState(false);
+  const [refreshKey, setRefreshKey] = useState(Date.now());
+  const [showFallback, setShowFallback] = useState(false);
 
-  // State for active category
-  const [activeCategory, setActiveCategory] = useState('all');
+  // Show fallback message after a timeout if Facebook category is selected
+  useEffect(() => {
+    let timeoutId;
+    
+    // Reset fallback state when component mounts or refreshKey changes
+    setShowFallback(false);
+    
+    // Set a timeout to show the fallback message after 10 seconds
+    timeoutId = setTimeout(() => {
+      setShowFallback(true);
+    }, 10000);
+    
+    // Clear timeout when component unmounts or refreshKey changes
+    return () => {
+      if (timeoutId) {
+        clearTimeout(timeoutId);
+      }
+    };
+  }, [refreshKey]);
 
-  // Filter images based on active category
-  const filteredImages = activeCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+  // Handler for Facebook albums loaded
+  const handleFacebookAlbumsLoaded = (albums) => {
+    setFacebookAlbums(albums);
+    setRefreshing(false);
+  };
+  
+  // Track album images when they're loaded
+  const handleAlbumImagesLoaded = (images) => {
+    setCurrentAlbumImages(images);
+  };
+
+  // Handle refresh button click - no caching
+  const handleRefreshFacebook = () => {
+    if (refreshing) return; // Prevent multiple rapid refreshes
+    
+    setRefreshing(true);
+    
+    // Try to call the fetchFacebookAlbums method on the component
+    if (window.facebookGalleryRef && window.facebookGalleryRef.fetchFacebookAlbums) {
+      try {
+        window.facebookGalleryRef.fetchFacebookAlbums();
+      } catch (error) {
+        console.error('Error refreshing Facebook albums:', error);
+        // If there's an error, force re-render as a fallback
+        setRefreshKey(Date.now());
+      }
+    } else {
+      // If the ref is not available, force re-render as a fallback
+      setRefreshKey(Date.now());
+    }
+    
+    // Ensure refreshing state is reset even if something goes wrong
+    setTimeout(() => {
+      if (setRefreshing) { // Check if component is still mounted
+        setRefreshing(false);
+      }
+    }, 5000); // Safety timeout after 5 seconds
+  };
 
   // State for lightbox
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -62,16 +96,19 @@ const Gallery = () => {
 
   // Navigate to next/previous image in lightbox
   const navigateImage = (direction) => {
-    const currentIndex = filteredImages.findIndex(img => img.id === currentImage.id);
-    let newIndex;
+    if (!currentAlbumImages || currentAlbumImages.length === 0) return;
     
+    const currentIndex = currentAlbumImages.findIndex(img => img.id === currentImage.id);
+    if (currentIndex === -1) return;
+    
+    let newIndex;
     if (direction === 'next') {
-      newIndex = (currentIndex + 1) % filteredImages.length;
+      newIndex = (currentIndex + 1) % currentAlbumImages.length;
     } else {
-      newIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
+      newIndex = (currentIndex - 1 + currentAlbumImages.length) % currentAlbumImages.length;
     }
     
-    setCurrentImage(filteredImages[newIndex]);
+    setCurrentImage(currentAlbumImages[newIndex]);
   };
 
   return (
@@ -129,6 +166,7 @@ const Gallery = () => {
       </div>
       
       <main className="flex-grow">
+        
         {/* Recent Images Carousel */}
         <div className="py-8 bg-white">
           <div className="container mx-auto px-4 max-w-[98%] xl:max-w-[1600px]">
@@ -141,51 +179,73 @@ const Gallery = () => {
           </div>
         </div>
         
-        {/* Category Filter */}
+        {/* Facebook Gallery Title */}
         <div className="py-8 bg-white">
           <div className="container mx-auto px-4">
-            <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {categories.map(category => (
-                <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
-                  className={`px-6 py-2 rounded-full transition-colors ${
-                    activeCategory === category.id
-                      ? 'bg-blue-500 text-white'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                  }`}
-                >
-                  {category.name}
-                </button>
-              ))}
-            </div>
+            <h2 className="text-3xl md:text-4xl text-center text-blue-500 mb-2 font-modern">
+            Browse through our Gallery Albums
+            </h2>
           </div>
         </div>
         
-        {/* Gallery Grid */}
+        {/* Facebook Albums */}
         <div className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredImages.map(image => (
-                <div 
-                  key={image.id} 
-                  className="relative overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
-                  onClick={() => openLightbox(image)}
+            <div className="facebook-albums-container">
+              {/* Refresh button for Facebook albums */}
+              <div className="flex justify-end mb-4">
+                <button
+                  onClick={handleRefreshFacebook}
+                  disabled={refreshing}
+                  className={`flex items-center px-4 py-2 rounded-md ${
+                    refreshing 
+                      ? 'bg-gray-300 text-gray-500 cursor-not-allowed' 
+                      : 'bg-blue-500 text-white hover:bg-blue-600'
+                  } transition-colors`}
                 >
-                  <div className="aspect-w-1 aspect-h-1">
-                    <img 
-                      src={image.src} 
-                      alt={`Gallery image ${image.id}`} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white bg-blue-500 bg-opacity-80 px-4 py-2 rounded-full">
-                      View Image
-                    </div>
-                  </div>
+                  {refreshing ? (
+                    <>
+                      <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Refreshing...
+                    </>
+                  ) : (
+                    <>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                      </svg>
+                      Refresh Albums
+                    </>
+                  )}
+                </button>
+              </div>
+              
+              {/* Facebook Gallery */}
+              <div className="facebook-gallery-wrapper">
+                <FacebookGallery 
+                  key={refreshKey}
+                  pageId="me"
+                  category="facebook"
+                  onAlbumsLoaded={handleFacebookAlbumsLoaded}
+                  onImageClick={openLightbox}
+                  onAlbumImagesLoaded={handleAlbumImagesLoaded}
+                />
+                
+                {/* Fallback message if gallery gets stuck */}
+                <div className={`mt-8 text-center ${showFallback ? '' : 'hidden'} facebook-fallback`}>
+                  <p className="text-gray-600">
+                    If the gallery appears to be stuck, please try refreshing the page or clearing your browser cache.
+                  </p>
+                  <button
+                    onClick={handleRefreshFacebook}
+                    className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                  >
+                    Refresh Gallery
+                  </button>
                 </div>
-              ))}
+              </div>
             </div>
           </div>
         </div>
@@ -224,7 +284,7 @@ const Gallery = () => {
             </button>
             
             <img 
-              src={currentImage.src} 
+              src={currentImage.fullSrc || currentImage.src} 
               alt={`Gallery image ${currentImage.id}`} 
               className="w-full h-auto max-h-[80vh] object-contain"
             />

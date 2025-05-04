@@ -95,12 +95,13 @@ const Navigation = () => {
               <span className="ml-1"></span>
             </button>
             
-            {isMoreOpen && (
-              <div className="absolute top-full right-0 bg-white shadow-md py-2 w-48">
-                <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">CONTACT US</Link>
-                <Link href="/gallery" className="block px-4 py-2 hover:bg-gray-100">GALLERY</Link>
-              </div>
-            )}
+              {isMoreOpen && (
+                <div className="absolute top-full right-0 bg-white shadow-md py-2 w-48">
+                  <Link href="/contact" className="block px-4 py-2 hover:bg-gray-100">CONTACT US</Link>
+                  <Link href="/gallery" className="block px-4 py-2 hover:bg-gray-100">GALLERY</Link>
+                  <Link href="/test-facebook-auth" className="block px-4 py-2 hover:bg-gray-100">FB AUTH TEST</Link>
+                </div>
+              )}
           </div>
         </div>
         
@@ -218,6 +219,13 @@ const Navigation = () => {
                     onClick={closeMobileMenu}
                   >
                     GALLERY
+                  </Link>
+                  <Link 
+                    href="/test-facebook-auth" 
+                    className="block py-1 hover:text-blue-500"
+                    onClick={closeMobileMenu}
+                  >
+                    FB AUTH TEST
                   </Link>
                 </div>
               )}

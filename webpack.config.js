@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   mode: process.env.NODE_ENV || 'development',
@@ -50,6 +51,9 @@ module.exports = {
         { from: 'public', to: '' }
       ],
     }),
+    new Dotenv({
+      systemvars: true, // Load all system environment variables as well
+    }),
   ],
   devServer: {
     historyApiFallback: true,
@@ -59,5 +63,8 @@ module.exports = {
     port: 3000,
     hot: true,
     open: true,
+    server: {
+      type: 'https', // Enable HTTPS for Facebook authentication
+    },
   },
 };

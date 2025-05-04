@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import Router from 'preact-router';
 import { useEffect } from 'preact/hooks';
+import { initFacebookSDK } from '../services/facebookAuth';
 
 // Import pages
 import Home from '../pages/Home';
@@ -13,8 +14,20 @@ import Wedding from '../pages/packages/Wedding';
 import Events from '../pages/packages/Events';
 import Corporate from '../pages/packages/Corporate';
 import PrivacyPolicy from '../pages/PrivacyPolicy';
+import TestFacebookAuth from '../pages/TestFacebookAuth';
 
 const App = () => {
+  // Initialize Facebook SDK when the app starts
+  useEffect(() => {
+    initFacebookSDK()
+      .then(() => {
+        console.log('Facebook SDK initialized');
+      })
+      .catch(error => {
+        console.error('Error initializing Facebook SDK:', error);
+      });
+  }, []);
+
   // Handler for route changes
   const handleRouteChange = () => {
     // Scroll to top when route changes
@@ -33,6 +46,7 @@ const App = () => {
       <Events path="/packages/events" />
       <Corporate path="/packages/corporate" />
       <PrivacyPolicy path="/privacy-policy" />
+      <TestFacebookAuth path="/test-facebook-auth" />
       {/* Redirect to home if no route matches */}
       <Home default />
     </Router>

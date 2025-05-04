@@ -9,6 +9,7 @@ A lightweight photobooth web application built with Preact and Tailwind CSS.
 - Well-organized folder structure for scalability
 - Webpack configuration for development and production
 - Routing with preact-router
+- Facebook integration with automatic token management
 
 ## Project Structure
 
@@ -49,16 +50,24 @@ npm install
 yarn install
 ```
 
+3. Set up environment variables
+```bash
+cp .env.example .env
+```
+Then edit the `.env` file with your Facebook App credentials.
+
 ### Development
 
 Start the development server:
 ```bash
-npm start
+npm run dev
 # or
-yarn start
+yarn dev
 ```
 
-This will start the development server at http://localhost:3000.
+This will start the development server with HTTPS enabled at https://localhost:3000.
+
+> **Note:** HTTPS is required for Facebook authentication. When you first access the development server, you may see a browser warning about an untrusted certificate. This is normal for local development. You can proceed by clicking "Advanced" and then "Proceed to localhost (unsafe)".
 
 ### Building for Production
 
@@ -77,6 +86,40 @@ This will create a `dist` folder with the production-ready files.
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
 - [Webpack](https://webpack.js.org/) - A static module bundler for modern JavaScript applications
 - [Babel](https://babeljs.io/) - A JavaScript compiler
+- [Facebook Graph API](https://developers.facebook.com/docs/graph-api/) - For Facebook integration
+
+## Facebook Integration
+
+This application includes integration with the Facebook Graph API to display albums and photos from Facebook in the gallery. The integration features automatic token management, which eliminates the need to manually update access tokens.
+
+### Key Features
+
+- Automatic token generation and refresh
+- Secure token storage in localStorage
+- HTTPS support for Facebook authentication
+- Testing tools for verifying your configuration
+
+### Requirements
+
+- Facebook Developer Account and App
+- HTTPS for Facebook Login (configured automatically for development)
+- Proper permissions (user_photos)
+
+For detailed setup instructions, see [Facebook Authentication Service](src/services/README.md).
+
+### Testing Facebook Authentication
+
+You can test your Facebook authentication configuration:
+
+```bash
+# Command-line test (checks environment variables)
+npm run test:fb-auth
+
+# Browser test (full authentication flow)
+# 1. Start the development server
+npm run dev
+# 2. Navigate to /test-facebook-auth in your browser
+```
 
 ## License
 
