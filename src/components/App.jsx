@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import Router from 'preact-router';
 import { useEffect } from 'preact/hooks';
+import AudioPlayer from './AudioPlayer';
 
 // Import pages
 import Home from '../pages/Home';
@@ -22,7 +23,9 @@ const App = () => {
   };
 
   return (
-    <Router onChange={handleRouteChange}>
+    <div>
+      <AudioPlayer />
+      <Router onChange={handleRouteChange}>
       <Home path="/" />
       <About path="/about" />
       <Contact path="/contact" />
@@ -36,6 +39,7 @@ const App = () => {
       {/* Redirect to home if no route matches */}
       <Home default />
     </Router>
+    </div>
   );
 };
 
