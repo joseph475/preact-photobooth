@@ -11,7 +11,7 @@ const Gallery = () => {
     { id: 'wedding', name: 'Wedding' },
     { id: 'corporate', name: 'Corporate Events' },
     { id: 'party', name: 'Parties' },
-    { id: '360', name: '360° Glam Booth' }
+    { id: 'ai-photobooth', name: 'AI Glam Booth' }
   ];
 
   // Define gallery images with categories
@@ -26,11 +26,11 @@ const Gallery = () => {
     { id: 8, src: '/images/8.jpg', category: 'wedding' },
     { id: 9, src: '/images/9.jpg', category: 'party' },
     { id: 10, src: '/images/10.jpg', category: 'corporate' },
-    { id: 11, src: '/images/11.jpg', category: '360' },
+    { id: 11, src: '/images/11.jpg', category: 'ai-photobooth' },
     { id: 12, src: '/images/wedding-booth.jpg', category: 'wedding' },
     { id: 13, src: '/images/corporate-booth.jpg', category: 'corporate' },
     { id: 14, src: '/images/event-booth.jpg', category: 'party' },
-    { id: 15, src: '/images/360-booth.jpg', category: '360' },
+    { id: 15, src: '/images/360-booth.jpg', category: 'ai-photobooth' },
     { id: 16, src: '/images/mirror-booth.jpg', category: 'party' },
     { id: 17, src: '/images/self-serve-booth.jpg', category: 'corporate' }
   ];
@@ -76,7 +76,6 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-indigo-700 to-blue-500 py-20 overflow-hidden">
@@ -255,8 +254,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-      
-      <Footer />
     </div>
   );
 };

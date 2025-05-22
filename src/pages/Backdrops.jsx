@@ -6,7 +6,6 @@ import BackdropGallery from '../components/BackdropGallery';
 const Backdrops = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       <main className="flex-grow">
         <div className="relative bg-gradient-to-br from-green-700 to-teal-500 py-20 overflow-hidden">
@@ -123,8 +122,6 @@ const Backdrops = () => {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };

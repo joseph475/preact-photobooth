@@ -5,7 +5,6 @@ import Footer from '../components/Footer';
 const PrivacyPolicy = () => {
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-indigo-700 to-blue-500 py-16 overflow-hidden">

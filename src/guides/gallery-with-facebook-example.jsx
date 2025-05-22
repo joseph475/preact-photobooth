@@ -12,7 +12,7 @@ const Gallery = () => {
     { id: 'wedding', name: 'Wedding' },
     { id: 'corporate', name: 'Corporate Events' },
     { id: 'party', name: 'Parties' },
-    { id: '360', name: '360° Glam Booth' },
+    { id: 'ai-photobooth', name: 'AI Glam Booth' },
     { id: 'facebook', name: 'Facebook Photos' } // Added Facebook category
   ];
 
@@ -28,11 +28,11 @@ const Gallery = () => {
     { id: 8, src: '/images/8.jpg', category: 'wedding' },
     { id: 9, src: '/images/9.jpg', category: 'party' },
     { id: 10, src: '/images/10.jpg', category: 'corporate' },
-    { id: 11, src: '/images/11.jpg', category: '360' },
+    { id: 11, src: '/images/11.jpg', category: 'ai-photobooth' },
     { id: 12, src: '/images/wedding-booth.jpg', category: 'wedding' },
     { id: 13, src: '/images/corporate-booth.jpg', category: 'corporate' },
     { id: 14, src: '/images/event-booth.jpg', category: 'party' },
-    { id: 15, src: '/images/360-booth.jpg', category: '360' },
+    { id: 15, src: '/images/360-booth.jpg', category: 'ai-photobooth' },
     { id: 16, src: '/images/mirror-booth.jpg', category: 'party' },
     { id: 17, src: '/images/self-serve-booth.jpg', category: 'corporate' }
   ];
@@ -282,8 +282,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-      
-      <Footer />
     </div>
   );
 };

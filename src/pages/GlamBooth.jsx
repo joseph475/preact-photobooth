@@ -1,7 +1,9 @@
 import { h } from 'preact';
-import Navigation from '../components/Navigation';
+import { useState } from 'preact/hooks';
 import Footer from '../components/Footer';
+import OurBooths from '../components/OurBooths';
 import ServiceSection from '../components/ServiceSection';
+import GalleryCarousel from '../components/GalleryCarousel';
 
 const GlamBooth = () => {
   // Helper function to create feature list HTML
@@ -16,9 +18,9 @@ const GlamBooth = () => {
   };
 
   const partyFeatures = [
-    "2 Hours of 360 Glam Booth Experience",
+    "2 Hours of AI Booth Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
-    "Standard 360 Platform (max of 3 people)",
+    "Standard AI Platform (max of 3 people)",
     "1 Director",
     "Up to 15 seconds of HD video output",
     "Custom Branded Overlay",
@@ -31,7 +33,7 @@ const GlamBooth = () => {
 
   const luxFeatures = [
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
-    "Deluxe 360 Platform (max of 3 people)",
+    "Deluxe AI Platform (max of 3 people)",
     "1 Director",
     "Up to 15-30 seconds of HD video output",
     "Custom Branded Overlay",
@@ -47,10 +49,10 @@ const GlamBooth = () => {
   ];
 
   const vipFeatures = [
-    "3 Hours of 360 Glam Booth Experience",
+    "3 Hours of AI Booth Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
     "Standard backdrop",
-    "Deluxe 360 Platform (max of 3 people)",
+    "Deluxe AI Platform (max of 3 people)",
     "1 Director",
     "1 Video Technician",
     "Up to 15-30 seconds of HD video output",
@@ -90,104 +92,414 @@ const GlamBooth = () => {
       {createFeatureList(vipFeatures)}
     </div>
   );
+  
+  // FAQ items with collapsible functionality
+  const faqItems = [
+    {
+      question: "What is an AI Booth?",
+      answer: "An AI Booth is an innovative photo and video experience that uses artificial intelligence to create stunning visual effects. It captures videos and transforms them with special effects, custom overlays, and branded elements to create shareable content that elevates any event."
+    },
+    {
+      question: "How much space does the AI Booth require?",
+      answer: "Our AI Booth requires approximately 10x10 feet of space for optimal setup, including the platform, camera equipment, and space for guests to move. We'll work with your venue to ensure proper placement and setup."
+    },
+    {
+      question: "Can the AI Booth be customized for my brand or event?",
+      answer: "Absolutely! We offer extensive customization options including branded overlays, custom intros and outros, soundtrack integration, and themed props. Our team works with you to create a cohesive experience that aligns with your brand or event theme."
+    },
+    {
+      question: "How do guests receive their videos?",
+      answer: "Guests can instantly access their videos through our QR code system, which allows them to email, text, or directly share their content to social media platforms like Instagram, TikTok, Facebook, and Snapchat."
+    },
+    {
+      question: "Do you provide staff to operate the AI Booth?",
+      answer: "Yes, all our packages include at least one professional director who guides guests through the experience and ensures everything runs smoothly. Our VIP package includes an additional video technician for enhanced service."
+    }
+  ];
+
+  // State to track which FAQ item is open
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+
+  // Toggle FAQ item open/close
+  const toggleFaq = (index) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
+  };
+  
+  // Gallery images for the carousel
+  const galleryImages = [
+    {
+      id: 1,
+      src: "/images/1.jpeg",
+      alt: "Chopard Event",
+      caption: "Chopard",
+      subcaption: "VANCOUVER BOUTIQUE"
+    },
+    {
+      id: 2,
+      src: "/images/2.jpeg",
+      alt: "Sephora Event",
+      caption: "NARS",
+      subcaption: "#BRINGYOURMATTITUDE"
+    },
+    {
+      id: 3,
+      src: "/images/3.jpeg",
+      alt: "Eclipse Event",
+      caption: "THE CENTRE OF YOUR WORLD",
+      subcaption: "eclipse BRENTWOOD"
+    },
+    {
+      id: 4,
+      src: "/images/4.jpeg",
+      alt: "Graduation Event",
+      caption: "GRAD '22",
+      subcaption: "SPROTT SHAW COLLEGE"
+    },
+    {
+      id: 5,
+      src: "/images/5.jpeg",
+      alt: "Corporate Event",
+      caption: "Corporate",
+      subcaption: "ANNUAL GALA"
+    },
+    {
+      id: 6,
+      src: "/images/6.jpeg",
+      alt: "Wedding Event",
+      caption: "Wedding",
+      subcaption: "SARAH & MICHAEL"
+    },
+    {
+      id: 7,
+      src: "/images/7.jpg",
+      alt: "Birthday Party",
+      caption: "Birthday",
+      subcaption: "SWEET SIXTEEN"
+    },
+    {
+      id: 8,
+      src: "/images/8.jpg",
+      alt: "Fashion Event",
+      caption: "Fashion",
+      subcaption: "SUMMER COLLECTION"
+    },
+    {
+      id: 9,
+      src: "/images/9.jpg",
+      alt: "Product Launch",
+      caption: "Launch",
+      subcaption: "NEW PRODUCT REVEAL"
+    },
+    {
+      id: 10,
+      src: "/images/10.jpg",
+      alt: "Holiday Party",
+      caption: "Holiday",
+      subcaption: "WINTER CELEBRATION"
+    }
+  ];
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-pink-700 to-red-500 py-20 overflow-hidden">
-        {/* Decorative Elements - Camera Icons */}
-        <div className="absolute top-4 left-4 opacity-20 animate-pulse">
-          <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="white" viewBox="0 0 16 16">
-            <path d="M6 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-            <path d="M9 6a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
-            <path d="M9 6h.5a2 2 0 0 1 1.983 1.738l3.11-1.382A1 1 0 0 1 16 7.269v7.462a1 1 0 0 1-1.406.913l-3.111-1.382A2 2 0 0 1 9.5 16H2a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h7z"/>
-          </svg>
-        </div>
-        <div className="absolute top-12 right-12 opacity-20 animate-pulse" style="animation-delay: 1s;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="white" viewBox="0 0 16 16">
-            <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855-.143.268-.276.56-.395.872.705.157 1.472.257 2.282.287V1.077zM4.249 3.539c.142-.384.304-.744.481-1.078a6.7 6.7 0 0 1 .597-.933A7.01 7.01 0 0 0 3.051 3.05c.362.184.763.349 1.198.49zM3.509 7.5c.036-1.07.188-2.087.436-3.008a9.124 9.124 0 0 1-1.565-.667A6.964 6.964 0 0 0 1.018 7.5h2.49zm1.4-2.741a12.344 12.344 0 0 0-.4 2.741H7.5V5.091c-.91-.03-1.783-.145-2.591-.332zM8.5 5.09V7.5h2.99a12.342 12.342 0 0 0-.399-2.741c-.808.187-1.681.301-2.591.332zM4.51 8.5c.035.987.176 1.914.399 2.741A13.612 13.612 0 0 1 7.5 10.91V8.5H4.51zm3.99 0v2.409c.91.03 1.783.145 2.591.332.223-.827.364-1.754.4-2.741H8.5zm-3.282 3.696c.12.312.252.604.395.872.552 1.035 1.218 1.65 1.887 1.855V11.91c-.81.03-1.577.13-2.282.287zm.11 2.276a6.696 6.696 0 0 1-.598-.933 8.853 8.853 0 0 1-.481-1.079 8.38 8.38 0 0 0-1.198.49 7.01 7.01 0 0 0 2.276 1.522zm-1.383-2.964A13.36 13.36 0 0 1 3.508 8.5h-2.49a6.963 6.963 0 0 0 1.362 3.675c.47-.258.995-.482 1.565-.667zm6.728 2.964a7.009 7.009 0 0 0 2.275-1.521 8.376 8.376 0 0 0-1.197-.49 8.853 8.853 0 0 1-.481 1.078 6.688 6.688 0 0 1-.597.933zM8.5 11.909v3.014c.67-.204 1.335-.82 1.887-1.855.143-.268.276-.56.395-.872A12.63 12.63 0 0 0 8.5 11.91zm3.555-.401c.57.185 1.095.409 1.565.667A6.963 6.963 0 0 0 14.982 8.5h-2.49a13.36 13.36 0 0 1-.437 3.008zM14.982 7.5a6.963 6.963 0 0 0-1.362-3.675c-.47.258-.995.482-1.565.667.248.92.4 1.938.437 3.008h2.49zM11.27 2.461c.177.334.339.694.482 1.078a8.368 8.368 0 0 0 1.196-.49 7.01 7.01 0 0 0-2.275-1.52c.218.283.418.597.597.932zm-.488 1.343a7.765 7.765 0 0 0-.395-.872C9.835 1.897 9.17 1.282 8.5 1.077V4.09c.81-.03 1.577-.13 2.282-.287z"/>
-          </svg>
-        </div>
-        
-        {/* Sparkle Elements */}
-        <div className="absolute top-10 left-1/4 animate-ping" style="animation-duration: 3s;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="white" viewBox="0 0 16 16">
-            <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
-          </svg>
-        </div>
-        <div className="absolute bottom-20 right-1/4 animate-ping" style="animation-duration: 2.5s; animation-delay: 0.5s;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white" viewBox="0 0 16 16">
-            <path d="M8 0a1 1 0 0 1 1 1v5.268l4.562-2.634a1 1 0 1 1 1 1.732L10 8l4.562 2.634a1 1 0 1 1-1 1.732L9 9.732V15a1 1 0 1 1-2 0V9.732l-4.562 2.634a1 1 0 1 1-1-1.732L6 8 1.438 5.366a1 1 0 0 1 1-1.732L7 6.268V1a1 1 0 0 1 1-1z"/>
-          </svg>
-        </div>
-        
-        <div className="container mx-auto px-4 text-center relative z-10">
-          {/* Decorative line above title */}
-          <div className="flex justify-center mb-4">
-            <div className="w-16 h-1 bg-white rounded-full"></div>
+      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/6.jpeg')">
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl">
+            <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
+              AI Booth Experience
+            </h1>
+            <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
+              An AI Booth can be a great addition to any event, providing a unique and immersive experience, entertainment, shareable content, branding opportunities, and can also be a source of data collection.
+            </p>
+            <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+              GET A QUOTE
+            </a>
           </div>
-          
-          <h1 className="text-4xl md:text-5xl text-white mb-3 font-bold tracking-wider uppercase relative inline-block">
-            <span className="relative z-10">360° GLAM VIDEO BOOTH EXPERIENCE</span>
-            <span className="absolute -top-2 -right-2 text-pink-300 opacity-30 text-6xl md:text-7xl" style="z-index: 1;">°</span>
-          </h1>
-          
-          <p className="text-xl text-white opacity-90 max-w-3xl mx-auto mb-6">
-            A 360 Glam Booth can be a great addition to any event, providing a unique and immersive experience, entertainment, shareable content, branding opportunities, and can also be a source of data collection.
-          </p>
-          
-          {/* Decorative line below description */}
-          <div className="flex justify-center">
-            <div className="w-24 h-1 bg-white rounded-full"></div>
-          </div>
-        </div>
-        
-        {/* Wavy divider at bottom */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none" className="relative block w-full h-8 md:h-12" fill="white">
-            <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V120H0V95.8C59.71,118.11,140.83,94.17,208.18,70.28,289.4,40.17,263.46,67.29,321.39,56.44Z"></path>
-          </svg>
         </div>
       </div>
       
       <main className="flex-grow">
-        <div className="pt-12">
+        {/* Introduction Section */}
+        <div className="py-20 bg-white">
           <div className="container mx-auto px-4">
-            <div className="max-w-3xl mx-auto">
-              <h2 className="text-3xl font-bold mb-12 text-blue-500 text-center">360 VIDEO BOOTH PACKAGES</h2>
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
+                What is an AI Booth?
+              </h2>
+              
+              <p className="text-lg mb-8 text-center">
+                Our AI Booth combines cutting-edge artificial intelligence technology with professional video equipment to create a unique and immersive experience for your guests. This innovative booth captures short videos and transforms them into stunning, shareable content with special effects and customized branding.
+              </p>
+              
+              <hr className="border-gray-300 my-16 max-w-2xl mx-auto" />
+              
+              <div className="flex flex-col md:flex-row items-center">
+                <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
+                  <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-8">
+                    WE DON'T JUST CAPTURE MEMORIES, WE CREATE THEM.
+                  </h2>
+                  <p className="text-gray-700 text-lg mb-6">
+                    Looking to rent an AI Photobooth for your event in Vancouver? Look no further! We're excited to share with you our most recent hottest trending photo and video experiences: AI Photobooth.
+                  </p>
+                  <p className="text-gray-700 text-lg mb-6">
+                    Our AI photobooth takes up to 4 guests upon it's elevated platform as its studio grade camera rotates around them creating a truly unique experience.
+                  </p>
+                  <p className="text-gray-700 text-lg">
+                    Each session is ready in under 30 seconds to be instantly shared over a variety of social media platforms including Facebook, Instagram, Snapchat and TikTok.
+                  </p>
+                </div>
+                <div className="md:w-1/2">
+                  <div className="rounded-lg overflow-hidden shadow-lg">
+                    <img 
+                      src="/images/wedding-couple.jpg" 
+                      alt="AI Photobooth Experience"
+                      className="w-full h-auto"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* AI Photobooth Features Section */}
+        <div className="py-20 bg-gray-100">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              
+              <div className="flex flex-wrap -mx-4">
+                {/* Left Column Features */}
+                <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0">
+                  <div className="mb-16">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-center mb-4">SLOW MOTION VIDEO</h3>
+                    <p className="text-gray-700 text-center">
+                      Our AI Photobooth captures Slow-Motion video then it'll speed up and slow down the footage at set intervals in order to capture eye-catching final video.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-center mb-6">
+                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-center mb-4">INSTANT SHARING</h3>
+                    <p className="text-gray-700 text-center">
+                      Guests can share their footage immediately by scanning the QR code or Emailing it.
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Center Column - Image */}
+                <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0 flex items-center justify-center">
+                  <img 
+                    src="/images/360-video-booth-rental-vancouver.webp"
+                    alt="AI Photobooth"
+                    className="max-w-full h-auto"
+                  />
+                </div>
+                
+                {/* Right Column Features */}
+                <div className="w-full md:w-1/3 px-4">
+                  <div className="mb-16">
+                    <div className="flex justify-center mb-6">
+                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-center mb-4">CUSTOMIZABLE</h3>
+                    <p className="text-gray-700 text-center">
+                      We work with you to design custom overlays and video FX with the soundtracks to create a jaw dropping final footage.
+                    </p>
+                  </div>
+                  
+                  <div>
+                    <div className="flex justify-center mb-6">
+                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                      </div>
+                    </div>
+                    <h3 className="text-xl font-bold text-center mb-4">ON-SITE ATTENDANTS</h3>
+                    <p className="text-gray-700 text-center">
+                      Our professional team will direct your guests to take perfect shot every time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Event Services Section */}
+        <div className="py-20 bg-white">
+          <div className="container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-5xl font-bold text-gray-800 mb-16 text-center">
+                EVENT SERVICES
+              </h2>
+              
+              <div className="flex flex-wrap -mx-4">
+                {/* Brand Marketing Activations */}
+                <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0">
+                  <div className="h-64 mb-6 overflow-hidden rounded-lg">
+                    <img 
+                      src="/images/3.jpeg" 
+                      alt="Brand Marketing Activations" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-center mb-4">
+                    BRAND MARKETING ACTIVATIONS
+                  </h3>
+                  <p className="text-gray-700 text-center">
+                    Make your brand stand out at your next event with an AI photobooth activation! Capture amazing content with backgrounds and props customized to your brand while getting tons of impressions leveraging your fan's social media accounts!
+                  </p>
+                </div>
+                
+                {/* Corporate & Fundraiser Events */}
+                <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0">
+                  <div className="h-64 mb-6 overflow-hidden rounded-lg">
+                    <img 
+                      src="/images/4.jpeg" 
+                      alt="Corporate & Fundraiser Events" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-center mb-4">
+                    CORPORATE & FUNDRAISER EVENTS
+                  </h3>
+                  <p className="text-gray-700 text-center mb-6">
+                    Want to create a unique experience for your next corporate party? Look no further! AI photobooths are the hottest trend right now! Our custom branded overlays are designed to best fit the needs of your event.
+                  </p>
+                  <div className="text-center">
+                    <a href="/contact" className="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                      GET A QUOTE
+                    </a>
+                  </div>
+                </div>
+                
+                {/* Weddings & Private Events */}
+                <div className="w-full md:w-1/3 px-4">
+                  <div className="h-64 mb-6 overflow-hidden rounded-lg">
+                    <img 
+                      src="/images/5.jpeg" 
+                      alt="Weddings & Private Events" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-center mb-4">
+                    WEDDINGS & PRIVATE EVENTS
+                  </h3>
+                  <p className="text-gray-700 text-center">
+                    Capture amazing moments of your wedding or private event and give your guests content that they will remember. Our AI photobooth software will allow guests to upload to their social media instantly!
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
         
-        <ServiceSection 
-          title="PARTY GLAM BOOTH EXPERIENCE"
-          description={partyDescription}
-          imageUrl="/images/2.jpeg"
-          buttonText="GET A QUOTE"
-          buttonLink="/contact"
+        {/* Photo Examples Section with Parallax */}
+        <div 
+          className="py-24 bg-fixed bg-center bg-cover relative"
+          style="background-image: url('/images/wedding-decor.jpg'); min-height: 70vh;"
+        >
+          <div className="absolute inset-0" style="background-color: rgba(228, 255, 238, 0.7);"></div>
+          <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
+            <div data-padd-top="20" data-padd-bott="20" className="px-col-content px-middle text-center max-w-4xl" style="padding-top: 20px; padding-bottom: 20px;">
+              <div className="px-text">
+                <h1 className="text-gray-800 text-5xl md:text-6xl lg:text-7xl font-bold mb-10">Cutting-Edge Technology</h1>
+              </div>
+              <div className="px-hero-wrap" data-delay="" data-animation="">
+                <div className="px-hero px-font-m px-font-normal mx-auto" style="color: inherit;">
+                  <span className="text-gray-800 text-xl md:text-2xl lg:text-3xl" style="line-height: 1.6;">
+                    Our AI Booth uses the latest in artificial intelligence and video processing technology to create stunning visual effects that will amaze your guests. From slow-motion to boomerang effects, custom overlays to branded intros and outros, our AI Booth delivers a premium experience that elevates any event.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Gallery Carousel Section */}
+        <GalleryCarousel 
+          images={galleryImages} 
+          title="Our AI Booth in Action"
+          itemsPerSlide={5}
         />
         
-        <ServiceSection 
-          title="LUX GLAM BOOTH EXPERIENCE"
-          description={luxDescription}
-          imageUrl="/images/9.jpg"
-          buttonText="GET A QUOTE"
-          buttonLink="/contact"
-          isReversed={true}
+        {/* FAQ Section - Collapsible */}
+        <div className="py-16 bg-gray-100">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
+                Frequently Asked Questions
+              </h2>
+              
+              <div className="border rounded-lg overflow-hidden shadow-sm">
+                {faqItems.map((item, index) => (
+                  <div key={index} className={`border-b ${index === faqItems.length - 1 ? 'border-b-0' : ''}`}>
+                    <button 
+                      onClick={() => toggleFaq(index)}
+                      className="w-full text-left p-4 bg-white hover:bg-gray-50 focus:outline-none flex justify-between items-center transition-colors duration-200"
+                    >
+                      <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
+                      <svg 
+                        className={`w-5 h-5 text-purple-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ${openFaqIndex === index ? 'max-h-96' : 'max-h-0'}`}
+                    >
+                      <div className="p-4 bg-white border-t border-gray-100">
+                        <p className="text-gray-700">{item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* Our Booths Section */}
+        <OurBooths 
+          customHeading="Explore Our Other Booths"
+          customDescription="Discover our range of photo booth options to find the perfect fit for your event. Each booth offers unique features and experiences to make your celebration unforgettable."
         />
         
-        <ServiceSection 
-          title="VIP GLAM BOOTH EXPERIENCE"
-          description={vipDescription}
-          imageUrl="/images/6.jpeg"
-          buttonText="GET A QUOTE"
-          buttonLink="/contact"
-        />
+        {/* Call to Action Section */}
+        <div className="py-16 bg-purple-600 text-white">
+          <div className="container mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Ready to book your AI Booth Experience?
+            </h2>
+            <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+              BOOK YOUR BOOTH NOW
+            </a>
+          </div>
+        </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };
