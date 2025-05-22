@@ -24,6 +24,19 @@ const Navigation = () => {
     };
   }, []);
   
+  // Effect to prevent scrolling when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+  
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
     if (isEventsOpen) setIsEventsOpen(false);
@@ -260,7 +273,7 @@ const Navigation = () => {
       
       {/* Mobile Menu - Full screen overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-100 z-50 flex flex-col">
           <div className="container mx-auto px-4 py-8">
             <div className="flex justify-end mb-8">
               <button 
