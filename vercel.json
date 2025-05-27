@@ -22,5 +22,15 @@
       "src": "/(.*)",
       "dest": "/index.html"
     }
-  ]
+  ],
+  "env": {
+    "PREACT_APP_FACEBOOK_APP_ID": "@facebook-app-id",
+    "PREACT_APP_FACEBOOK_APP_SECRET": "@facebook-app-secret",
+    "PREACT_APP_FACEBOOK_PAGE_TOKEN": "@facebook-page-token",
+    "PREACT_APP_FACEBOOK_REDIRECT_URI": "@facebook-redirect-uri",
+    "PREACT_APP_CLOUDINARY_CLOUD_NAME": "@cloudinary-cloud-name",
+    "PREACT_APP_CLOUDINARY_API_KEY": "@cloudinary-api-key",
+    "PREACT_APP_CLOUDINARY_API_SECRET": "@cloudinary-api-secret",
+    "PREACT_APP_CLOUDINARY_UPLOAD_PRESET": "@cloudinary-upload-preset"
+  }
 }
