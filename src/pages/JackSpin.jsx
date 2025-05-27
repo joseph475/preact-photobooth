@@ -5,7 +5,7 @@ import OurBooths from '../components/OurBooths';
 import ServiceSection from '../components/ServiceSection';
 import GalleryCarousel from '../components/GalleryCarousel';
 
-const GlamBooth = () => {
+const JackSpin = () => {
   // Helper function to create feature list HTML
   const createFeatureList = (features) => {
     return (
@@ -18,7 +18,7 @@ const GlamBooth = () => {
   };
 
   const partyFeatures = [
-    "2 Hours of The JACKSpot Experience",
+    "2 Hours of JackSpin (360 Booth) Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
     "Standard AI Platform (max of 3 people)",
     "1 Director",
@@ -49,7 +49,7 @@ const GlamBooth = () => {
   ];
 
   const vipFeatures = [
-    "3 Hours of The JACKSpot Experience",
+    "3 Hours of JackSpin (360 Booth) Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
     "Standard backdrop",
     "Deluxe AI Platform (max of 3 people)",
@@ -96,15 +96,15 @@ const GlamBooth = () => {
   // FAQ items with collapsible functionality
   const faqItems = [
     {
-      question: "What is The JACKSpot?",
-      answer: "The JACKSpot is an innovative photo and video experience that uses artificial intelligence to create stunning visual effects. It captures videos and transforms them with special effects, custom overlays, and branded elements to create shareable content that elevates any event."
+      question: "What is JackSpin (360 Booth)?",
+      answer: "JackSpin (360 Booth) is an innovative photo and video experience that uses artificial intelligence to create stunning visual effects. It captures videos and transforms them with special effects, custom overlays, and branded elements to create shareable content that elevates any event."
     },
     {
-      question: "How much space does The JACKSpot require?",
-      answer: "The JACKSpot requires approximately 10x10 feet of space for optimal setup, including the platform, camera equipment, and space for guests to move. We'll work with your venue to ensure proper placement and setup."
+      question: "How much space does JackSpin (360 Booth) require?",
+      answer: "JackSpin (360 Booth) requires approximately 10x10 feet of space for optimal setup, including the platform, camera equipment, and space for guests to move. We'll work with your venue to ensure proper placement and setup."
     },
     {
-      question: "Can The JACKSpot be customized for my brand or event?",
+      question: "Can JackSpin (360 Booth) be customized for my brand or event?",
       answer: "Absolutely! We offer extensive customization options including branded overlays, custom intros and outros, soundtrack integration, and themed props. Our team works with you to create a cohesive experience that aligns with your brand or event theme."
     },
     {
@@ -112,7 +112,7 @@ const GlamBooth = () => {
       answer: "Guests can instantly access their videos through our QR code system, which allows them to email, text, or directly share their content to social media platforms like Instagram, TikTok, Facebook, and Snapchat."
     },
     {
-      question: "Do you provide staff to operate The JACKSpot?",
+      question: "Do you provide staff to operate JackSpin (360 Booth)?",
       answer: "Yes, all our packages include at least one professional director who guides guests through the experience and ensures everything runs smoothly. Our VIP package includes an additional video technician for enhanced service."
     }
   ];
@@ -203,17 +203,23 @@ const GlamBooth = () => {
     <div className="min-h-screen flex flex-col">
       
       {/* Hero Section */}
-      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/6.jpeg')">
+      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/event-booth.jpg')">
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
-              The JACKSpot Experience
+              JackSpin (360 Booth)
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
-              The JACKSpot can be a great addition to any event, providing a unique and immersive experience, entertainment, shareable content, branding opportunities, and can also be a source of data collection.
+              Step into <span className="text-2xl font-bold text-blue-500">JackSpin (360 Booth)</span> — our signature open-air photo booth that’s designed to turn heads and light up every event. With its sleek circular shape and vibrant LED glow, this modern booth adds the perfect blend of style, fun, and high-quality photo memories.
             </p>
-            <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
+              Whether you're hosting a wedding, birthday, corporate event, or celebration of any kind, JackSpin (360 Booth) creates an interactive experience your guests won’t forget. Its open design means more space for group shots, striking poses, and plenty of laughs — all captured in stunning detail.
+            </p>
+            <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
+              Let your event shine with JackSpin (360 Booth) — where great moments are made, and every smile is in the spotlight.
+            </p>
+            <a href="/contact" className="inline-block btn-blue">
               GET A QUOTE
             </a>
           </div>
@@ -222,15 +228,15 @@ const GlamBooth = () => {
       
       <main className="flex-grow">
         {/* Introduction Section */}
-        <div className="py-20 bg-white">
+        <div className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
-                What is The JACKSpot?
+                What is JackSpin (360 Booth)?
               </h2>
               
               <p className="text-lg mb-8 text-center">
-                The JACKSpot combines cutting-edge artificial intelligence technology with professional video equipment to create a unique and immersive experience for your guests. This innovative booth captures short videos and transforms them into stunning, shareable content with special effects and customized branding.
+                <span className="text-2xl font-bold text-blue-500">JackSpin (360 Booth)</span> is a sleek, modern twist on the classic enclosed booth. Designed with a professional DSLR camera, studio-quality lighting, and a customizable backdrop, it offers plenty of space — perfect for group shots and creative poses. With quick prints and easy digital sharing, it's an ideal choice for weddings, parties, corporate events, and more.
               </p>
               
               <hr className="border-gray-300 my-16 max-w-2xl mx-auto" />
@@ -241,7 +247,7 @@ const GlamBooth = () => {
                     WE DON'T JUST CAPTURE MEMORIES, WE CREATE THEM.
                   </h2>
                   <p className="text-gray-700 text-lg mb-6">
-                    Looking to rent a JACKSpot photobooth for your event in Vancouver? Look no further! We're excited to share with you our most recent hottest trending photo and video experiences: The JACKSpot.
+                    Looking to rent a JACKSpot photobooth for your event in Vancouver? Look no further! We're excited to share with you our most recent hottest trending photo and video experiences: JackSpin (360 Booth).
                   </p>
                   <p className="text-gray-700 text-lg mb-6">
                     Our JACKSpot photobooth takes up to 4 guests upon its elevated platform as its studio grade camera rotates around them creating a truly unique experience.
@@ -265,7 +271,7 @@ const GlamBooth = () => {
         </div>
 
         {/* JACKSpot Features Section */}
-        <div className="py-20 bg-gray-100">
+        <div className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               
@@ -274,8 +280,8 @@ const GlamBooth = () => {
                 <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0">
                   <div className="mb-16">
                     <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
                         </svg>
                       </div>
@@ -288,8 +294,8 @@ const GlamBooth = () => {
                   
                   <div>
                     <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                         </svg>
                       </div>
@@ -314,8 +320,8 @@ const GlamBooth = () => {
                 <div className="w-full md:w-1/3 px-4">
                   <div className="mb-16">
                     <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
                         </svg>
                       </div>
@@ -328,8 +334,8 @@ const GlamBooth = () => {
                   
                   <div>
                     <div className="flex justify-center mb-6">
-                      <div className="w-16 h-16 rounded-full border-2 border-red-500 flex items-center justify-center">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div className="w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                       </div>
@@ -346,7 +352,7 @@ const GlamBooth = () => {
         </div>
 
         {/* Event Services Section */}
-        <div className="py-20 bg-white">
+        <div className="py-20">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
               <h2 className="text-5xl font-bold text-gray-800 mb-16 text-center">
@@ -387,7 +393,7 @@ const GlamBooth = () => {
                     Want to create a unique experience for your next corporate party? Look no further! JACKSpot photobooths are the hottest trend right now! Our custom branded overlays are designed to best fit the needs of your event.
                   </p>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue">
                       GET A QUOTE
                     </a>
                   </div>
@@ -428,7 +434,7 @@ const GlamBooth = () => {
               <div className="px-hero-wrap" data-delay="" data-animation="">
                 <div className="px-hero px-font-m px-font-normal mx-auto" style="color: inherit;">
                   <span className="text-gray-800 text-xl md:text-2xl lg:text-3xl" style="line-height: 1.6;">
-                    The JACKSpot uses the latest in artificial intelligence and video processing technology to create stunning visual effects that will amaze your guests. From slow-motion to boomerang effects, custom overlays to branded intros and outros, The JACKSpot delivers a premium experience that elevates any event.
+                    JackSpin (360 Booth) uses the latest in artificial intelligence and video processing technology to create stunning visual effects that will amaze your guests. From slow-motion to boomerang effects, custom overlays to branded intros and outros, JackSpin (360 Booth) delivers a premium experience that elevates any event.
                   </span>
                 </div>
               </div>
@@ -439,12 +445,12 @@ const GlamBooth = () => {
         {/* Gallery Carousel Section */}
         <GalleryCarousel 
           images={galleryImages} 
-          title="The JACKSpot in Action"
+          title="JackSpin (360 Booth) in Action"
           itemsPerSlide={5}
         />
         
         {/* FAQ Section - Collapsible */}
-        <div className="py-16 bg-gray-100">
+        <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-8 text-center">
@@ -460,7 +466,7 @@ const GlamBooth = () => {
                     >
                       <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
                       <svg 
-                        className={`w-5 h-5 text-purple-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
+                        className={`w-5 h-5 text-blue-500 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -489,12 +495,12 @@ const GlamBooth = () => {
         />
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-purple-600 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to book your JACKSpot Experience?
             </h2>
-            <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white text-white hover:text-blue-500 font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 text-lg">
               BOOK YOUR BOOTH NOW
             </a>
           </div>
@@ -504,4 +510,4 @@ const GlamBooth = () => {
   );
 };
 
-export default GlamBooth;
+export default JackSpin;

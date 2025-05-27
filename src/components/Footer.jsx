@@ -24,34 +24,34 @@ const Footer = () => {
           
           {/* Quick Links */}
           <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold mb-6 text-pink-500">Quick Links</h3>
+            <h3 className="text-xl font-bold mb-6 text-blue-500">Quick Links</h3>
             <ul className="space-y-3">
-              <li><Link href="/" className="text-gray-300 hover:text-pink-500 transition-colors">Home</Link></li>
-              <li><Link href="/about" className="text-gray-300 hover:text-pink-500 transition-colors">About Us</Link></li>
-              <li><Link href="/packages/wedding" className="text-gray-300 hover:text-pink-500 transition-colors">Photo Booth</Link></li>
-              <li><Link href="jackspot" className="text-gray-300 hover:text-pink-500 transition-colors">The JACKSpot</Link></li>
-              <li><Link href="/backdrops" className="text-gray-300 hover:text-pink-500 transition-colors">Our Backdrops</Link></li>
+              <li><Link href="/" className="text-gray-300 hover:text-blue-500 transition-colors">Home</Link></li>
+              <li><Link href="/about" className="text-gray-300 hover:text-blue-500 transition-colors">About Us</Link></li>
+              <li><Link href="/packages/wedding" className="text-gray-300 hover:text-blue-500 transition-colors">Photo Booth</Link></li>
+              <li><Link href="jackspot" className="text-gray-300 hover:text-blue-500 transition-colors">The JACKSpot</Link></li>
+              <li><Link href="/backdrops" className="text-gray-300 hover:text-blue-500 transition-colors">Our Backdrops</Link></li>
             </ul>
           </div>
           
           {/* Social Media */}
           <div className="text-center md:text-left">
-            <h3 className="text-xl font-bold mb-6 text-pink-500">Connect With Us</h3>
+            <h3 className="text-xl font-bold mb-6 text-blue-500">Connect With Us</h3>
             <div className="flex justify-center md:justify-start space-x-4">
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors">
+              <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
                 <img src="/images/social/facebook.svg" alt="Facebook" className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors">
+              <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
                 <img src="/images/social/instagram.svg" alt="Instagram" className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-300 hover:text-pink-500 transition-colors">
+              <a href="#" className="text-gray-300 hover:text-blue-500 transition-colors">
                 <img src="/images/social/twitter.svg" alt="Twitter" className="h-6 w-6" />
               </a>
             </div>
             <div className="mt-8">
               <Link 
                 href="/contact" 
-                className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full transition-all duration-300"
+                className="btn-blue"
               >
                 BOOK NOW
               </Link>
@@ -62,7 +62,7 @@ const Footer = () => {
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-sm text-gray-500">
           <p>Copyright © 2025 Jack PhotoBoothCA - All Rights Reserved.</p>
           <p className="mt-2">
-            <Link href="/privacy-policy" className="text-gray-500 hover:text-pink-500 transition-colors">Privacy Policy</Link>
+            <Link href="/privacy-policy" className="text-gray-500 hover:text-blue-500 transition-colors">Privacy Policy</Link>
           </p>
         </div>
       </div>

@@ -11,9 +11,9 @@ import Home from '../pages/Home';
 import About from '../pages/About';
 import Contact from '../pages/Contact';
 import Gallery from '../pages/Gallery';
-import GlamBooth from '../pages/GlamBooth';
-import SelfieStation from '../pages/SelfieStation';
-import OpenAirPhotobooth from '../pages/OpenAirPhotobooth';
+import JackSpot from '../pages/JackSpot';
+import RetroJack from '../pages/RetroJack';
+import JackSpin from '../pages/JackSpin';
 import Backdrops from '../pages/Backdrops';
 import Wedding from '../pages/packages/Wedding';
 import Events from '../pages/packages/Events';
@@ -42,9 +42,9 @@ const App = () => {
           <About path="/about" />
           <Contact path="/contact" />
           <Gallery path="/gallery" />
-          <GlamBooth path="/jackspot" />
-          <SelfieStation path="/selfie-station" />
-          <OpenAirPhotobooth path="/open-air-photobooth" />
+          <JackSpot path="/jackspot" />
+          <RetroJack path="/retrojack" />
+          <JackSpin path="/jackspin" />
           <Backdrops path="/backdrops" />
           <Wedding path="/packages/wedding" />
           <Events path="/packages/events" />

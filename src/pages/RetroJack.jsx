@@ -6,7 +6,7 @@ import ServiceSection from '../components/ServiceSection';
 import GalleryCarousel from '../components/GalleryCarousel';
 import { listImages } from '../services/cloudinaryService';
 
-const SelfieStation = () => {
+const RetroJack = () => {
   // Helper function to create feature list HTML
   const createFeatureList = (features) => {
     return (
@@ -19,7 +19,7 @@ const SelfieStation = () => {
   };
 
   const basicFeatures = [
-    "2 Hours of Selfie Station Experience",
+    "2 Hours of THE RETRO JACK Experience",
     "Unlimited Photos, GIFs, and Boomerangs",
     "Customized Photo Template",
     "Digital Props",
@@ -32,7 +32,7 @@ const SelfieStation = () => {
   ];
 
   const premiumFeatures = [
-    "3 Hours of Selfie Station Experience",
+    "3 Hours of THE RETRO JACK Experience",
     "Unlimited Photos, GIFs, and Boomerangs",
     "Customized Photo Template",
     "Digital Props",
@@ -47,7 +47,7 @@ const SelfieStation = () => {
   ];
 
   const deluxeFeatures = [
-    "4 Hours of Selfie Station Experience",
+    "4 Hours of THE RETRO JACK Experience",
     "Unlimited Photos, GIFs, and Boomerangs",
     "Customized Photo Template",
     "Digital Props",
@@ -102,13 +102,13 @@ const SelfieStation = () => {
             // Fetch images from the selfie-station folder in Cloudinary
             const result = await listImages('selfie-station');
             
-            console.log('Selfie Station: Cloudinary images result:', result);
+            console.log('THE RETRO JACK: Cloudinary images result:', result);
             
             if (result && result.resources && result.resources.length > 0) {
                 // Map the Cloudinary resources to our gallery format
                 const cloudinaryImages = result.resources.map((resource, index) => {
                   // Try to extract a caption from the resource
-                  let caption = 'Selfie Station';
+                  let caption = 'THE RETRO JACK';
                   
                   // Try to get caption from display_name, context or tags
                   if (resource.display_name) {
@@ -140,7 +140,7 @@ const SelfieStation = () => {
               return;
             }
           } catch (error) {
-            console.error('Error fetching Cloudinary images for Selfie Station:', error);
+            console.error('Error fetching Cloudinary images for THE RETRO JACK:', error);
             // Fall back to local images
           }
         }
@@ -253,7 +253,7 @@ const SelfieStation = () => {
     { id: 'wedding', name: 'Wedding' },
     { id: 'graduation', name: 'Graduation' },
     { id: 'fashion', name: 'Fashion' },
-    { id: 'selfie', name: 'Selfie Station' }
+    { id: 'selfie', name: 'THE RETRO JACK' }
   ];
   
   // State for active category
@@ -298,15 +298,15 @@ const SelfieStation = () => {
   // FAQ items with collapsible functionality
   const faqItems = [
     {
-      question: "Does the Selfie Station print photos?",
-      answer: "Yes, our Selfie Station offers high-quality instant printing so guests can take home physical keepsakes from your event."
+      question: "Does the THE RETRO JACK print photos?",
+      answer: "Yes, our THE RETRO JACK offers high-quality instant printing so guests can take home physical keepsakes from your event."
     },
     {
-      question: "How much space does the Selfie Station require?",
-      answer: "The Selfie Station is compact and portable, requiring minimal space. A 6x6 foot area is typically sufficient for the station and guests to comfortably use it."
+      question: "How much space does the THE RETRO JACK require?",
+      answer: "The THE RETRO JACK is compact and portable, requiring minimal space. A 6x6 foot area is typically sufficient for the station and guests to comfortably use it."
     },
     {
-      question: "Do you provide backdrops and props with the Selfie Station?",
+      question: "Do you provide backdrops and props with the THE RETRO JACK?",
       answer: "Yes, we offer a variety of backdrop options and both digital and physical props depending on your package selection."
     },
     {
@@ -314,8 +314,8 @@ const SelfieStation = () => {
       answer: "Absolutely! Guests can easily share their photos, GIFs, and Boomerangs via email, text, or directly to social media platforms like Instagram and TikTok using our QR code system."
     },
     {
-      question: "Is an attendant required for the Selfie Station?",
-      answer: "The Selfie Station is extremely user-friendly and can be set up for self-service. However, we include an attendant with all packages to ensure everything runs smoothly and to assist guests if needed."
+      question: "Is an attendant required for the THE RETRO JACK?",
+      answer: "The THE RETRO JACK is extremely user-friendly and can be set up for self-service. However, we include an attendant with all packages to ensure everything runs smoothly and to assist guests if needed."
     }
   ];
 
@@ -336,12 +336,12 @@ const SelfieStation = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
-              Rent Modern Selfie Station
+              Rent Modern THE RETRO JACK
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
               Modern photo booth kiosk that allows people to create and share personalized content using Photos, GIFs, or Boomerang!
             </p>
-            <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <a href="/contact" className="inline-block btn-blue btn-hover-effect">
               GET A QUOTE
             </a>
           </div>
@@ -354,11 +354,11 @@ const SelfieStation = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
-                What is a Selfie Station?
+                What is a THE RETRO JACK?
               </h2>
               
               <p className="text-lg mb-8 text-center">
-                Our selfie station is a game changer for any events and brand activations. This modern, compact digital photo booth is not only customizable, but it also offers unlimited shots for guests to create and share content.
+                Our THE RETRO JACK is a game changer for any events and brand activations. This modern, compact digital photo booth is not only customizable, but it also offers unlimited shots for guests to create and share content.
               </p>
               
               <p className="text-lg mb-8 text-center">
@@ -366,13 +366,13 @@ const SelfieStation = () => {
               </p>
               
               <p className="text-lg mb-12 text-center">
-                Selfie Station is so user friendly, an attendant isn't required. You can set it up yourself or let us do it all for you.
+                THE RETRO JACK is so user friendly, an attendant isn't required. You can set it up yourself or let us do it all for you.
               </p>
               
               <hr className="border-gray-300 my-16 max-w-2xl mx-auto" />
               
               <h3 className="text-2xl font-bold text-center text-gray-800 mb-12">
-                Selfie Station Features
+                THE RETRO JACK Features
               </h3>
         
               {/* First Row: 3 Columns */}
@@ -386,9 +386,9 @@ const SelfieStation = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Video, GIF & Boomerang</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Video, GIF & Boomerang</h3>
                   <p className="text-gray-700">
-                    Featuring multiple creative options, this selfie station can capture images, trendy GIFs and fun Boomerangs that guests will love to share.
+                    Featuring multiple creative options, this THE RETRO JACK can capture images, trendy GIFs and fun Boomerangs that guests will love to share.
                   </p>
                 </div>
                 
@@ -401,7 +401,7 @@ const SelfieStation = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Social Media Sharing</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Social Media Sharing</h3>
                   <p className="text-gray-700">
                     Our QR code system makes sharing quick and contactless, allowing guests to instantly access and share their content on platforms like Instagram and TikTok.
                   </p>
@@ -416,9 +416,9 @@ const SelfieStation = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Fully Branded Experience</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Fully Branded Experience</h3>
                   <p className="text-gray-700">
-                    From the selfie station itself to the start screen and photo overlays, our creative team can customize everything to promote your brand and create memorable experiences.
+                    From the THE RETRO JACK itself to the start screen and photo overlays, our creative team can customize everything to promote your brand and create memorable experiences.
                   </p>
                 </div>
               </div>
@@ -426,9 +426,9 @@ const SelfieStation = () => {
               {/* Second Row: Creative VideoFX only */}
               <div className="flex flex-col md:flex-row items-center mb-16">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-purple-600 mb-4">Creative VideoFX</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Creative VideoFX</h3>
                   <p className="text-gray-700 text-lg">
-                    Allow your guests to be creative and record powerful videos with Selfie Station's VideoFX feature.
+                    Allow your guests to be creative and record powerful videos with THE RETRO JACK's VideoFX feature.
                   </p>
                   <p className="text-gray-700 text-lg mt-4">
                     Whether it's applying filters, overlays, or animations, this feature takes video recording to the next level, ensuring your guests have a truly remarkable and interactive time at your event.
@@ -453,7 +453,7 @@ const SelfieStation = () => {
           className="py-24 bg-fixed bg-center bg-cover relative"
           style="background-image: url('/images/self-serve-booth.jpg'); min-height: 70vh;"
         >
-          <div className="absolute inset-0 bg-purple-700 bg-opacity-90"></div>
+          <div className="absolute inset-0 bg-blue-500 bg-opacity-90"></div>
           <div className="container mx-auto px-4 relative z-10 h-full flex flex-col items-center justify-center">
             <div className="text-center max-w-4xl mb-12">
               <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold mb-6" style="font-family: 'Dancing Script', cursive;">How it works</h1>
@@ -471,7 +471,7 @@ const SelfieStation = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-purple-600">
+                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
                     1
                   </div>
                 </div>
@@ -489,7 +489,7 @@ const SelfieStation = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-purple-600">
+                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
                     2
                   </div>
                 </div>
@@ -507,7 +507,7 @@ const SelfieStation = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-purple-600">
+                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
                     3
                   </div>
                 </div>
@@ -525,7 +525,7 @@ const SelfieStation = () => {
                       className="w-full h-full object-cover"
                     />
                   </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-purple-600">
+                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
                     4
                   </div>
                 </div>
@@ -536,7 +536,7 @@ const SelfieStation = () => {
             
             <div className="mt-12 text-center">
               <p className="text-white text-xl">
-                Compact and highly portable, our selfie station can be shipped anywhere or picked up from our studio.
+                Compact and highly portable, our THE RETRO JACK can be shipped anywhere or picked up from our studio.
               </p>
             </div>
           </div>
@@ -547,7 +547,7 @@ const SelfieStation = () => {
           className="py-24 bg-fixed bg-center bg-cover relative"
           style="background-image: url('/images/corporate-event-hero.jpg'); min-height: 70vh;"
         >
-          <div className="absolute inset-0 bg-gradient-to-r from-purple-900 to-black opacity-90"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-black opacity-90"></div>
           <div className="container mx-auto px-4 relative z-10 h-full flex items-center">
             <div className="flex flex-col md:flex-row items-center w-full">
               <div className="md:w-1/2 mb-10 md:mb-0 md:pr-10">
@@ -555,9 +555,9 @@ const SelfieStation = () => {
                   FULLY BRANDED EXPERIENCE
                 </h2>
                 <p className="text-white text-lg mb-6">
-                  Selfie Station is a great way to promote a company and create brand awareness. It offers a unique and engaging way for companies to promote their brand and create memorable experiences for their customers and employees. Watch this video to see what it can do for your next event!
+                  THE RETRO JACK is a great way to promote a company and create brand awareness. It offers a unique and engaging way for companies to promote their brand and create memorable experiences for their customers and employees. Watch this video to see what it can do for your next event!
                 </p>
-                <a href="/contact" className="inline-block bg-white text-purple-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                <a href="/contact" className="inline-block bg-white text-blue-800 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
                   GET STARTED
                 </a>
               </div>
@@ -565,12 +565,12 @@ const SelfieStation = () => {
                 <div className="rounded-lg overflow-hidden shadow-2xl relative">
                   <img 
                     src="/images/corporate-booth.jpg" 
-                    alt="Branded Selfie Station Example" 
+                    alt="Branded THE RETRO JACK Example" 
                     className="w-full h-auto"
                   />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="w-20 h-20 rounded-full bg-white bg-opacity-80 flex items-center justify-center cursor-pointer hover:bg-opacity-100 transition-all duration-300">
-                      <svg className="w-10 h-10 text-purple-700" fill="currentColor" viewBox="0 0 20 20">
+                      <svg className="w-10 h-10 text-blue-700" fill="currentColor" viewBox="0 0 20 20">
                         <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                       </svg>
                     </div>
@@ -592,7 +592,7 @@ const SelfieStation = () => {
                   </span>
                   <img 
                     src="/images/self-serve-booth.jpg" 
-                    alt="Selfie Station in shipping case" 
+                    alt="THE RETRO JACK in shipping case" 
                     className="w-full h-auto rounded-lg shadow-xl"
                   />
                 </div>
@@ -602,9 +602,9 @@ const SelfieStation = () => {
                   Ships Free Right To Your Door
                 </h2>
                 <p className="text-gray-700 text-lg mb-6">
-                  Compact and highly portable, we can ship this selfie station anywhere in Canada for free or you can pick it up yourself from our studio. Don't like hassle? Then let us set up the selfie station and take it down for you so you can focus on the rest of your event-planning.
+                  Compact and highly portable, we can ship this THE RETRO JACK anywhere in Canada for free or you can pick it up yourself from our studio. Don't like hassle? Then let us set up the THE RETRO JACK and take it down for you so you can focus on the rest of your event-planning.
                 </p>
-                <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                   BOOK NOW
                 </a>
               </div>
@@ -615,7 +615,7 @@ const SelfieStation = () => {
         {/* Gallery Carousel Section */}
         <GalleryCarousel 
           images={galleryImages} 
-          title="Our Selfie Station in Action"
+          title="Our THE RETRO JACK in Action"
           itemsPerSlide={5}
         />
         
@@ -636,7 +636,7 @@ const SelfieStation = () => {
                     >
                       <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
                       <svg 
-                        className={`w-5 h-5 text-purple-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
+                        className={`w-5 h-5 text-blue-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -665,12 +665,12 @@ const SelfieStation = () => {
         />
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-purple-600 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               What are you waiting for? Let's get started.
             </h2>
-            <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white hover:text-blue-500 text-white font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 btn-hover-effect text-lg">
               BOOK YOUR BOOTH NOW
             </a>
           </div>
@@ -727,4 +727,4 @@ const SelfieStation = () => {
   );
 };
 
-export default SelfieStation;
+export default RetroJack;

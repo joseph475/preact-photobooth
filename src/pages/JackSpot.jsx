@@ -6,7 +6,7 @@ import ServiceSection from '../components/ServiceSection';
 import GalleryCarousel from '../components/GalleryCarousel';
 import { listImages } from '../services/cloudinaryService';
 
-const OpenAirPhotobooth = () => {
+const JackSpot = () => {
   // State for gallery images from Cloudinary
   const [galleryImages, setGalleryImages] = useState([]);
   const [isLoadingGallery, setIsLoadingGallery] = useState(true);
@@ -120,19 +120,19 @@ const OpenAirPhotobooth = () => {
   // FAQ items with collapsible functionality
   const faqItems = [
     {
-      question: "How much space does the Open-Air Photobooth require?",
-      answer: "Our Open-Air Photobooth is designed to be flexible with space requirements. Typically, we recommend an area of about 8x8 feet to accommodate the booth setup, backdrop, and allow guests to comfortably pose for photos."
+      question: "How much space does the THE JACKSPOT require?",
+      answer: "Our THE JACKSPOT is designed to be flexible with space requirements. Typically, we recommend an area of about 8x8 feet to accommodate the booth setup, backdrop, and allow guests to comfortably pose for photos."
     },
     {
-      question: "Do you provide backdrops and props with the Open-Air Photobooth?",
+      question: "Do you provide backdrops and props with the THE JACKSPOT?",
       answer: "Yes, we offer a variety of backdrop options and props to enhance your photo experience. Our standard package includes a selection of fun props, while premium packages feature higher quality props and more elaborate backdrop options."
     },
     {
       question: "Can guests share photos directly to social media?",
-      answer: "Absolutely! Our Open-Air Photobooth is equipped with instant social media sharing capabilities. Guests can easily share their photos via email, text, or directly to platforms like Instagram and Facebook."
+      answer: "Absolutely! Our THE JACKSPOT is equipped with instant social media sharing capabilities. Guests can easily share their photos via email, text, or directly to platforms like Instagram and Facebook."
     },
     {
-      question: "How long does it take to set up the Open-Air Photobooth?",
+      question: "How long does it take to set up the THE JACKSPOT?",
       answer: "Our team typically requires about 1-1.5 hours for setup to ensure everything is perfectly arranged and tested before your event begins. We handle all aspects of setup and teardown so you can focus on enjoying your event."
     },
     {
@@ -158,12 +158,18 @@ const OpenAirPhotobooth = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
-              Open-Air Photobooth Experience
+              THE JACKSPOT
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
-              Our Open-Air Photobooth creates a fun, interactive experience for your guests with high-quality photos, customizable backdrops, and instant prints.
+              Step into <span className="text-2xl font-bold text-blue-500">THE JACKSPOT</span> — our signature open-air photo booth that’s designed to turn heads and light up every event. With its sleek circular shape and vibrant LED glow, this modern booth adds the perfect blend of style, fun, and high-quality photo memories.
             </p>
-            <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
+              Whether you're hosting a wedding, birthday, corporate event, or celebration of any kind, THE JACKSPOT creates an interactive experience your guests won’t forget. Its open design means more space for group shots, striking poses, and plenty of laughs — all captured in stunning detail.
+            </p>
+            <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
+              Let your event shine with THE JACKSPOT — where great moments are made, and every smile is in the spotlight.
+            </p>
+            <a href="/contact" className="inline-block btn-blue btn-hover-effect">
               GET A QUOTE
             </a>
           </div>
@@ -176,17 +182,17 @@ const OpenAirPhotobooth = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
-                What is an Open-Air Photobooth?
+                What is a THE JACKSPOT?
               </h2>
               
               <p className="text-lg mb-8 text-center">
-                An Open-Air Photobooth is a modern, spacious alternative to traditional enclosed photo booths. It features a professional DSLR camera, studio lighting, and a customizable backdrop, allowing for larger group photos and more creative possibilities. With instant printing and digital sharing options, it's perfect for weddings, corporate events, and parties.
+                <span className="text-2xl font-bold text-blue-500">JACKSpot</span> is a sleek, modern twist on the classic enclosed booth. Designed with a professional DSLR camera, studio-quality lighting, and a customizable backdrop, it offers plenty of space — perfect for group shots and creative poses. With quick prints and easy digital sharing, it's an ideal choice for weddings, parties, corporate events, and more.
               </p>
               
               <hr className="border-gray-300 my-16 max-w-2xl mx-auto" />
               
               <h3 className="text-2xl font-bold text-center text-gray-800 mb-12">
-                Open-Air Photobooth Features
+                THE JACKSPOT Features
               </h3>
         
               {/* Features in 3 Columns */}
@@ -200,9 +206,9 @@ const OpenAirPhotobooth = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Spacious Design</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Spacious Design</h3>
                   <p className="text-gray-700">
-                    Accommodate large groups and create dynamic, creative photos with our open-concept design. Unlike traditional enclosed booths, our Open-Air Photobooth allows for more movement and interaction.
+                    Our open-concept design makes it easy to capture vibrant, creative moments with larger groups. Unlike traditional enclosed booths, <span className="text-lg font-bold text-blue-500">The JACKSpot</span> offers more space for movement, interaction, and fun.
                   </p>
                 </div>
                 
@@ -215,9 +221,9 @@ const OpenAirPhotobooth = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Professional Equipment</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Professional Equipment</h3>
                   <p className="text-gray-700">
-                    Our Open-Air Photobooth uses professional-grade DSLR cameras and studio lighting to ensure every photo is of the highest quality. The result is crisp, well-lit images that capture the true essence of your event.
+                    <span className="text-lg font-bold text-blue-500">The JACKSpot</span> is equipped with professional DSLR cameras and studio lighting to deliver top-tier photo quality. Each image is sharp, bright, and beautifully captures the atmosphere of your event.
                   </p>
                 </div>
                 
@@ -230,9 +236,9 @@ const OpenAirPhotobooth = () => {
                       className="w-full h-48 object-cover"
                     />
                   </div>
-                  <h3 className="text-xl font-bold text-purple-600 mb-3">Instant Sharing</h3>
+                  <h3 className="text-xl font-bold text-blue-600 mb-3">Instant Sharing</h3>
                   <p className="text-gray-700">
-                    Share photos instantly via email, text, or social media with our integrated digital platform. Guests can immediately access their photos and share their experience with friends and family who couldn't attend.
+                    With our built-in digital sharing platform, guests can instantly send their photos via email, text, or social media. It's a quick and easy way to share the fun with friends and family—even those who couldn't be there in person.
                   </p>
                 </div>
               </div>
@@ -240,12 +246,12 @@ const OpenAirPhotobooth = () => {
               {/* Additional Feature Row */}
               <div className="flex flex-col md:flex-row items-center mb-16">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-purple-600 mb-4">Customizable Experience</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Customizable Experience</h3>
                   <p className="text-gray-700 text-lg">
-                    Tailor the Open-Air Photobooth experience to match your event theme and style. From custom photo templates and branded overlays to themed props and backdrops, we can create a unique photo experience that perfectly complements your occasion.
+                    Customize <span className="text-lg font-bold text-blue-500">The JACKSpot</span> to suit your event’s theme and vibe. Whether it’s personalized photo templates, branded overlays, themed props, or matching backdrops, we’ll bring your vision to life with a one-of-a-kind photo experience.
                   </p>
                   <p className="text-gray-700 text-lg mt-4">
-                    Our team works with you to design a photo experience that reflects your vision and creates lasting memories for your guests.
+                    Our team will collaborate with you to craft an experience that reflects your style and leaves your guests with unforgettable memories.
                   </p>
                 </div>
                 <div className="md:w-1/2">
@@ -272,12 +278,12 @@ const OpenAirPhotobooth = () => {
           <div className="container mx-auto px-4 relative z-10 h-full flex items-center justify-center">
             <div data-padd-top="20" data-padd-bott="20" className="px-col-content px-middle text-center max-w-4xl" style="padding-top: 20px; padding-bottom: 20px;">
               <div className="px-text">
-                <h1 className="text-gray-800 text-5xl md:text-6xl lg:text-7xl font-bold mb-10">Capture The Moment</h1>
+                <h1 className="text-gray-800 text-5xl md:text-6xl lg:text-7xl font-bold mb-10">Make It Picture Perfect</h1>
               </div>
               <div className="px-hero-wrap" data-delay="" data-animation="">
                 <div className="px-hero px-font-m px-font-normal mx-auto" style="color: inherit;">
                   <span className="text-gray-800 text-xl md:text-2xl lg:text-3xl" style="line-height: 1.6;">
-                    Our Open-Air Photobooth creates memories that last a lifetime. With high-quality prints and digital sharing options, your guests will have tangible keepsakes from your special event. Perfect for weddings, corporate events, birthday parties, and more!
+                    <span className="text-4xl font-bold text-blue-500">The JACKSpot</span> captures unforgettable moments that last a lifetime. Featuring high-quality prints and easy digital sharing, your guests leave with personalized keepsakes they’ll treasure. Ideal for weddings, corporate gatherings, birthday celebrations, and beyond!
                   </span>
                 </div>
               </div>
@@ -297,7 +303,7 @@ const OpenAirPhotobooth = () => {
                   </span>
                   <img 
                     src="/images/event-booth.jpg" 
-                    alt="Professional Open-Air Photobooth Setup" 
+                    alt="Professional THE JACKSPOT Setup" 
                     className="w-full h-auto rounded-lg shadow-xl"
                   />
                 </div>
@@ -307,9 +313,9 @@ const OpenAirPhotobooth = () => {
                   Professional Setup & Service
                 </h2>
                 <p className="text-gray-700 text-lg mb-6">
-                  Our team handles everything from delivery and setup to operation and teardown. We arrive early to ensure everything is perfectly arranged and tested before your event begins. Our professional attendants are there to assist your guests and ensure everyone has a great photo experience.
+                  We take care of it all—from delivery and setup to on-site operation and takedown. Our team arrives early to make sure everything is fully set up, tested, and ready to go before your event starts. Friendly, professional attendants are there throughout to guide your guests and ensure a smooth, enjoyable photo booth experience.
                 </p>
-                <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+                <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                   BOOK NOW
                 </a>
               </div>
@@ -320,7 +326,7 @@ const OpenAirPhotobooth = () => {
         {/* Gallery Carousel Section */}
         <GalleryCarousel 
           images={galleryImages} 
-          title="Our Open-Air Photobooth in Action"
+          title="Our THE JACKSPOT in Action"
           itemsPerSlide={5}
         />
         
@@ -341,7 +347,7 @@ const OpenAirPhotobooth = () => {
                     >
                       <h3 className="text-lg font-semibold text-gray-800">{item.question}</h3>
                       <svg 
-                        className={`w-5 h-5 text-purple-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
+                        className={`w-5 h-5 text-blue-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
                         fill="none" 
                         viewBox="0 0 24 24" 
                         stroke="currentColor"
@@ -370,12 +376,12 @@ const OpenAirPhotobooth = () => {
         />
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-purple-600 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to book your Open-Air Photobooth?
+              Ready to book your THE JACKSPOT?
             </h2>
-            <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white hover:text-blue-500 text-white font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 btn-hover-effect text-lg">
               BOOK YOUR BOOTH NOW
             </a>
           </div>
@@ -385,4 +391,4 @@ const OpenAirPhotobooth = () => {
   );
 };
 
-export default OpenAirPhotobooth;
+export default JackSpot;

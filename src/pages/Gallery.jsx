@@ -11,7 +11,7 @@ const Gallery = () => {
   const [folderCategories, setFolderCategories] = useState([
     { id: 'all', name: 'All Photos' },
     { id: 'photobooth', name: 'Photobooth' },
-    { id: 'selfie-station', name: 'Selfie Station' },
+    { id: 'selfie-station', name: 'THE RETRO JACK' },
     { id: 'open-air', name: 'Open Air' }
   ]);
 
@@ -350,7 +350,7 @@ const Gallery = () => {
             </p>
             <a 
               href="/contact" 
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+              className="btn-blue"
             >
               Book Now
             </a>

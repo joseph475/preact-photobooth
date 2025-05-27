@@ -79,7 +79,7 @@ const Home = () => {
       <div ref={contentRef} className="relative z-10 bg-white">
         
         {/* Quote Banner - becomes sticky when scrolled */}
-        <div className={`bg-pink-500 text-white py-3 transition-all duration-300 ${
+        <div className={`bg-blue-500 text-white py-3 transition-all duration-300 ${
           isScrolled ? 'sticky top-16 z-40 shadow-md' : ''
         }`}>
           <div className="container mx-auto px-4 text-center">
@@ -90,7 +90,7 @@ const Home = () => {
         </div>
         
         {/* Experience Section */}
-        <div className="py-16 bg-gray-50">
+        <div className="py-16">
           <div className="container mx-auto px-4 text-center">
             <p className="text-lg text-gray-600 max-w-3xl mx-auto">
               With over 3000 photo booth events under our belt since 2018, we have a proven track record for executing high-end, one-of-a-kind, memorable photo booth, GIF, and video experiences.
@@ -111,7 +111,7 @@ const Home = () => {
                 <div className="p-6 text-center">
                   <Link 
                     href="/packages/corporate" 
-                    className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
+                    className="inline-block btn-blue"
                   >
                     CORPORATE EVENTS
                   </Link>
@@ -123,7 +123,7 @@ const Home = () => {
                 <div className="p-6 text-center">
                   <Link 
                     href="/packages/wedding" 
-                    className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
+                    className="inline-block btn-blue"
                   >
                     WEDDING EVENTS
                   </Link>
@@ -135,7 +135,7 @@ const Home = () => {
                 <div className="p-6 text-center">
                   <Link 
                     href="/packages/events" 
-                    className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300"
+                    className="inline-block btn-blue"
                   >
                     SPECIAL EVENTS
                   </Link>
@@ -145,26 +145,26 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Open-Air Photo Booth Vancouver Section */}
+        {/* JACKSpin (360 Booth) Vancouver Section */}
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2">
                 <img 
                   src="/images/event-booth.jpg" 
-                  alt="Open-Air Photo Booth Vancouver" 
+                  alt="JACKSpin (360 Booth) Vancouver" 
                   className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
                 />
               </div>
               
               <div className="md:w-1/2">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  Open-Air Photo Booth Vancouver
+                  JACKSpin (360 Booth) Vancouver
                 </h2>
                 <p className="text-lg mb-6">
-                  Our Open-Air Photo Booth Vancouver rental is perfect for Weddings, Birthday Parties, Corporate events, bridal/baby showers, Reception parties and so much more. Renting a Photo Booth from us is a very easy and quick process. Our Photo Booths can turn any type of events into a party and publish your event on all social Media like Facebook, Twitter or Instagram. The sky's the limit!
+                  Our JACKSpin (360 Booth) Vancouver rental is perfect for Weddings, Birthday Parties, Corporate events, bridal/baby showers, Reception parties and so much more. Renting a Photo Booth from us is a very easy and quick process. Our Photo Booths can turn any type of events into a party and publish your event on all social Media like Facebook, Twitter or Instagram. The sky's the limit!
                 </p>
-                <Link href="/open-air-photobooth" className="inline-block px-8 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors duration-300">
+                <Link href="/open-air-photobooth" className="inline-block btn-blue-outline">
                   LEARN MORE
                 </Link>
               </div>
@@ -182,21 +182,21 @@ const Home = () => {
             {/* Feature Icons */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
               <div className="flex items-center space-x-4">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-pink-500 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-gray-800">OPEN-AIR CONCEPT</h3>
-                  <p className="text-gray-600">Open-booth concept allow you to include more people in the fun.</p>
+                  <h3 className="text-xl font-bold text-gray-800">360 BOOTH CONCEPT</h3>
+                  <p className="text-gray-600">Our 360 booth concept allows you to include more people in the fun.</p>
                 </div>
               </div>
               
               <div className="flex items-center space-x-4">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-pink-500 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
                   </svg>
                 </div>
@@ -207,8 +207,8 @@ const Home = () => {
               </div>
               
               <div className="flex items-center space-x-4">
-                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-pink-500 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div className="flex-shrink-0 w-16 h-16 rounded-full border-2 border-blue-500 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-blue-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                   </svg>
                 </div>
@@ -225,7 +225,7 @@ const Home = () => {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold mb-4">Instant Print</h3>
-                  <div className="w-16 h-1 bg-pink-500 mb-6"></div>
+                  <div className="w-16 h-1 bg-blue-500 mb-6"></div>
                   <p className="text-gray-700 mb-4">
                     No limits on the amount of shots you take or prints you make! Customizable print layouts to match your event's decor or theme.
                   </p>
@@ -243,7 +243,7 @@ const Home = () => {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <h3 className="text-2xl font-bold mb-4">Get Social</h3>
-                  <div className="w-16 h-1 bg-pink-500 mb-6"></div>
+                  <div className="w-16 h-1 bg-blue-500 mb-6"></div>
                   <p className="text-gray-700 mb-4">
                     Full social media integration so your party can continue online. Guests LOVE to instantly share their images via social media, text and email.
                   </p>
@@ -262,7 +262,7 @@ const Home = () => {
         </div>
         
         {/* The JACKSpot Experience Section */}
-        <div className="py-16 bg-gray-50">
+        <div className="py-16">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 text-center md:text-left">
@@ -278,7 +278,7 @@ const Home = () => {
                 <p className="text-lg mb-6">
                   Each session is ready in under 30 seconds to be instantly shared over a variety of social media platforms including Facebook, Instagram, Snapchat and TikTok.
                 </p>
-                <a href="/ai-photobooth" className="inline-block px-8 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors duration-300">
+                <a href="/ai-photobooth" className="inline-block btn-blue-outline">
                   LEARN MORE
                 </a>
               </div>
@@ -311,7 +311,7 @@ const Home = () => {
                 <p className="text-lg mb-6">
                   Do you prefer having the old school classic feel of a photo booth? Having an open concept photo booth may not be everyone's cup of tea, so we like to keep our options open. If you want that glam feel of the classic enclosed photo booth, look no further. We make sure to keep the same quality of photographs for the enclosed photo booths, as we do for the open concept. And don't have to worry about squishing into a tight space. We make our enclosed photo booths roomy enough to fit up to 6 people! So go ahead and round up a group of friends and start posing!
                 </p>
-                <a href="/enclosed-photo-booth" className="inline-block px-8 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors duration-300">
+                <a href="/enclosed-photo-booth" className="inline-block btn-blue">
                   BOOK NOW
                 </a>
               </div>
@@ -319,25 +319,25 @@ const Home = () => {
           </div>
         </div>
         
-        {/* Selfie Station Rentals Section */}
+        {/* THE RETRO JACK Rentals Section */}
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 mb-10">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 text-center md:text-left">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  Selfie Station<br />Rentals
+                  THE RETRO JACK<br />Rentals
                 </h2>
                 <p className="text-lg mb-6">
                   For Brand Activation or Full Day Conferences, We offer Self-Service Photo and GIF Booths. We keep things simple so you don't have to fuss around with wires, cables, cameras and of course complicated technology. We make everything user-friendly so you can enjoy the event with the guests. Whether you choose to keep the photo booth for a few hours, a few days, or even weeks, we offer multiple day rentals for a fraction of the price.
                 </p>
-                <a href="/selfie-station" className="inline-block px-8 py-3 bg-pink-600 text-white font-semibold rounded-lg hover:bg-pink-700 transition-colors duration-300">
+                <a href="/selfie-station" className="inline-block btn-blue-outline">
                   LEARN MORE
                 </a>
               </div>
               <div className="md:w-1/2 mt-8 md:mt-0">
                 <img 
                   src="/images/self-serve-booth.jpg" 
-                  alt="Selfie Station Rentals" 
+                  alt="THE RETRO JACK Rentals"
                   className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
                 />
               </div>
@@ -405,7 +405,7 @@ const Home = () => {
             
             <div className="max-w-4xl mx-auto text-center">
               <p className="text-xl text-gray-700">
-                Nothing beats the laughs once you see the final product of your creativity. Our Selfie Station takes series of photos sequentially and mashed together to create an Animated repeating clip.
+                Nothing beats the laughs once you see the final product of your creativity. Our THE RETRO JACK takes series of photos sequentially and mashed together to create an Animated repeating clip.
               </p>
             </div>
           </div>
@@ -432,7 +432,7 @@ const Home = () => {
                     alt="Nomad Photography Service" 
                     className="w-full h-auto rounded-lg transition-all duration-300"
                   />
-                  <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-pink-100 -z-10"></div>
+                  <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-blue-100 -z-10"></div>
                 </div>
               </div>
             </div>
@@ -440,7 +440,7 @@ const Home = () => {
         </div>
         
         {/* Nomad Photography Section */}
-        <div className="py-16 bg-gray-50">
+        <div className="py-16">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 text-center md:text-left">
@@ -448,14 +448,14 @@ const Home = () => {
                   Nomad Photography
                 </h2>
                 
-                {/* Pink Divider */}
-                <div className="w-32 h-1 bg-pink-300 mb-8 md:mx-0 mx-auto"></div>
+                {/* Blue Divider */}
+                <div className="w-32 h-1 bg-blue-300 mb-8 md:mx-0 mx-auto"></div>
                 
                 <p className="text-lg mb-8">
                   We strive to capture the most candid, beautifully unplanned photos throughout your event. Nothing is better than reminiscing over one of a kind photos. Add branded overlays and instant on-site photo printing along email sharing feature. Our skilled photographer makes their way throughout the crowd to capture each guest at the event.
                 </p>
                 
-                <a href="/nomad-photography" className="inline-block px-8 py-3 bg-red-500 text-white font-semibold rounded-full hover:bg-red-600 transition-colors duration-300">
+                <a href="/nomad-photography" className="inline-block btn-blue">
                   BOOK NOW
                 </a>
               </div>
@@ -467,7 +467,7 @@ const Home = () => {
                     alt="Nomad Photography Service" 
                     className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
                   />
-                  <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-pink-100 -z-10"></div>
+                  <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-blue-100 -z-10"></div>
                 </div>
               </div>
             </div>
@@ -506,14 +506,14 @@ const Home = () => {
               Event Galleries
             </h2>
             
-            {/* Red Divider */}
-            <div className="w-40 h-1 bg-red-500 mx-auto mb-8"></div>
+            {/* Blue Divider */}
+            <div className="w-40 h-1 bg-blue-500 mx-auto mb-8"></div>
             
             <p className="text-xl text-gray-700 max-w-3xl mx-auto mb-12">
               Find your pictures in our event galleries below and feel free to download them or share with your friends.
             </p>
             
-            <a href="/gallery" className="inline-block px-10 py-4 bg-red-500 text-white font-bold rounded-full hover:bg-red-600 transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <a href="/gallery" className="inline-block btn-blue transform hover:scale-105">
               FIND YOUR PICTURES
             </a>
           </div>

@@ -48,7 +48,7 @@ const Hero = () => {
             </h2>
             <Link 
               href="/contact" 
-              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-105 inline-block"
+              className="btn-blue btn-hover-effect text-xl px-10 py-4 inline-block"
             >
               GET A QUOTE
             </Link>

@@ -16,7 +16,7 @@ const Wedding = () => {
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
               Make your special day even more memorable with our premium photo booth experiences that your guests will love.
             </p>
-            <a href="#contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <a href="#contact" className="inline-block btn-blue btn-hover-effect">
               GET A QUOTE
             </a>
           </div>
@@ -51,7 +51,7 @@ const Wedding = () => {
               {/* First Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center mb-16">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-xl md:text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Tangerine', cursive; font-size: 2.5rem;">Elegant Wedding Experience</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 mb-4" style="font-family: 'Tangerine', cursive; font-size: 2.5rem;">Elegant Wedding Experience</h3>
                   <p className="text-gray-700 text-lg">
                     Elevate your wedding celebration with our premium photo booth services. Our elegant setups are designed to complement your wedding décor and provide a sophisticated entertainment option for your guests.
                   </p>
@@ -73,7 +73,7 @@ const Wedding = () => {
               {/* Second Row: Left image, Right description */}
               <div className="flex flex-col md:flex-row-reverse items-center mb-16">
                 <div className="md:w-1/2 md:pl-8 mb-8 md:mb-0">
-                  <h3 className="text-xl md:text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Montserrat', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem;">Guest Entertainment</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 mb-4" style="font-family: 'Montserrat', sans-serif; letter-spacing: 2px; text-transform: uppercase; font-size: 1.5rem;">Guest Entertainment</h3>
                   <p className="text-gray-700 text-lg">
                     Keep your guests entertained throughout your reception with our interactive photo booth experience. It's the perfect activity during cocktail hour or reception downtime, ensuring your guests have fun while creating memories.
                   </p>
@@ -95,7 +95,7 @@ const Wedding = () => {
               {/* Third Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-xl md:text-2xl font-bold text-pink-600 mb-4" style="font-family: 'Lora', serif; font-style: italic; font-size: 1.8rem;">Lasting Memories</h3>
+                  <h3 className="text-xl md:text-2xl font-bold text-blue-600 mb-4" style="font-family: 'Lora', serif; font-style: italic; font-size: 1.8rem;">Lasting Memories</h3>
                   <p className="text-gray-700 text-lg">
                     Create a collection of meaningful memories that will last a lifetime. Our photo booths not only provide instant prints for your guests to take home but also compile a digital album of all photos taken throughout your wedding day.
                   </p>
@@ -212,12 +212,12 @@ const Wedding = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
               {/* Entertainment Print Package */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-pink-500 py-4">
+                <div className="bg-blue-500 py-4">
                   <h3 className="text-2xl font-bold text-center text-white">Entertainment Print Package</h3>
                 </div>
                 <div className="p-6">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-bold text-pink-600">Starts at 2 Hour Rental</span>
+                    <span className="text-lg font-bold text-blue-600">Starts at 2 Hour Rental</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
@@ -252,7 +252,7 @@ const Wedding = () => {
                     </li>
                   </ul>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                       Book Now
                     </a>
                   </div>
@@ -260,14 +260,14 @@ const Wedding = () => {
               </div>
               
               {/* Luxury Package */}
-              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105 border-2 border-pink-500">
-                <div className="bg-pink-500 py-4">
+              <div className="bg-white rounded-lg shadow-lg overflow-hidden transform scale-105 border-2 border-blue-500">
+                <div className="bg-blue-500 py-4">
                   <h3 className="text-2xl font-bold text-center text-white">Luxury Package</h3>
                   <p className="text-center text-white text-sm mt-1">Most Popular</p>
                 </div>
                 <div className="p-6">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-bold text-pink-600">Starts at 3 Hour Rental</span>
+                    <span className="text-lg font-bold text-blue-600">Starts at 3 Hour Rental</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
@@ -314,7 +314,7 @@ const Wedding = () => {
                     </li>
                   </ul>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                       Book Now
                     </a>
                   </div>
@@ -323,12 +323,12 @@ const Wedding = () => {
               
               {/* Mémoire Package */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-pink-500 py-4">
+                <div className="bg-blue-500 py-4">
                   <h3 className="text-2xl font-bold text-center text-white">Mémoire | Prints + Memory Book</h3>
                 </div>
                 <div className="p-6">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-bold text-pink-600">Up to 3 Hour Rental</span>
+                    <span className="text-lg font-bold text-blue-600">Up to 3 Hour Rental</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
@@ -375,7 +375,7 @@ const Wedding = () => {
                     </li>
                   </ul>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                       Book Now
                     </a>
                   </div>
@@ -395,12 +395,12 @@ const Wedding = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {/* Wall Flower Package */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-pink-500 py-4">
+                <div className="bg-blue-500 py-4">
                   <h3 className="text-2xl font-bold text-center text-white">Wall Flower Package</h3>
                 </div>
                 <div className="p-6">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-bold text-pink-600">Starts at 4 Hour Rental</span>
+                    <span className="text-lg font-bold text-blue-600">Starts at 4 Hour Rental</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
@@ -429,7 +429,7 @@ const Wedding = () => {
                     </li>
                   </ul>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                       Book Now
                     </a>
                   </div>
@@ -438,12 +438,12 @@ const Wedding = () => {
               
               {/* Basic Self-Serve Booth */}
               <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-pink-500 py-4">
+                <div className="bg-blue-500 py-4">
                   <h3 className="text-2xl font-bold text-center text-white">Basic Self-Serve Booth</h3>
                 </div>
                 <div className="p-6">
                   <div className="text-center mb-6">
-                    <span className="text-lg font-bold text-pink-600">Up to 2 Hour Rental</span>
+                    <span className="text-lg font-bold text-blue-600">Up to 2 Hour Rental</span>
                   </div>
                   <ul className="space-y-3 mb-8">
                     <li className="flex items-start">
@@ -472,7 +472,7 @@ const Wedding = () => {
                     </li>
                   </ul>
                   <div className="text-center">
-                    <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-6 rounded-full shadow-lg transition-all duration-300">
+                    <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                       Book Now
                     </a>
                   </div>
@@ -483,7 +483,7 @@ const Wedding = () => {
         </div>
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-pink-500 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6" style="font-family: 'Great Vibes', cursive; font-size: 3.5rem;">
               Ready to make your wedding unforgettable?
@@ -491,7 +491,7 @@ const Wedding = () => {
             <p className="text-xl mb-8 max-w-3xl mx-auto">
               Contact us today to check availability for your wedding date and secure your photo booth experience.
             </p>
-            <a href="/contact" className="inline-block bg-white text-pink-500 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white hover:text-blue-500 text-white font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 btn-hover-effect text-lg">
               BOOK NOW
             </a>
           </div>

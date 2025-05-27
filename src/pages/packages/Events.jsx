@@ -17,7 +17,7 @@ const Events = () => {
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
               Create lasting memories at your special events with our premium photo booth experiences that engage guests and capture the magic of your celebration.
             </p>
-            <a href="#contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <a href="#contact" className="inline-block btn-blue btn-hover-effect">
               GET A QUOTE
             </a>
           </div>
@@ -50,7 +50,7 @@ const Events = () => {
               {/* First Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center mb-16">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-purple-600 mb-4">Guest Entertainment</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Guest Entertainment</h3>
                   <p className="text-gray-700 text-lg">
                     Keep your guests entertained and engaged throughout your event with our interactive photo booth experiences. Our booths provide a fun activity that brings people together and creates shared memories.
                   </p>
@@ -72,7 +72,7 @@ const Events = () => {
               {/* Second Row: Left image, Right description */}
               <div className="flex flex-col md:flex-row-reverse items-center mb-16">
                 <div className="md:w-1/2 md:pl-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-purple-600 mb-4">Personalized Experience</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Personalized Experience</h3>
                   <p className="text-gray-700 text-lg">
                     Make your event truly unique with our customizable photo booth options. From themed backdrops and custom overlays to personalized photo templates, we can tailor every aspect of the experience to match your event's theme and style.
                   </p>
@@ -94,7 +94,7 @@ const Events = () => {
               {/* Third Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-purple-600 mb-4">Digital Sharing</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Digital Sharing</h3>
                   <p className="text-gray-700 text-lg">
                     Extend the reach of your event beyond the venue with instant digital sharing capabilities. Guests can immediately share their photos on social media platforms, tagging your event and increasing its online presence.
                   </p>
@@ -145,12 +145,12 @@ const Events = () => {
         />
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-purple-600 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               Ready to make your event unforgettable?
             </h2>
-            <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white hover:text-blue-500 text-white font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 btn-hover-effect text-lg">
               BOOK YOUR BOOTH NOW
             </a>
           </div>

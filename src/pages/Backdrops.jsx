@@ -112,7 +112,7 @@ const Backdrops = () => {
                 <div className="text-center">
                   <a 
                     href="/contact" 
-                    className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-md text-lg transition-colors btn-hover-effect"
+                    className="btn-blue"
                   >
                     INQUIRE ABOUT CUSTOM BACKDROPS
                   </a>

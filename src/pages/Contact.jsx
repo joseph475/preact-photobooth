@@ -516,7 +516,7 @@ ${formData.message}
                       
                       <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition-colors"
+                        className="w-full btn-blue rounded-md"
                       >
                         Book Now
                       </button>

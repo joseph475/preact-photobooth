@@ -86,7 +86,7 @@ const About = () => {
           <div className="mt-10">
             <a 
               href="#our-background" 
-              className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-full text-xl transition-all duration-300 transform hover:scale-105 hover:shadow-lg inline-flex items-center"
+              className="btn-blue text-xl transform hover:scale-105 hover:shadow-lg inline-flex items-center"
             >
               Discover Our Story
               <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -106,7 +106,7 @@ const About = () => {
       
       <main className="flex-grow">
         {/* Our Background Section */}
-        <div id="our-background" className="py-20 bg-white">
+        <div id="our-background" className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl text-center text-blue-500 mb-12 font-modern relative">
               Owner
@@ -195,7 +195,7 @@ const About = () => {
         </div>
         
         {/* Photo Gallery Section */}
-        <div className="py-20 bg-white">
+        <div className="py-20">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl text-center text-blue-500 mb-12 font-creative tracking-wider relative">
               Our Photo Booths in Action
@@ -245,7 +245,7 @@ const About = () => {
             </div>
             
             <div className="mt-12 text-center">
-              <a href="/gallery" className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105">
+              <a href="/gallery" className="inline-block btn-blue transform hover:scale-105">
                 View Full Gallery
               </a>
             </div>
@@ -253,7 +253,7 @@ const About = () => {
         </div>
         
         {/* Got Questions Section */}
-        <div className="py-16 bg-gray-100">
+        <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl text-center text-blue-500 mb-12 font-stylish relative">
               Got Questions?
@@ -266,7 +266,7 @@ const About = () => {
               </p>
               
               <div className="text-center">
-                <a href="/contact" className="bg-pink-500 hover:bg-pink-600 text-white font-bold py-4 px-10 rounded-full shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-xl inline-flex items-center">
+                <a href="/contact" className="btn-blue text-xl transform hover:-translate-y-1 inline-flex items-center">
                   Contact Us
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />

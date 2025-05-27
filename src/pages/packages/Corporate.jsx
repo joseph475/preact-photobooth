@@ -17,7 +17,7 @@ const Corporate = () => {
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
               Elevate the experience at events, grow your email marketing list, and create buzz on social media with our fun and easy-to-use photo booths.
             </p>
-            <a href="#contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+            <a href="#contact" className="inline-block btn-blue btn-hover-effect">
               GET A QUOTE
             </a>
           </div>
@@ -50,7 +50,7 @@ const Corporate = () => {
               {/* First Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center mb-16">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-pink-600 mb-4">Brand Engagement</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Brand Engagement</h3>
                   <p className="text-gray-700 text-lg">
                     Increase brand engagement at your corporate events with interactive photo experiences that create memorable connections between attendees and your brand. Our customizable photo booths can be tailored to match your company's branding, creating a cohesive and professional experience.
                   </p>
@@ -72,7 +72,7 @@ const Corporate = () => {
               {/* Second Row: Left image, Right description */}
               <div className="flex flex-col md:flex-row-reverse items-center mb-16">
                 <div className="md:w-1/2 md:pl-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-pink-600 mb-4">Lead Generation</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Lead Generation</h3>
                   <p className="text-gray-700 text-lg">
                     Transform your corporate events into powerful lead generation opportunities. Our photo booths can be configured to collect valuable contact information before guests receive their photos, helping you build your marketing database while providing a fun experience for attendees.
                   </p>
@@ -94,7 +94,7 @@ const Corporate = () => {
               {/* Third Row: Left description, Right image */}
               <div className="flex flex-col md:flex-row items-center">
                 <div className="md:w-1/2 md:pr-8 mb-8 md:mb-0">
-                  <h3 className="text-2xl font-bold text-pink-600 mb-4">Social Media Amplification</h3>
+                  <h3 className="text-2xl font-bold text-blue-600 mb-4">Social Media Amplification</h3>
                   <p className="text-gray-700 text-lg">
                     Amplify your event's reach with instant social media sharing capabilities. Our photo booths allow guests to immediately share their photos on social platforms with your custom hashtags and branding, extending your event's impact far beyond the physical venue.
                   </p>
@@ -226,7 +226,7 @@ const Corporate = () => {
                 We also have a large selection of in house backdrops available.
               </p>
               
-              <a href="/contact" className="inline-block bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
+              <a href="/contact" className="inline-block btn-blue btn-hover-effect">
                 ORDER CUSTOM BACKDROP
               </a>
             </div>
@@ -234,12 +234,12 @@ const Corporate = () => {
         </div>
         
         {/* Call to Action Section */}
-        <div className="py-16 bg-pink-500 text-white">
+        <div className="py-16 bg-blue-500 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
               What are you waiting for? Let's get started.
             </h2>
-            <a href="/contact" className="inline-block bg-white text-pink-500 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
+            <a href="/contact" className="inline-block bg-transparent hover:bg-white hover:text-blue-500 text-white font-bold py-3 px-6 border border-white hover:border-transparent rounded-full transition-all duration-300 btn-hover-effect text-lg">
               BOOK NOW
             </a>
           </div>
