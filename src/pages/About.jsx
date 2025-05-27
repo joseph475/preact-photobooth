@@ -116,7 +116,7 @@ const About = () => {
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 relative">
                 <img 
-                  src="/images/owner.jpg" 
+                  src="/images/owner1.jpg" 
                   alt="Photo Booth Experience" 
                   className="w-full h-auto rounded-2xl shadow-2xl transition-all duration-300 hover:rotate-0 hover:scale-105"
                 />
