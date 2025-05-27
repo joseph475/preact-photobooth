@@ -23,7 +23,51 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Button hover effects */
+/* Content overlay effect */
+.relative.z-10 {
+  position: relative;
+  z-index: 10;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Quote banner styling */
+/* .relative.z-10 > div:nth-child(1) {
+  position: relative;
+  z-index: 20;
+  overflow: hidden;
+} */
+
+/* Add a subtle animation to the hero content */
+.sticky .container {
+  animation: fadeIn 1.5s ease-out;
+}
+
+/* Ensure hero content is visible */
+.sticky .container h1,
+.sticky .container h2{
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* transform: translateY(20px); */
+  }
+  to {
+    opacity: 1;
+    /* transform: translateY(0); */
+  }
+}
+
+/* Transition for content sections */
+.relative.z-10 > div {
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+/* Button styles */
 .btn-hover-effect {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
@@ -31,6 +75,31 @@ html {
 .btn-hover-effect:hover {
   transform: translateY(-2px);
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Blue button styles */
+.btn-blue {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition-all duration-300 shadow-md;
+}
+
+.btn-blue-sm {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-5 text-sm rounded-full transition-all duration-300 shadow-md;
+}
+
+.btn-blue-xs {
+  @apply bg-blue-500 hover:bg-blue-600 text-white font-bold py-1.5 px-4 text-xs rounded-full transition-all duration-300 shadow-md;
+}
+
+.btn-blue-outline {
+  @apply bg-transparent hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-3 px-6 border border-blue-500 hover:border-transparent rounded-full transition-all duration-300;
+}
+
+.btn-blue-outline-sm {
+  @apply bg-transparent hover:bg-blue-500 text-blue-500 hover:text-white font-bold py-2 px-5 text-sm border border-blue-500 hover:border-transparent rounded-full transition-all duration-300;
+}
+
+.btn-blue-text {
+  @apply text-blue-500 hover:text-blue-600 font-bold transition-all duration-300;
 }
 
 /* Image hover effects */

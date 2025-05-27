@@ -1,9 +1,61 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
+import 'leaflet/dist/leaflet.css';
 
 const Contact = () => {
+  // State to track which FAQ item is open
+  const [openFaqIndex, setOpenFaqIndex] = useState(null);
+  
+  useEffect(() => {
+    // Check if Leaflet is available
+    if (typeof window !== 'undefined' && typeof window.L !== 'undefined') {
+      // Initialize the map
+      const map = window.L.map('map').setView([45.2733, -66.0633], 13); // Saint John, NB coordinates
+      
+      // Add OpenStreetMap tile layer
+      window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+      }).addTo(map);
+      
+      // Add a marker for the business location
+      const marker = window.L.marker([45.2733, -66.0633]).addTo(map);
+      marker.bindPopup("<b>JACK Photobooth</b><br>East Side, Saint John, NB").openPopup();
+      
+      // Clean up on unmount
+      return () => {
+        map.remove();
+      };
+    } else {
+      // Load Leaflet dynamically if not available
+      const script = document.createElement('script');
+      script.src = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.js';
+      script.integrity = 'sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==';
+      script.crossOrigin = '';
+      script.onload = () => {
+        // Initialize map after Leaflet is loaded
+        const map = window.L.map('map').setView([45.2733, -66.0633], 13);
+        
+        window.L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        const marker = window.L.marker([45.2733, -66.0633]).addTo(map);
+        marker.bindPopup("<b>JACK Photobooth</b><br>East Side, Saint John, NB").openPopup();
+      };
+      
+      // Add Leaflet CSS
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://unpkg.com/leaflet@1.7.1/dist/leaflet.css';
+      link.integrity = 'sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==';
+      link.crossOrigin = '';
+      
+      document.head.appendChild(link);
+      document.body.appendChild(script);
+    }
+  }, []);
   
   const [formData, setFormData] = useState({
     firstName: '',
@@ -116,7 +168,6 @@ ${formData.message}
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-blue-900 to-purple-600 py-20 overflow-hidden">
@@ -233,18 +284,19 @@ ${formData.message}
                 </div>
                 
                 <div className="mt-10">
-                  <h3 className="text-xl font-semibold mb-4">Follow Us</h3>
-                  <div className="flex space-x-4">
-                    <a href="#" className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors">
-                      <img src="/images/social/facebook.svg" alt="Facebook" className="h-6 w-6" />
+                  <h3 className="text-2xl font-semibold mb-5 text-blue-600">Follow Us</h3>
+                  <div className="flex space-x-6">
+                    <a href="#" className="bg-blue-500 p-4 rounded-full hover:bg-blue-600 transition-all hover:scale-110 transform duration-300 shadow-md border-2 border-blue-300">
+                      <img src="/images/social/facebook.svg" alt="Facebook" className="h-8 w-8 filter brightness-0 invert" />
                     </a>
-                    <a href="#" className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors">
-                      <img src="/images/social/instagram.svg" alt="Instagram" className="h-6 w-6" />
+                    <a href="#" className="bg-gradient-to-br from-purple-500 to-pink-500 p-4 rounded-full hover:from-purple-600 hover:to-pink-600 transition-all hover:scale-110 transform duration-300 shadow-md border-2 border-pink-300">
+                      <img src="/images/social/instagram.svg" alt="Instagram" className="h-8 w-8 filter brightness-0 invert" />
                     </a>
-                    <a href="#" className="bg-blue-100 p-3 rounded-full hover:bg-blue-200 transition-colors">
-                      <img src="/images/social/twitter.svg" alt="Twitter" className="h-6 w-6" />
+                    <a href="#" className="bg-blue-400 p-4 rounded-full hover:bg-blue-500 transition-all hover:scale-110 transform duration-300 shadow-md border-2 border-blue-300">
+                      <img src="/images/social/twitter.svg" alt="Twitter" className="h-8 w-8 filter brightness-0 invert" />
                     </a>
                   </div>
+                  <p className="mt-4 text-gray-600 italic">Connect with us on social media!</p>
                 </div>
               </div>
               
@@ -441,7 +493,7 @@ ${formData.message}
                         >
                           <option value="">Select a Service</option>
                           <option value="standard">Standard Photo Booth</option>
-                          <option value="360">360 Glam Booth</option>
+                          <option value="ai-photobooth">AI Glam Booth</option>
                           <option value="mirror">Mirror Booth</option>
                           <option value="selfie">Self-Serve Booth</option>
                           <option value="corporate">Corporate Event Package</option>
@@ -464,7 +516,7 @@ ${formData.message}
                       
                       <button
                         type="submit"
-                        className="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition-colors"
+                        className="w-full btn-blue rounded-md"
                       >
                         Book Now
                       </button>
@@ -484,58 +536,71 @@ ${formData.message}
             </h2>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              {/* This would be a real map in a production environment */}
-              <div className="h-96 bg-gray-300 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 text-gray-500 mx-auto mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  <p className="text-gray-600 text-lg">
-                    East Side, Saint John, NB, Canada, New Brunswick
-                  </p>
-                  <p className="text-gray-500 mt-2">
-                    (Map would be displayed here in a production environment)
-                  </p>
-                </div>
-              </div>
+              <div className="h-96" id="map"></div>
             </div>
           </div>
         </div>
         
-        {/* FAQ Section */}
+        {/* FAQ Section - Collapsible */}
         <div className="py-16 bg-white">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl text-center text-blue-500 mb-12 font-modern">
-              Frequently Asked Questions
-            </h2>
-            
-            <div className="max-w-3xl mx-auto space-y-6">
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-blue-500 mb-2">How far in advance should I book?</h3>
-                <p className="text-gray-700">We recommend booking at least 2-3 months in advance for peak season events (May-October) and 1-2 months for off-season events. However, feel free to contact us for last-minute availability!</p>
-              </div>
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl md:text-4xl text-center text-blue-500 mb-8 font-modern">
+                Frequently Asked Questions
+              </h2>
               
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-blue-500 mb-2">What areas do you serve?</h3>
-                <p className="text-gray-700">We primarily serve Saint John and surrounding areas in New Brunswick. For events outside this region, please contact us for availability and any additional travel fees.</p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-blue-500 mb-2">Do you require a deposit?</h3>
-                <p className="text-gray-700">Yes, we require a 50% deposit to secure your booking date, with the remaining balance due one week before your event.</p>
-              </div>
-              
-              <div className="bg-gray-50 rounded-lg p-6 shadow-sm">
-                <h3 className="text-xl font-semibold text-blue-500 mb-2">What happens if I need to cancel?</h3>
-                <p className="text-gray-700">Our cancellation policy allows for a full refund of your deposit if cancelled more than 30 days before your event. Cancellations within 30 days are subject to our detailed policy, which we're happy to discuss.</p>
+              <div className="border rounded-lg overflow-hidden shadow-sm">
+                {[
+                  {
+                    question: "How far in advance should I book?",
+                    answer: "We recommend booking at least 2-3 months in advance for peak season events (May-October) and 1-2 months for off-season events. However, feel free to contact us for last-minute availability!"
+                  },
+                  {
+                    question: "What areas do you serve?",
+                    answer: "We primarily serve Saint John and surrounding areas in New Brunswick. For events outside this region, please contact us for availability and any additional travel fees."
+                  },
+                  {
+                    question: "Do you require a deposit?",
+                    answer: "Yes, we require a 50% deposit to secure your booking date, with the remaining balance due one week before your event."
+                  },
+                  {
+                    question: "What happens if I need to cancel?",
+                    answer: "Our cancellation policy allows for a full refund of your deposit if cancelled more than 30 days before your event. Cancellations within 30 days are subject to our detailed policy, which we're happy to discuss."
+                  },
+                  {
+                    question: "What is included in your photo booth packages?",
+                    answer: "Our packages typically include the booth rental, an attendant, props, unlimited prints, digital copies, and a custom template. Specific inclusions vary by package, so please check our package details or contact us for more information."
+                  }
+                ].map((item, index, array) => (
+                  <div key={index} className={`border-b ${index === array.length - 1 ? 'border-b-0' : ''}`}>
+                    <button 
+                      onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
+                      className="w-full text-left p-4 bg-white hover:bg-gray-50 focus:outline-none flex justify-between items-center transition-colors duration-200"
+                    >
+                      <h3 className="text-lg font-semibold text-blue-500">{item.question}</h3>
+                      <svg 
+                        className={`w-5 h-5 text-blue-600 transform transition-transform duration-200 ${openFaqIndex === index ? 'rotate-180' : ''}`} 
+                        fill="none" 
+                        viewBox="0 0 24 24" 
+                        stroke="currentColor"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                      </svg>
+                    </button>
+                    <div 
+                      className={`overflow-hidden transition-all duration-300 ${openFaqIndex === index ? 'max-h-96' : 'max-h-0'}`}
+                    >
+                      <div className="p-4 bg-white border-t border-gray-100">
+                        <p className="text-gray-700">{item.answer}</p>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };

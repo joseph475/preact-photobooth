@@ -1,47 +1,180 @@
 import { h } from 'preact';
-import { useState } from 'preact/hooks';
+import { useState, useEffect } from 'preact/hooks';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import RecentImagesCarousel from '../components/RecentImagesCarousel';
+import { getOptimizedImageUrl, isCloudinaryUrl } from '../utils/imageUtils';
+import { listImages, searchImages, listAllImages, listFolders } from '../services/cloudinaryService';
 
 const Gallery = () => {
-  // Define gallery categories
-  const categories = [
+  // State for folder categories
+  const [folderCategories, setFolderCategories] = useState([
     { id: 'all', name: 'All Photos' },
-    { id: 'wedding', name: 'Wedding' },
-    { id: 'corporate', name: 'Corporate Events' },
-    { id: 'party', name: 'Parties' },
-    { id: '360', name: '360° Glam Booth' }
-  ];
+    { id: 'photobooth', name: 'Photobooth' },
+    { id: 'selfie-station', name: 'THE RETRO JACK' },
+    { id: 'open-air', name: 'Open Air' }
+  ]);
 
-  // Define gallery images with categories
-  const galleryImages = [
-    { id: 1, src: '/images/1.jpeg', category: 'wedding' },
-    { id: 2, src: '/images/2.jpeg', category: 'wedding' },
-    { id: 3, src: '/images/3.jpeg', category: 'party' },
-    { id: 4, src: '/images/4.jpeg', category: 'party' },
-    { id: 5, src: '/images/5.jpeg', category: 'corporate' },
-    { id: 6, src: '/images/6.jpeg', category: 'corporate' },
-    { id: 7, src: '/images/7.jpg', category: 'wedding' },
-    { id: 8, src: '/images/8.jpg', category: 'wedding' },
-    { id: 9, src: '/images/9.jpg', category: 'party' },
-    { id: 10, src: '/images/10.jpg', category: 'corporate' },
-    { id: 11, src: '/images/11.jpg', category: '360' },
-    { id: 12, src: '/images/wedding-booth.jpg', category: 'wedding' },
-    { id: 13, src: '/images/corporate-booth.jpg', category: 'corporate' },
-    { id: 14, src: '/images/event-booth.jpg', category: 'party' },
-    { id: 15, src: '/images/360-booth.jpg', category: '360' },
-    { id: 16, src: '/images/mirror-booth.jpg', category: 'party' },
-    { id: 17, src: '/images/self-serve-booth.jpg', category: 'corporate' }
-  ];
+  // State for gallery images
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+  
+  // Fetch folders from Cloudinary
+  useEffect(() => {
+    const fetchFolders = async () => {
+      try {
+        // If Cloudinary is configured, fetch folders from there
+        if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
+          try {
+            const foldersResult = await listFolders();
+            
+            console.log('Cloudinary folders result:', foldersResult);
+            
+            if (foldersResult && foldersResult.folders && foldersResult.folders.length > 0) {
+              // Create folder categories from the result
+              const folderCats = [
+                { id: 'all', name: 'All Photos' },
+                ...foldersResult.folders.map(folder => ({
+                  id: folder.path,
+                  name: folder.name.charAt(0).toUpperCase() + folder.name.slice(1).replace(/-/g, ' ')
+                }))
+              ];
+              
+              setFolderCategories(folderCats);
+            }
+          } catch (error) {
+            console.error('Error fetching folders from Cloudinary:', error);
+          }
+        }
+      } catch (err) {
+        console.error('Error fetching folders:', err);
+      }
+    };
+    
+    fetchFolders();
+  }, []);
+
+  // Fetch images from Cloudinary
+  useEffect(() => {
+    const fetchImages = async () => {
+      try {
+        setIsLoading(true);
+        
+        // If Cloudinary is configured, fetch images from there
+        if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
+          try {
+            // Fetch all images from Cloudinary, sorted by upload date (max 100)
+            const allImagesResult = await listAllImages({ max_results: 100 });
+            
+            console.log('Cloudinary all images result:', allImagesResult);
+            
+            if (allImagesResult && allImagesResult.resources && allImagesResult.resources.length > 0) {
+              // Map the Cloudinary resources to our gallery format
+              const cloudinaryImages = allImagesResult.resources.map((resource, index) => {
+                // Extract folder from public_id
+                const pathParts = resource.public_id.split('/');
+                const folder = pathParts.length > 1 ? pathParts[0] : 'uncategorized';
+                
+                return {
+                  id: index + 1,
+                  publicId: resource.public_id,
+                  src: resource.secure_url || getOptimizedImageUrl(resource.public_id, {
+                    width: 600,
+                    height: 600,
+                    crop: 'fill',
+                    quality: 'auto'
+                  }),
+                  folder: folder,
+                  created_at: resource.created_at
+                };
+              });
+              
+              setGalleryImages(cloudinaryImages);
+              setIsLoading(false);
+              return;
+            }
+          } catch (cloudinaryError) {
+            console.error('Error fetching from Cloudinary:', cloudinaryError);
+            // Continue to fallback
+          }
+        }
+        
+        // Fallback to local images if Cloudinary fetch fails or is not configured
+        const fallbackImages = [
+          { id: 1, src: '/images/1.jpeg', publicId: 'photobooth/1', folder: 'photobooth', created_at: '2023-05-01T12:00:00Z' },
+          { id: 2, src: '/images/2.jpeg', publicId: 'photobooth/2', folder: 'photobooth', created_at: '2023-05-02T12:00:00Z' },
+          { id: 3, src: '/images/3.jpeg', publicId: 'photobooth/3', folder: 'photobooth', created_at: '2023-05-03T12:00:00Z' },
+          { id: 4, src: '/images/4.jpeg', publicId: 'photobooth/4', folder: 'photobooth', created_at: '2023-05-04T12:00:00Z' },
+          { id: 5, src: '/images/5.jpeg', publicId: 'photobooth/5', folder: 'photobooth', created_at: '2023-05-05T12:00:00Z' },
+          { id: 6, src: '/images/6.jpeg', publicId: 'photobooth/6', folder: 'photobooth', created_at: '2023-05-06T12:00:00Z' },
+          { id: 7, src: '/images/7.jpg', publicId: 'selfie-station/7', folder: 'selfie-station', created_at: '2023-05-07T12:00:00Z' },
+          { id: 8, src: '/images/8.jpg', publicId: 'selfie-station/8', folder: 'selfie-station', created_at: '2023-05-08T12:00:00Z' },
+          { id: 9, src: '/images/9.jpg', publicId: 'selfie-station/9', folder: 'selfie-station', created_at: '2023-05-09T12:00:00Z' },
+          { id: 10, src: '/images/10.jpg', publicId: 'open-air/10', folder: 'open-air', created_at: '2023-05-10T12:00:00Z' },
+          { id: 11, src: '/images/11.jpg', publicId: 'open-air/11', folder: 'open-air', created_at: '2023-05-11T12:00:00Z' },
+          { id: 12, src: '/images/wedding-booth.jpg', publicId: 'photobooth/wedding-booth', folder: 'photobooth', created_at: '2023-05-12T12:00:00Z' },
+          { id: 13, src: '/images/corporate-booth.jpg', publicId: 'photobooth/corporate-booth', folder: 'photobooth', created_at: '2023-05-13T12:00:00Z' },
+          { id: 14, src: '/images/event-booth.jpg', publicId: 'open-air/event-booth', folder: 'open-air', created_at: '2023-05-14T12:00:00Z' },
+          { id: 15, src: '/images/360-booth.jpg', publicId: 'open-air/360-booth', folder: 'open-air', created_at: '2023-05-15T12:00:00Z' },
+          { id: 16, src: '/images/mirror-booth.jpg', publicId: 'selfie-station/mirror-booth', folder: 'selfie-station', created_at: '2023-05-16T12:00:00Z' },
+          { id: 17, src: '/images/self-serve-booth.jpg', publicId: 'selfie-station/self-serve-booth', folder: 'selfie-station', created_at: '2023-05-17T12:00:00Z' }
+        ];
+        
+        setGalleryImages(fallbackImages);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error fetching gallery images:', err);
+        setError('Failed to load gallery images. Please try again later.');
+        setIsLoading(false);
+      }
+    };
+    
+    fetchImages();
+  }, []);
+  
+  // Helper function to determine category from tags, public ID, or asset folder
+  const getCategoryFromTags = (tags = [], publicId = '', assetFolder = '') => {
+    // Check if any tags match our categories
+    const categoryTags = ['wedding', 'corporate', 'party', 'ai-photobooth'];
+    
+    if (tags && tags.length > 0) {
+      for (const tag of tags) {
+        if (categoryTags.includes(tag.toLowerCase())) {
+          return tag.toLowerCase();
+        }
+      }
+    }
+    
+    // If no matching tags, try to determine from public ID
+    const publicIdLower = publicId.toLowerCase();
+    for (const category of categoryTags) {
+      if (publicIdLower.includes(category)) {
+        return category;
+      }
+    }
+    
+    // If still no match, try to determine from asset folder
+    if (assetFolder) {
+      const assetFolderLower = assetFolder.toLowerCase();
+      for (const category of categoryTags) {
+        if (assetFolderLower.includes(category)) {
+          return category;
+        }
+      }
+    }
+    
+    // Default category
+    return 'party';
+  };
 
   // State for active category
   const [activeCategory, setActiveCategory] = useState('all');
 
-  // Filter images based on active category
+  // Filter images based on active folder
   const filteredImages = activeCategory === 'all' 
     ? galleryImages 
-    : galleryImages.filter(img => img.category === activeCategory);
+    : galleryImages.filter(img => img.folder === activeCategory);
 
   // State for lightbox
   const [lightboxOpen, setLightboxOpen] = useState(false);
@@ -76,7 +209,6 @@ const Gallery = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
       <div className="relative bg-gradient-to-br from-indigo-700 to-blue-500 py-20 overflow-hidden">
@@ -141,21 +273,21 @@ const Gallery = () => {
           </div>
         </div>
         
-        {/* Category Filter */}
+        {/* Folder Filter */}
         <div className="py-8 bg-white">
           <div className="container mx-auto px-4">
             <div className="flex flex-wrap justify-center gap-4 mb-8">
-              {categories.map(category => (
+              {folderCategories.map(folder => (
                 <button
-                  key={category.id}
-                  onClick={() => setActiveCategory(category.id)}
+                  key={folder.id}
+                  onClick={() => setActiveCategory(folder.id)}
                   className={`px-6 py-2 rounded-full transition-colors ${
-                    activeCategory === category.id
+                    activeCategory === folder.id
                       ? 'bg-blue-500 text-white'
                       : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                   }`}
                 >
-                  {category.name}
+                  {folder.name}
                 </button>
               ))}
             </div>
@@ -165,28 +297,45 @@ const Gallery = () => {
         {/* Gallery Grid */}
         <div className="py-8 bg-gray-50">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              {filteredImages.map(image => (
-                <div 
-                  key={image.id} 
-                  className="relative overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
-                  onClick={() => openLightbox(image)}
+            {isLoading ? (
+              <div className="flex justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+              </div>
+            ) : error ? (
+              <div className="text-center py-20">
+                <p className="text-red-500">{error}</p>
+                <button 
+                  onClick={() => window.location.reload()}
+                  className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
                 >
-                  <div className="aspect-w-1 aspect-h-1">
-                    <img 
-                      src={image.src} 
-                      alt={`Gallery image ${image.id}`} 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                    <div className="text-white bg-blue-500 bg-opacity-80 px-4 py-2 rounded-full">
-                      View Image
+                  Retry
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                {filteredImages.map(image => (
+                  <div 
+                    key={image.id} 
+                    className="relative overflow-hidden rounded-lg shadow-md cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-lg"
+                    onClick={() => openLightbox(image)}
+                  >
+                    <div className="aspect-w-1 aspect-h-1">
+                      <img 
+                        src={image.src} 
+                        alt={`Gallery image ${image.id}`} 
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white bg-blue-500 bg-opacity-80 px-4 py-2 rounded-full">
+                        View Image
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         
@@ -201,7 +350,7 @@ const Gallery = () => {
             </p>
             <a 
               href="/contact" 
-              className="inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-8 rounded-full transition-colors"
+              className="btn-blue"
             >
               Book Now
             </a>
@@ -255,8 +404,6 @@ const Gallery = () => {
           </div>
         </div>
       )}
-      
-      <Footer />
     </div>
   );
 };

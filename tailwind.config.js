@@ -25,7 +25,10 @@ module.exports = {
           900: '#5E35B1',
         },
         pink: {
+          400: '#F06292',
+          500: '#E91E63',
           600: '#D81B60',
+          900: '#880E4F',
         },
       },
       backgroundImage: {

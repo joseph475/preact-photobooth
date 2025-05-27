@@ -70,7 +70,6 @@ const TestFacebookAuth = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation />
       
       {/* Hero Section */}
       <div className="bg-gradient-to-br from-blue-600 to-indigo-800 py-16">
@@ -217,8 +216,6 @@ const TestFacebookAuth = () => {
           </div>
         </div>
       </main>
-      
-      <Footer />
     </div>
   );
 };
