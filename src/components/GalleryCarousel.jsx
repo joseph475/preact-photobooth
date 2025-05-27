@@ -82,7 +82,6 @@ const GalleryCarousel = ({
                       </div>
                       <div className="p-4 text-center border-t">
                         <h3 className="text-xl font-bold text-gray-800">{image.caption}</h3>
-                        <p className="text-sm text-gray-600 uppercase tracking-wider">{image.subcaption}</p>
                       </div>
                     </div>
                   ))}

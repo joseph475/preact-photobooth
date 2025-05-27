@@ -42,7 +42,7 @@ const App = () => {
           <About path="/about" />
           <Contact path="/contact" />
           <Gallery path="/gallery" />
-          <GlamBooth path="/ai-booth" />
+          <GlamBooth path="/jackspot" />
           <SelfieStation path="/selfie-station" />
           <OpenAirPhotobooth path="/open-air-photobooth" />
           <Backdrops path="/backdrops" />

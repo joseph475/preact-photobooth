@@ -231,11 +231,6 @@ const Graduation = () => {
           </div>
         </div>
         
-        {/* Our Booths Section */}
-        <OurBooths 
-          customDescription="Whether you're celebrating high school, college, or graduate school completion—we have the perfect booth for your graduation event. Below are our three famous photo booths to make your celebration memorable."
-        />
-        
         {/* Packages Section */}
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -436,6 +431,11 @@ const Graduation = () => {
           </div>
         </div>
         
+        {/* Our Booths Section */}
+        <OurBooths 
+          customDescription="Whether you're celebrating high school, college, or graduate school completion—we have the perfect booth for your graduation event. Below are our three famous photo booths to make your celebration memorable."
+        />
+
         {/* Call to Action Section */}
         <div className="py-16 bg-pink-500 text-white">
           <div className="container mx-auto px-4 text-center">

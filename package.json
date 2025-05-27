@@ -24,6 +24,7 @@
   "homepage": "https://github.com/joseph475/preact-photobooth#readme",
   "description": "",
   "dependencies": {
+    "dotenv": "^16.5.0",
     "emailjs-com": "^3.2.0",
     "leaflet": "^1.9.4",
     "preact": "^10.26.5",

@@ -18,7 +18,7 @@ const GlamBooth = () => {
   };
 
   const partyFeatures = [
-    "2 Hours of AI Booth Experience",
+    "2 Hours of The JACKSpot Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
     "Standard AI Platform (max of 3 people)",
     "1 Director",
@@ -49,7 +49,7 @@ const GlamBooth = () => {
   ];
 
   const vipFeatures = [
-    "3 Hours of AI Booth Experience",
+    "3 Hours of The JACKSpot Experience",
     "Props (cool/funny glasses, bubble gun, fake money, etc.)",
     "Standard backdrop",
     "Deluxe AI Platform (max of 3 people)",
@@ -96,15 +96,15 @@ const GlamBooth = () => {
   // FAQ items with collapsible functionality
   const faqItems = [
     {
-      question: "What is an AI Booth?",
-      answer: "An AI Booth is an innovative photo and video experience that uses artificial intelligence to create stunning visual effects. It captures videos and transforms them with special effects, custom overlays, and branded elements to create shareable content that elevates any event."
+      question: "What is The JACKSpot?",
+      answer: "The JACKSpot is an innovative photo and video experience that uses artificial intelligence to create stunning visual effects. It captures videos and transforms them with special effects, custom overlays, and branded elements to create shareable content that elevates any event."
     },
     {
-      question: "How much space does the AI Booth require?",
-      answer: "Our AI Booth requires approximately 10x10 feet of space for optimal setup, including the platform, camera equipment, and space for guests to move. We'll work with your venue to ensure proper placement and setup."
+      question: "How much space does The JACKSpot require?",
+      answer: "The JACKSpot requires approximately 10x10 feet of space for optimal setup, including the platform, camera equipment, and space for guests to move. We'll work with your venue to ensure proper placement and setup."
     },
     {
-      question: "Can the AI Booth be customized for my brand or event?",
+      question: "Can The JACKSpot be customized for my brand or event?",
       answer: "Absolutely! We offer extensive customization options including branded overlays, custom intros and outros, soundtrack integration, and themed props. Our team works with you to create a cohesive experience that aligns with your brand or event theme."
     },
     {
@@ -112,7 +112,7 @@ const GlamBooth = () => {
       answer: "Guests can instantly access their videos through our QR code system, which allows them to email, text, or directly share their content to social media platforms like Instagram, TikTok, Facebook, and Snapchat."
     },
     {
-      question: "Do you provide staff to operate the AI Booth?",
+      question: "Do you provide staff to operate The JACKSpot?",
       answer: "Yes, all our packages include at least one professional director who guides guests through the experience and ensures everything runs smoothly. Our VIP package includes an additional video technician for enhanced service."
     }
   ];
@@ -208,10 +208,10 @@ const GlamBooth = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
-              AI Booth Experience
+              The JACKSpot Experience
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
-              An AI Booth can be a great addition to any event, providing a unique and immersive experience, entertainment, shareable content, branding opportunities, and can also be a source of data collection.
+              The JACKSpot can be a great addition to any event, providing a unique and immersive experience, entertainment, shareable content, branding opportunities, and can also be a source of data collection.
             </p>
             <a href="/contact" className="inline-block bg-purple-600 hover:bg-purple-700 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
               GET A QUOTE
@@ -226,11 +226,11 @@ const GlamBooth = () => {
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-6 text-center">
-                What is an AI Booth?
+                What is The JACKSpot?
               </h2>
               
               <p className="text-lg mb-8 text-center">
-                Our AI Booth combines cutting-edge artificial intelligence technology with professional video equipment to create a unique and immersive experience for your guests. This innovative booth captures short videos and transforms them into stunning, shareable content with special effects and customized branding.
+                The JACKSpot combines cutting-edge artificial intelligence technology with professional video equipment to create a unique and immersive experience for your guests. This innovative booth captures short videos and transforms them into stunning, shareable content with special effects and customized branding.
               </p>
               
               <hr className="border-gray-300 my-16 max-w-2xl mx-auto" />
@@ -241,10 +241,10 @@ const GlamBooth = () => {
                     WE DON'T JUST CAPTURE MEMORIES, WE CREATE THEM.
                   </h2>
                   <p className="text-gray-700 text-lg mb-6">
-                    Looking to rent an AI Photobooth for your event in Vancouver? Look no further! We're excited to share with you our most recent hottest trending photo and video experiences: AI Photobooth.
+                    Looking to rent a JACKSpot photobooth for your event in Vancouver? Look no further! We're excited to share with you our most recent hottest trending photo and video experiences: The JACKSpot.
                   </p>
                   <p className="text-gray-700 text-lg mb-6">
-                    Our AI photobooth takes up to 4 guests upon it's elevated platform as its studio grade camera rotates around them creating a truly unique experience.
+                    Our JACKSpot photobooth takes up to 4 guests upon its elevated platform as its studio grade camera rotates around them creating a truly unique experience.
                   </p>
                   <p className="text-gray-700 text-lg">
                     Each session is ready in under 30 seconds to be instantly shared over a variety of social media platforms including Facebook, Instagram, Snapchat and TikTok.
@@ -254,7 +254,7 @@ const GlamBooth = () => {
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
                       src="/images/wedding-couple.jpg" 
-                      alt="AI Photobooth Experience"
+                      alt="JACKSpot Experience"
                       className="w-full h-auto"
                     />
                   </div>
@@ -264,7 +264,7 @@ const GlamBooth = () => {
           </div>
         </div>
 
-        {/* AI Photobooth Features Section */}
+        {/* JACKSpot Features Section */}
         <div className="py-20 bg-gray-100">
           <div className="container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -282,7 +282,7 @@ const GlamBooth = () => {
                     </div>
                     <h3 className="text-xl font-bold text-center mb-4">SLOW MOTION VIDEO</h3>
                     <p className="text-gray-700 text-center">
-                      Our AI Photobooth captures Slow-Motion video then it'll speed up and slow down the footage at set intervals in order to capture eye-catching final video.
+                      Our JACKSpot captures Slow-Motion video then it'll speed up and slow down the footage at set intervals in order to capture eye-catching final video.
                     </p>
                   </div>
                   
@@ -305,7 +305,7 @@ const GlamBooth = () => {
                 <div className="w-full md:w-1/3 px-4 mb-12 md:mb-0 flex items-center justify-center">
                   <img 
                     src="/images/360-video-booth-rental-vancouver.webp"
-                    alt="AI Photobooth"
+                    alt="JACKSpot"
                     className="max-w-full h-auto"
                   />
                 </div>
@@ -367,7 +367,7 @@ const GlamBooth = () => {
                     BRAND MARKETING ACTIVATIONS
                   </h3>
                   <p className="text-gray-700 text-center">
-                    Make your brand stand out at your next event with an AI photobooth activation! Capture amazing content with backgrounds and props customized to your brand while getting tons of impressions leveraging your fan's social media accounts!
+                    Make your brand stand out at your next event with a JACKSpot activation! Capture amazing content with backgrounds and props customized to your brand while getting tons of impressions leveraging your fan's social media accounts!
                   </p>
                 </div>
                 
@@ -384,7 +384,7 @@ const GlamBooth = () => {
                     CORPORATE & FUNDRAISER EVENTS
                   </h3>
                   <p className="text-gray-700 text-center mb-6">
-                    Want to create a unique experience for your next corporate party? Look no further! AI photobooths are the hottest trend right now! Our custom branded overlays are designed to best fit the needs of your event.
+                    Want to create a unique experience for your next corporate party? Look no further! JACKSpot photobooths are the hottest trend right now! Our custom branded overlays are designed to best fit the needs of your event.
                   </p>
                   <div className="text-center">
                     <a href="/contact" className="inline-block bg-red-500 hover:bg-red-600 text-white font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300">
@@ -406,7 +406,7 @@ const GlamBooth = () => {
                     WEDDINGS & PRIVATE EVENTS
                   </h3>
                   <p className="text-gray-700 text-center">
-                    Capture amazing moments of your wedding or private event and give your guests content that they will remember. Our AI photobooth software will allow guests to upload to their social media instantly!
+                    Capture amazing moments of your wedding or private event and give your guests content that they will remember. Our JACKSpot software will allow guests to upload to their social media instantly!
                   </p>
                 </div>
               </div>
@@ -428,7 +428,7 @@ const GlamBooth = () => {
               <div className="px-hero-wrap" data-delay="" data-animation="">
                 <div className="px-hero px-font-m px-font-normal mx-auto" style="color: inherit;">
                   <span className="text-gray-800 text-xl md:text-2xl lg:text-3xl" style="line-height: 1.6;">
-                    Our AI Booth uses the latest in artificial intelligence and video processing technology to create stunning visual effects that will amaze your guests. From slow-motion to boomerang effects, custom overlays to branded intros and outros, our AI Booth delivers a premium experience that elevates any event.
+                    The JACKSpot uses the latest in artificial intelligence and video processing technology to create stunning visual effects that will amaze your guests. From slow-motion to boomerang effects, custom overlays to branded intros and outros, The JACKSpot delivers a premium experience that elevates any event.
                   </span>
                 </div>
               </div>
@@ -439,7 +439,7 @@ const GlamBooth = () => {
         {/* Gallery Carousel Section */}
         <GalleryCarousel 
           images={galleryImages} 
-          title="Our AI Booth in Action"
+          title="The JACKSpot in Action"
           itemsPerSlide={5}
         />
         
@@ -492,7 +492,7 @@ const GlamBooth = () => {
         <div className="py-16 bg-purple-600 text-white">
           <div className="container mx-auto px-4 text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-6">
-              Ready to book your AI Booth Experience?
+              Ready to book your JACKSpot Experience?
             </h2>
             <a href="/contact" className="inline-block bg-white text-purple-600 hover:bg-gray-100 font-bold py-3 px-8 rounded-full shadow-lg transition-all duration-300 text-lg">
               BOOK YOUR BOOTH NOW

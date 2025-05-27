@@ -75,7 +75,7 @@ const About = () => {
           </h1>
           
           <p className="text-xl md:text-2xl text-white mb-8 max-w-3xl mx-auto">
-            We create <span className="text-pink-400 font-bold">unforgettable moments</span> through innovative photo experiences
+            We turn <span className="text-pink-400 font-bold">special moments</span> into cherished memories through creative photo experiences.
           </p>
           
           <div className="flex justify-center mt-6">
@@ -109,42 +109,34 @@ const About = () => {
         <div id="our-background" className="py-20 bg-white">
           <div className="container mx-auto px-4">
             <h2 className="text-4xl md:text-5xl text-center text-blue-500 mb-12 font-modern relative">
-              Our Background
+              Owner
               <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-pink-500 rounded-full"></div>
             </h2>
             
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 relative">
                 <img 
-                  src="/images/1.jpeg" 
+                  src="/images/owner.jpg" 
                   alt="Photo Booth Experience" 
-                  className="w-full h-auto rounded-2xl shadow-2xl transform rotate-2 transition-all duration-300 hover:rotate-0 hover:scale-105"
+                  className="w-full h-auto rounded-2xl shadow-2xl transition-all duration-300 hover:rotate-0 hover:scale-105"
                 />
-                <div className="absolute -bottom-6 -right-6 text-blue-500 text-5xl font-stylish transform -rotate-6">
-                  experience
-                </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -left-4 w-12 h-12 rounded-full bg-pink-500 opacity-70"></div>
-                <div className="absolute -bottom-4 -left-4 w-8 h-8 rounded-full bg-blue-500 opacity-70"></div>
               </div>
               
               <div className="md:w-1/2">
-                <p className="text-xl mb-6 leading-relaxed">
-                  <span className="text-2xl font-bold text-pink-500">Jack PhotoBoothCA</span> is your premium photo booth service provider in Saint John. We provide you with a unique, exciting, and memorable experience for all your special occasions including weddings, birthdays, corporate events, graduations and more!
+                <p className="text-lg mb-6 leading-relaxed">
+                  I’m Joseph Castelo, the founder of JACKPHOTOBOOTH. With over 20 years of experience in the printing and design industry—including running my own print shop back in the Philippines—I’ve always been passionate about bringing creative ideas to life. From operating large format printers and graphic design software to managing teams and delivering top-quality products, I’ve built my career around precision, creativity, and customer satisfaction.
                 </p>
-                <p className="text-xl mb-8 leading-relaxed">
-                  We are known for adding our personal touch to every event we serve. Our packages and customization options will provide you with everything you need to make your event unique to you. We're here to help you make your event stand out from the rest!
+                <p className="text-lg mb-6 leading-relaxed">
+                  That same passion drives JACKPHOTOBOOTH today. Every event we serve is a chance to create something fun, meaningful, and memorable. I take pride in making sure everything runs smoothly, from setup to final snapshots, so you and your guests can focus on enjoying the moment. For me, it’s more than just a photobooth—it’s about capturing joy, one clicks at a time.
                 </p>
-                
                 {/* Stats Section */}
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="p-4 bg-gray-50 rounded-lg shadow-md">
-                    <div className="text-3xl font-bold text-pink-500">3000+</div>
+                    <div className="text-3xl font-bold text-pink-500">1000+</div>
                     <div className="text-gray-600">Events</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg shadow-md">
-                    <div className="text-3xl font-bold text-blue-500">5</div>
+                    <div className="text-3xl font-bold text-blue-500">14</div>
                     <div className="text-gray-600">Years</div>
                   </div>
                   <div className="p-4 bg-gray-50 rounded-lg shadow-md">
@@ -178,29 +170,22 @@ const About = () => {
             <div className="flex flex-col md:flex-row-reverse items-center gap-12">
               <div className="md:w-1/2 relative">
                 <img 
-                  src="/images/3.jpeg" 
+                  src="/images/whoweare.jpg" 
                   alt="Our Team" 
-                  className="w-full h-auto rounded-2xl shadow-2xl transform -rotate-1 transition-all duration-300 hover:rotate-0 hover:scale-105"
+                  className="w-full h-auto rounded-2xl shadow-2xl transform transition-all duration-300 hover:rotate-0 hover:scale-105"
                 />
-                <div className="absolute -bottom-6 -left-6 text-pink-600 text-5xl font-modern transform rotate-3">
-                  creativity
-                </div>
-                
-                {/* Decorative elements */}
-                <div className="absolute -top-4 -right-4 w-12 h-12 rounded-full bg-blue-500 opacity-70"></div>
-                <div className="absolute -bottom-4 -right-4 w-8 h-8 rounded-full bg-pink-500 opacity-70"></div>
               </div>
               
               <div className="md:w-1/2">
                 <div className="p-6 bg-white rounded-xl shadow-lg">
-                  <p className="text-xl mb-6 leading-relaxed">
-                    Hi! We are <span className="text-2xl font-bold text-pink-500">Jack PhotoBoothCA</span>, a team of passionate professionals dedicated to creating unforgettable photo booth experiences. Our team combines technical expertise with creative vision to ensure your event is captured perfectly.
+                  <p className="text-lg mb-6 leading-relaxed">
+                    <span className="text-2xl font-bold text-pink-500">JACKPHOTOBOOTH</span>, was founded in 2011 as a small, family-run business with big dreams. What started as a passion for capturing fun and memorable moments quickly grew into a full-fledged photo booth service loved by many.
                   </p>
-                  <p className="text-xl mb-6 leading-relaxed">
-                    We handle everything from logistics and troubleshooting to creative direction and customer service. Our goal is to provide exceptional service in every photo booth session throughout your time with us so you have good and fun memories.
+                  <p className="text-lg mb-6 leading-relaxed">
+                    Originally from the Philippines, our journey brought us to Vancouver, BC, where we proudly served countless events with our signature touch of warmth and creativity. Now, we've brought that same energy and excitement to our new home in Saint John, New Brunswick.
                   </p>
-                  <p className="text-xl leading-relaxed">
-                    We believe that great events deserve great memories, and we're committed to helping you create those special moments that last a lifetime.
+                  <p className="text-lg leading-relaxed">
+                    As a family business, we believe in creating meaningful connections with our clients. Whether it’s a wedding, birthday, or corporate event, we’re here to make your celebration unforgettable—one snapshot at a time.
                   </p>
                 </div>
                 

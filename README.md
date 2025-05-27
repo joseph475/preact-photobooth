@@ -6,6 +6,7 @@ A lightweight photobooth web application built with Preact and Tailwind CSS.
 
 - Built with Preact for optimal performance
 - Styled with Tailwind CSS for responsive design
+- Cloudinary integration for image storage and retrieval
 - Well-organized folder structure for scalability
 - Webpack configuration for development and production
 - Routing with preact-router
@@ -75,10 +76,25 @@ This will create a `dist` folder with the production-ready files.
 
 - [Preact](https://preactjs.com/) - A fast 3kB alternative to React with the same modern API
 - [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [Cloudinary](https://cloudinary.com/) - Cloud-based image and video management service
 - [Webpack](https://webpack.js.org/) - A static module bundler for modern JavaScript applications
 - [Babel](https://babeljs.io/) - A JavaScript compiler
+
+## Cloudinary Integration
+
+This project uses Cloudinary for image storage and retrieval. To set up Cloudinary:
+
+1. Create a `.env` file in the root directory
+2. Add your Cloudinary credentials:
+
+```
+PREACT_APP_CLOUDINARY_CLOUD_NAME=your_cloud_name
+PREACT_APP_CLOUDINARY_API_KEY=your_api_key
+PREACT_APP_CLOUDINARY_API_SECRET=your_api_secret
+```
+
+For more details, see the [Cloudinary Integration Guide](src/guides/cloudinary-integration.md).
 
 ## License
 
 This project is licensed under the ISC License.
-# Test commit

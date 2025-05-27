@@ -19,7 +19,7 @@ const Hero = () => {
       <div className="absolute inset-0 w-full h-full">
         {/* Video Background */}
         <div className="absolute inset-0 w-full h-full">
-        <img src="/images/Photobooth-Home-2.webp" alt="Corporate Events" className="w-full h-full object-cover" />
+        <img src="/images/hero.jpg" alt="Corporate Events" className="w-full h-full object-cover" />
           {/* <video 
             ref={videoRef}
             className="w-full h-full object-cover"

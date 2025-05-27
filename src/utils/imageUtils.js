@@ -1,44 +1,14 @@
-/**
- * Convert a data URL to a Blob object
- * @param {string} dataURL - The data URL to convert
- * @returns {Blob} - The resulting Blob object
- */
-export const dataURLtoBlob = (dataURL) => {
-  const arr = dataURL.split(',');
-  const mime = arr[0].match(/:(.*?);/)[1];
-  const bstr = atob(arr[1]);
-  let n = bstr.length;
-  const u8arr = new Uint8Array(n);
-  
-  while (n--) {
-    u8arr[n] = bstr.charCodeAt(n);
-  }
-  
-  return new Blob([u8arr], { type: mime });
-};
-
-/**
- * Convert a Blob object to a data URL
- * @param {Blob} blob - The Blob to convert
- * @returns {Promise<string>} - A promise that resolves with the data URL
- */
-export const blobToDataURL = (blob) => {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => resolve(reader.result);
-    reader.onerror = reject;
-    reader.readAsDataURL(blob);
-  });
-};
+import { getImageUrl } from '../services/cloudinaryService';
 
 /**
  * Apply a simple filter to an image (grayscale)
- * @param {string} dataURL - The data URL of the image
- * @returns {Promise<string>} - A promise that resolves with the filtered image data URL
+ * @param {string} imageUrl - The URL of the image
+ * @returns {Promise<HTMLCanvasElement>} - A promise that resolves with the canvas containing the filtered image
  */
-export const applyGrayscaleFilter = (dataURL) => {
+export const applyGrayscaleFilter = (imageUrl) => {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    img.crossOrigin = 'anonymous'; // Enable CORS for the image
     img.onload = () => {
       const canvas = document.createElement('canvas');
       canvas.width = img.width;
@@ -58,9 +28,101 @@ export const applyGrayscaleFilter = (dataURL) => {
       }
       
       ctx.putImageData(imageData, 0, 0);
-      resolve(canvas.toDataURL());
+      resolve(canvas);
     };
     img.onerror = reject;
-    img.src = dataURL;
+    img.src = imageUrl;
   });
+};
+
+/**
+ * Get a Cloudinary URL for an image with transformations
+ * @param {string} publicId - The public ID of the image
+ * @param {Object} transformations - Cloudinary transformations to apply
+ * @returns {string} - The Cloudinary URL
+ */
+export const getCloudinaryUrl = (publicId, transformations = {}) => {
+  return getImageUrl(publicId, transformations);
+};
+
+/**
+ * Check if a URL is a Cloudinary URL
+ * @param {string} url - The URL to check
+ * @returns {boolean} - True if the URL is a Cloudinary URL
+ */
+export const isCloudinaryUrl = (url) => {
+  return url && url.includes('cloudinary.com');
+};
+
+/**
+ * Extract the public ID from a Cloudinary URL
+ * @param {string} url - The Cloudinary URL
+ * @returns {string|null} - The public ID or null if not a valid Cloudinary URL
+ */
+export const getPublicIdFromUrl = (url) => {
+  if (!isCloudinaryUrl(url)) {
+    return null;
+  }
+  
+  // Extract the public ID from the URL
+  // Format: https://res.cloudinary.com/cloud_name/image/upload/[transformations/]public_id
+  const uploadIndex = url.indexOf('/upload/');
+  if (uploadIndex === -1) {
+    return null;
+  }
+  
+  return url.substring(uploadIndex + 8); // +8 to skip '/upload/'
+};
+
+/**
+ * Apply Cloudinary transformations to an image URL
+ * @param {string} url - The image URL (can be Cloudinary or regular URL)
+ * @param {Object} transformations - Transformations to apply
+ * @returns {string} - URL with transformations applied
+ */
+export const applyTransformations = (url, transformations = {}) => {
+  // If it's a Cloudinary URL, extract the public ID and apply transformations
+  if (isCloudinaryUrl(url)) {
+    const publicId = getPublicIdFromUrl(url);
+    if (publicId) {
+      return getCloudinaryUrl(publicId, transformations);
+    }
+  }
+  
+  // For non-Cloudinary URLs, return the original URL
+  return url;
+};
+
+/**
+ * Get optimized image URL based on device and viewport
+ * @param {string} publicId - The Cloudinary public ID
+ * @param {Object} options - Options for optimization
+ * @returns {string} - Optimized image URL
+ */
+export const getOptimizedImageUrl = (publicId, options = {}) => {
+  const {
+    width = 'auto',
+    height = 'auto',
+    quality = 'auto',
+    format = 'auto',
+    crop = null,
+    effect = null
+  } = options;
+  
+  const transformations = {
+    width,
+    height,
+    quality,
+    fetch_format: format
+  };
+  
+  if (crop) {
+    transformations.crop = crop;
+  }
+  
+  if (effect) {
+    transformations.effect = effect;
+  }
+  
+  return getCloudinaryUrl(publicId, transformations);
 };

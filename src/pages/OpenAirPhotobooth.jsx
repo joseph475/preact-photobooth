@@ -4,53 +4,118 @@ import Footer from '../components/Footer';
 import OurBooths from '../components/OurBooths';
 import ServiceSection from '../components/ServiceSection';
 import GalleryCarousel from '../components/GalleryCarousel';
+import { listImages } from '../services/cloudinaryService';
 
 const OpenAirPhotobooth = () => {
-  // Gallery images for the carousel
-  const galleryImages = [
-    {
-      id: 1,
-      src: "/images/1.jpeg",
-      alt: "Chopard Event",
-      caption: "Chopard",
-      subcaption: "VANCOUVER BOUTIQUE"
-    },
-    {
-      id: 2,
-      src: "/images/2.jpeg",
-      alt: "Sephora Event",
-      caption: "NARS",
-      subcaption: "#BRINGYOURMATTITUDE"
-    },
-    {
-      id: 3,
-      src: "/images/3.jpeg",
-      alt: "Eclipse Event",
-      caption: "THE CENTRE OF YOUR WORLD",
-      subcaption: "eclipse BRENTWOOD"
-    },
-    {
-      id: 4,
-      src: "/images/4.jpeg",
-      alt: "Graduation Event",
-      caption: "GRAD '22",
-      subcaption: "SPROTT SHAW COLLEGE"
-    },
-    {
-      id: 5,
-      src: "/images/5.jpeg",
-      alt: "Corporate Event",
-      caption: "Corporate",
-      subcaption: "ANNUAL GALA"
-    },
-    {
-      id: 6,
-      src: "/images/6.jpeg",
-      alt: "Wedding Event",
-      caption: "Wedding",
-      subcaption: "SARAH & MICHAEL"
-    }
-  ];
+  // State for gallery images from Cloudinary
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
+  
+  // Fetch images from Cloudinary
+  useEffect(() => {
+    const fetchCloudinaryImages = async () => {
+      try {
+        setIsLoadingGallery(true);
+        
+        // If Cloudinary is configured, fetch images from there
+        if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
+          try {
+            // Fetch images from the open-air folder in Cloudinary
+            const result = await listImages('open-air');
+            
+            console.log('Open Air: Cloudinary images result:', result);
+            
+            if (result && result.resources && result.resources.length > 0) {
+              // Map the Cloudinary resources to our gallery format
+              const cloudinaryImages = result.resources.map((resource, index) => {
+                // Try to extract a caption from the resource
+                let caption = 'Open Air Photobooth';
+                
+                // Try to get caption from display_name, context or tags
+                if (resource.display_name) {
+                  caption = resource.display_name;
+                } else if (resource.context && resource.context.custom && resource.context.custom.caption) {
+                  caption = resource.context.custom.caption;
+                } else if (resource.tags && resource.tags.length > 0) {
+                  // Use the first tag as a caption
+                  caption = resource.tags[0].replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                } else {
+                  // Try to extract a meaningful name from the public_id
+                  const parts = resource.public_id.split('/');
+                  const filename = parts[parts.length - 1];
+                  if (filename) {
+                    caption = filename.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                  }
+                }
+                
+                return {
+                  id: index + 1,
+                  src: resource.secure_url,
+                  alt: caption,
+                  caption: caption
+                };
+              });
+              
+              setGalleryImages(cloudinaryImages);
+              setIsLoadingGallery(false);
+              return;
+            }
+          } catch (error) {
+            console.error('Error fetching Cloudinary images for Open Air Photobooth:', error);
+            // Fall back to local images
+          }
+        }
+        
+        // Fallback to local images if Cloudinary fetch fails or is not configured
+        const fallbackImages = [
+          {
+            id: 1,
+            src: "/images/1.jpeg",
+            alt: "Chopard Event",
+            caption: "Chopard"
+          },
+          {
+            id: 2,
+            src: "/images/2.jpeg",
+            alt: "Sephora Event",
+            caption: "NARS"
+          },
+          {
+            id: 3,
+            src: "/images/3.jpeg",
+            alt: "Eclipse Event",
+            caption: "THE CENTRE OF YOUR WORLD"
+          },
+          {
+            id: 4,
+            src: "/images/4.jpeg",
+            alt: "Graduation Event",
+            caption: "GRAD '22"
+          },
+          {
+            id: 5,
+            src: "/images/5.jpeg",
+            alt: "Corporate Event",
+            caption: "Corporate"
+          },
+          {
+            id: 6,
+            src: "/images/6.jpeg",
+            alt: "Wedding Event",
+            caption: "Wedding"
+          }
+        ];
+        
+        setGalleryImages(fallbackImages);
+        setIsLoadingGallery(false);
+      } catch (err) {
+        console.error('Error fetching gallery images:', err);
+        setIsLoadingGallery(false);
+      }
+    };
+    
+    fetchCloudinaryImages();
+  }, []);
   
   // FAQ items with collapsible functionality
   const faqItems = [

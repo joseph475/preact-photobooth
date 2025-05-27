@@ -261,19 +261,19 @@ const Home = () => {
           </div>
         </div>
         
-        {/* AI Photobooth Experience Section */}
+        {/* The JACKSpot Experience Section */}
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
             <div className="flex flex-col md:flex-row items-center gap-12">
               <div className="md:w-1/2 text-center md:text-left">
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">
-                  AI Photobooth<br />Experience
+                  The JACKSpot<br />Experience
                 </h2>
                 <p className="text-lg mb-4">
-                  We're excited to share with you our most recent hottest trending photo and video experiences: AI Photobooth.
+                  We're excited to share with you our most recent hottest trending photo and video experiences: The JACKSpot.
                 </p>
                 <p className="text-lg mb-4">
-                  Our AI photobooth takes up to 4 guests upon it's elevated platform as its studio grade camera rotates around them creating a truly unique experience.
+                  The JACKSpot takes up to 4 guests upon its elevated platform as its studio grade camera rotates around them creating a truly unique experience.
                 </p>
                 <p className="text-lg mb-6">
                   Each session is ready in under 30 seconds to be instantly shared over a variety of social media platforms including Facebook, Instagram, Snapchat and TikTok.
@@ -285,7 +285,7 @@ const Home = () => {
               <div className="md:w-1/2 mt-8 md:mt-0">
                 <img 
                   src="/images/b1.webp" 
-                  alt="AI Photobooth Experience" 
+                  alt="The JACKSpot Experience" 
                   className="w-full h-auto rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
                 />
               </div>
@@ -545,9 +545,9 @@ const Home = () => {
         />
         
         <ServiceSection 
-          title="AI BOOTH EXPERIENCE"
-          description="Experience our cutting-edge AI booth technology! It's FUN! It's LIT! It's MEMORABLE! Great for personal or company event rentals."
-          buttonText="VIEW AI BOOTH EXPERIENCE"
+          title="THE JACKSPOT EXPERIENCE"
+          description="Experience our cutting-edge JACKSpot technology! It's FUN! It's LIT! It's MEMORABLE! Great for personal or company event rentals."
+          buttonText="VIEW THE JACKSPOT EXPERIENCE"
           buttonLink="/ai-booth"
           imageUrl="/images/11.jpg"
           isReversed={true}

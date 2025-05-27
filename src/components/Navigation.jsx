@@ -66,7 +66,7 @@ const Navigation = () => {
         <div className="flex items-center">
           <Link href="/" className="text-2xl font-bold">
             <img 
-              src="/images/logo.png" 
+              src="/images/logo1.png" 
               alt="Jack PhotoBooth" 
               className={`transition-all duration-300 ${isScrolled ? 'h-12' : 'h-16'}`} 
             />
@@ -113,12 +113,12 @@ const Navigation = () => {
             <div className="absolute top-full left-0 pt-2 w-48">
               <div className="bg-white shadow-lg rounded-md overflow-hidden hidden group-hover:block hover:block">
                 <Link 
-                  href="/ai-booth" 
+                  href="/jackspot" 
                   className={`block px-4 py-2 text-gray-800 hover:bg-pink-500 hover:text-white transition-all duration-300 ${
                     isScrolled ? 'text-xs' : 'text-sm'
                   }`}
                 >
-                  AI BOOTH
+                  THE JACKSPOT
                 </Link>
                 <Link 
                   href="/selfie-station" 
@@ -321,11 +321,11 @@ const Navigation = () => {
                 {isOurBoothsOpen && (
                   <div className="mt-4 flex flex-col space-y-4">
                     <Link 
-                      href="/ai-booth" 
+                      href="/jackspot" 
                       className="text-white text-xl font-medium hover:text-pink-500 transition-colors"
                       onClick={closeMobileMenu}
                     >
-                      AI BOOTH
+                      THE JACKSPOT
                     </Link>
                     <Link 
                       href="/selfie-station" 
