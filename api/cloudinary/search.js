@@ -47,6 +47,22 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error('Error searching images:', error);
+    
+    // If search fails due to client errors, return empty result instead of error
+    if (error.message && (
+      error.message.includes('404') || 
+      error.message.includes('400') ||
+      error.message.includes('Not Found') ||
+      error.message.includes('Bad Request') ||
+      error.message.includes('Invalid') ||
+      error.message.includes('Resource not found')
+    )) {
+      return res.status(200).json({
+        resources: [],
+        total_count: 0
+      });
+    }
+    
     sendError(res, 500, 'Failed to search images in Cloudinary', error);
   }
 }
