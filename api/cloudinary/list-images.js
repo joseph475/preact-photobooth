@@ -73,6 +73,20 @@ module.exports = async function handler(req, res) {
 
   } catch (error) {
     console.error('Error listing images:', error);
+    
+    // If folder doesn't exist, return empty result instead of error
+    if (error.message && (
+      error.message.includes('404') || 
+      error.message.includes('Not Found') ||
+      error.message.includes('folder not found')
+    )) {
+      return res.status(200).json({
+        resources: [],
+        total_count: 0,
+        fetched_count: 0
+      });
+    }
+    
     sendError(res, 500, 'Failed to list images from Cloudinary', error);
   }
 }

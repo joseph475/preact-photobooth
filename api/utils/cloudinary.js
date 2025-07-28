@@ -95,7 +95,11 @@ const cloudinaryRequest = async (endpoint, options = {}) => {
   });
 
   if (!response.ok) {
-    throw new Error(`Cloudinary API error: ${response.status} ${response.statusText}`);
+    const errorMessage = `Cloudinary API error: ${response.status} ${response.statusText}`;
+    if (response.status === 404) {
+      throw new Error(`${errorMessage} - Resource not found`);
+    }
+    throw new Error(errorMessage);
   }
 
   return await response.json();
