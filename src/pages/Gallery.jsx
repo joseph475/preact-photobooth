@@ -8,7 +8,11 @@ import { listImages, searchImages, listAllImages, listFolders } from '../service
 
 const Gallery = () => {
   // Array of folders to exclude from tab filter and fetching
-  const excludedFolders = ['pos-products', 'in-action'];
+  const excludedFolders = [
+    'pos-products',
+    'in-action',
+    'backdrops'
+  ];
 
   // State for active category
   const [activeCategory, setActiveCategory] = useState('all');

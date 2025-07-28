@@ -1,9 +1,130 @@
 import { h } from 'preact';
+import { useState, useEffect } from 'preact/hooks';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
-import BackdropGallery from '../components/BackdropGallery';
+import { getOptimizedImageUrl, isCloudinaryUrl } from '../utils/imageUtils';
+import { listImages } from '../services/cloudinaryService';
 
 const Backdrops = () => {
+  // State for backdrop images
+  const [backdropImages, setBackdropImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  // State for lightbox
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  // Fetch backdrop images from Cloudinary
+  useEffect(() => {
+    const fetchBackdrops = async () => {
+      try {
+        setIsLoading(true);
+        
+        // If Cloudinary is configured, fetch images from backdrops folder
+        if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
+          try {
+            const backdropResult = await listImages('backdrops', { max_results: 100 });
+            
+            console.log('Cloudinary backdrops folder result:', backdropResult);
+            
+            if (backdropResult && backdropResult.resources && backdropResult.resources.length > 0) {
+              const backdrops = backdropResult.resources.map((resource, index) => ({
+                id: `backdrop-${index + 1}`,
+                publicId: resource.public_id,
+                src: resource.secure_url || getOptimizedImageUrl(resource.public_id, {
+                  width: 600,
+                  height: 600,
+                  crop: 'fill',
+                  quality: 'auto'
+                }),
+                name: resource.metadata?.title || resource.display_name || resource.public_id.split('/').pop().replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()),
+                created_at: resource.created_at
+              }));
+              
+              // Sort backdrops by creation date (newest first)
+              backdrops.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+              
+              console.log('Processed backdrop images:', backdrops);
+              
+              setBackdropImages(backdrops);
+              setIsLoading(false);
+              return;
+            }
+          } catch (cloudinaryError) {
+            console.error('Error fetching from Cloudinary backdrops folder:', cloudinaryError);
+            // Continue to fallback
+          }
+        }
+        
+        // Fallback to local images if Cloudinary fetch fails or is not configured
+        const fallbackBackdrops = [
+          { id: 1, name: 'Champagne Gold Sequin', src: '/images/1.jpeg', publicId: 'backdrops/champagne-gold-sequin', created_at: '2023-05-01T12:00:00Z' },
+          { id: 2, name: 'White Flower Wall', src: '/images/2.jpeg', publicId: 'backdrops/white-flower-wall', created_at: '2023-05-02T12:00:00Z' },
+          { id: 3, name: 'Pink and Gold Marble', src: '/images/3.jpeg', publicId: 'backdrops/pink-gold-marble', created_at: '2023-05-03T12:00:00Z' },
+          { id: 4, name: 'Gold Sequin', src: '/images/4.jpeg', publicId: 'backdrops/gold-sequin', created_at: '2023-05-04T12:00:00Z' },
+          { id: 5, name: 'Rustic', src: '/images/5.jpeg', publicId: 'backdrops/rustic', created_at: '2023-05-05T12:00:00Z' },
+          { id: 6, name: 'The Tropics', src: '/images/6.jpeg', publicId: 'backdrops/tropics', created_at: '2023-05-06T12:00:00Z' },
+          { id: 7, name: 'White and Gold Geometric', src: '/images/7.jpg', publicId: 'backdrops/white-gold-geometric', created_at: '2023-05-07T12:00:00Z' },
+          { id: 8, name: 'Black and Gold Leaves', src: '/images/8.jpg', publicId: 'backdrops/black-gold-leaves', created_at: '2023-05-08T12:00:00Z' },
+          { id: 9, name: 'Black and Gold Geometric', src: '/images/9.jpg', publicId: 'backdrops/black-gold-geometric', created_at: '2023-05-09T12:00:00Z' },
+          { id: 10, name: 'White Floral', src: '/images/10.jpg', publicId: 'backdrops/white-floral', created_at: '2023-05-10T12:00:00Z' },
+          { id: 11, name: 'Green Screen', src: '/images/11.jpg', publicId: 'backdrops/green-screen', created_at: '2023-05-11T12:00:00Z' },
+          { id: 12, name: 'Black Marble', src: '/images/1.jpeg', publicId: 'backdrops/black-marble', created_at: '2023-05-12T12:00:00Z' },
+          { id: 13, name: 'White Marble', src: '/images/2.jpeg', publicId: 'backdrops/white-marble', created_at: '2023-05-13T12:00:00Z' },
+          { id: 14, name: 'Water Depths', src: '/images/3.jpeg', publicId: 'backdrops/water-depths', created_at: '2023-05-14T12:00:00Z' },
+          { id: 15, name: 'Brushed Smoke', src: '/images/4.jpeg', publicId: 'backdrops/brushed-smoke', created_at: '2023-05-15T12:00:00Z' },
+          { id: 16, name: 'Disco', src: '/images/5.jpeg', publicId: 'backdrops/disco', created_at: '2023-05-16T12:00:00Z' },
+          { id: 17, name: 'Shine Bright Like Diamonds', src: '/images/6.jpeg', publicId: 'backdrops/diamonds', created_at: '2023-05-17T12:00:00Z' },
+          { id: 18, name: 'String Lights', src: '/images/7.jpg', publicId: 'backdrops/string-lights', created_at: '2023-05-18T12:00:00Z' },
+          { id: 19, name: 'Gold Diamonds', src: '/images/8.jpg', publicId: 'backdrops/gold-diamonds', created_at: '2023-05-19T12:00:00Z' },
+          { id: 20, name: 'Nude Aesthetic', src: '/images/9.jpg', publicId: 'backdrops/nude-aesthetic', created_at: '2023-05-20T12:00:00Z' },
+          { id: 21, name: 'Splash of Gold', src: '/images/10.jpg', publicId: 'backdrops/splash-gold', created_at: '2023-05-21T12:00:00Z' },
+          { id: 22, name: 'Rose Gold Swirl', src: '/images/11.jpg', publicId: 'backdrops/rose-gold-swirl', created_at: '2023-05-22T12:00:00Z' },
+          { id: 23, name: 'Christmas 1', src: '/images/1.jpeg', publicId: 'backdrops/christmas-1', created_at: '2023-05-23T12:00:00Z' },
+          { id: 24, name: 'Christmas 2', src: '/images/2.jpeg', publicId: 'backdrops/christmas-2', created_at: '2023-05-24T12:00:00Z' },
+          { id: 25, name: 'Christmas 3', src: '/images/3.jpeg', publicId: 'backdrops/christmas-3', created_at: '2023-05-25T12:00:00Z' },
+          { id: 26, name: 'Christmas 4', src: '/images/4.jpeg', publicId: 'backdrops/christmas-4', created_at: '2023-05-26T12:00:00Z' }
+        ];
+        
+        setBackdropImages(fallbackBackdrops);
+        setIsLoading(false);
+      } catch (err) {
+        console.error('Error fetching backdrop images:', err);
+        setError('Failed to load backdrop images. Please try again later.');
+        setIsLoading(false);
+      }
+    };
+    
+    fetchBackdrops();
+  }, []);
+
+  // Open lightbox with selected image
+  const openLightbox = (image) => {
+    setCurrentImage(image);
+    setLightboxOpen(true);
+    document.body.style.overflow = 'hidden'; // Prevent scrolling when lightbox is open
+  };
+
+  // Close lightbox
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+    document.body.style.overflow = 'auto'; // Re-enable scrolling
+  };
+
+  // Navigate to next/previous image in lightbox
+  const navigateImage = (direction) => {
+    const currentIndex = backdropImages.findIndex(img => img.id === currentImage.id);
+    let newIndex;
+    
+    if (direction === 'next') {
+      newIndex = (currentIndex + 1) % backdropImages.length;
+    } else {
+      newIndex = (currentIndex - 1 + backdropImages.length) % backdropImages.length;
+    }
+    
+    setCurrentImage(backdropImages[newIndex]);
+  };
   return (
     <div className="min-h-screen flex flex-col">
       
@@ -87,7 +208,64 @@ const Backdrops = () => {
           </div>
         </div>
         
-        <BackdropGallery />
+        {/* Backdrop Gallery */}
+        <div className="py-16 bg-white">
+          <div className="container mx-auto px-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-center text-blue-500 mb-8 font-display">
+              BACKDROP COLLECTION
+            </h2>
+            
+            <div className="mb-8">
+              <p className="text-center text-gray-700 mb-6">
+                Browse our extensive collection of premium backdrops for your photo booth experience.
+                We're constantly updating our selection to provide you with the greatest options.
+              </p>
+            </div>
+            
+            {isLoading ? (
+              <div className="flex justify-center items-center py-20">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+              </div>
+            ) : error ? (
+              <div className="text-center py-20">
+                <p className="text-red-500">{error}</p>
+                <button 
+                  onClick={() => window.location.reload()}
+                  className="mt-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded"
+                >
+                  Retry
+                </button>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {backdropImages.map((backdrop) => (
+                  <div 
+                    key={backdrop.id} 
+                    className="relative group overflow-hidden rounded-lg shadow-lg transition-transform duration-300 hover:scale-105 cursor-pointer"
+                    onClick={() => openLightbox(backdrop)}
+                  >
+                    <img 
+                      src={backdrop.src} 
+                      alt={backdrop.name} 
+                      className="w-full h-64 object-cover"
+                      loading="lazy"
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4">
+                      <div className="bg-blue-500 text-white py-2 px-4 rounded-full inline-block">
+                        {backdrop.name}
+                      </div>
+                    </div>
+                    <div className="absolute inset-0 bg-black bg-opacity-20 opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                      <div className="text-white bg-blue-500 bg-opacity-80 px-4 py-2 rounded-full">
+                        View Backdrop
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
         
         <div className="py-16 bg-gray-50">
           <div className="container mx-auto px-4">
@@ -122,6 +300,57 @@ const Backdrops = () => {
           </div>
         </div>
       </main>
+      
+      {/* Lightbox */}
+      {lightboxOpen && currentImage && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-90 flex items-center justify-center p-4">
+          <div className="relative max-w-4xl w-full">
+            <button 
+              onClick={closeLightbox}
+              className="absolute top-4 right-4 text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors z-10"
+              aria-label="Close lightbox"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            <img 
+              src={currentImage.src} 
+              alt={currentImage.name} 
+              className="w-full h-auto max-h-[80vh] object-contain"
+            />
+            
+            <div className="absolute top-1/2 left-0 transform -translate-y-1/2 flex space-x-4">
+              <button 
+                onClick={() => navigateImage('prev')}
+                className="text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+                aria-label="Previous backdrop"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="absolute top-1/2 right-0 transform -translate-y-1/2 flex space-x-4">
+              <button 
+                onClick={() => navigateImage('next')}
+                className="text-white bg-black bg-opacity-50 rounded-full p-2 hover:bg-opacity-70 transition-colors"
+                aria-label="Next backdrop"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            
+            <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black bg-opacity-50 text-white px-4 py-2 rounded-full">
+              {currentImage.name}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
