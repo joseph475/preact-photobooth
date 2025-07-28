@@ -40,8 +40,8 @@ const Gallery = () => {
             
             if (foldersResult && foldersResult.folders && foldersResult.folders.length > 0) {
               // Filter out excluded folders from the folder categories
-              const filteredFolders = foldersResult.folders.filter(folder => 
-                !excludedFolders.includes(folder.path)
+              const filteredFolders = foldersResult.folders.filter(folder =>
+                !excludedFolders.includes(folder.path.toLowerCase())
               );
               
               // Create folder categories from the filtered result
@@ -154,25 +154,7 @@ const Gallery = () => {
         }
         
         // Fallback to local images if Cloudinary fetch fails or is not configured
-        const fallbackImages = [
-          { id: 1, src: '/images/1.jpeg', publicId: 'photobooth/1', folder: 'photobooth', created_at: '2023-05-01T12:00:00Z' },
-          { id: 2, src: '/images/2.jpeg', publicId: 'photobooth/2', folder: 'photobooth', created_at: '2023-05-02T12:00:00Z' },
-          { id: 3, src: '/images/3.jpeg', publicId: 'photobooth/3', folder: 'photobooth', created_at: '2023-05-03T12:00:00Z' },
-          { id: 4, src: '/images/4.jpeg', publicId: 'photobooth/4', folder: 'photobooth', created_at: '2023-05-04T12:00:00Z' },
-          { id: 5, src: '/images/5.jpeg', publicId: 'photobooth/5', folder: 'photobooth', created_at: '2023-05-05T12:00:00Z' },
-          { id: 6, src: '/images/6.jpeg', publicId: 'photobooth/6', folder: 'photobooth', created_at: '2023-05-06T12:00:00Z' },
-          { id: 7, src: '/images/7.jpg', publicId: 'selfie-station/7', folder: 'selfie-station', created_at: '2023-05-07T12:00:00Z' },
-          { id: 8, src: '/images/8.jpg', publicId: 'selfie-station/8', folder: 'selfie-station', created_at: '2023-05-08T12:00:00Z' },
-          { id: 9, src: '/images/9.jpg', publicId: 'selfie-station/9', folder: 'selfie-station', created_at: '2023-05-09T12:00:00Z' },
-          { id: 10, src: '/images/10.jpg', publicId: 'open-air/10', folder: 'open-air', created_at: '2023-05-10T12:00:00Z' },
-          { id: 11, src: '/images/11.jpg', publicId: 'open-air/11', folder: 'open-air', created_at: '2023-05-11T12:00:00Z' },
-          { id: 12, src: '/images/wedding-booth.jpg', publicId: 'photobooth/wedding-booth', folder: 'photobooth', created_at: '2023-05-12T12:00:00Z' },
-          { id: 13, src: '/images/corporate-booth.jpg', publicId: 'photobooth/corporate-booth', folder: 'photobooth', created_at: '2023-05-13T12:00:00Z' },
-          { id: 14, src: '/images/event-booth.jpg', publicId: 'open-air/event-booth', folder: 'open-air', created_at: '2023-05-14T12:00:00Z' },
-          { id: 15, src: '/images/360-booth.jpg', publicId: 'open-air/360-booth', folder: 'open-air', created_at: '2023-05-15T12:00:00Z' },
-          { id: 16, src: '/images/mirror-booth.jpg', publicId: 'selfie-station/mirror-booth', folder: 'selfie-station', created_at: '2023-05-16T12:00:00Z' },
-          { id: 17, src: '/images/self-serve-booth.jpg', publicId: 'selfie-station/self-serve-booth', folder: 'selfie-station', created_at: '2023-05-17T12:00:00Z' }
-        ];
+        const fallbackImages = [];
         
         // Filter fallback images based on active category
         const filteredFallbackImages = activeCategory === 'all' 
