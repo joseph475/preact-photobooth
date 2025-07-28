@@ -49,7 +49,6 @@ const App = () => {
           <Wedding path="/packages/wedding" />
           <Events path="/packages/events" />
           <Corporate path="/packages/corporate" />
-          <Graduation path="/packages/graduation" />
           <PrivacyPolicy path="/privacy-policy" />
           {/* Redirect to home if no route matches */}
           <Home default />

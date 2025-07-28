@@ -187,14 +187,6 @@ const Navigation = () => {
                     WEDDING EVENTS
                   </Link>
                   <Link 
-                    href="/packages/graduation" 
-                    className={`block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 ${
-                      isScrolled ? 'text-xs' : 'text-sm'
-                    }`}
-                  >
-                    GRADUATION EVENTS
-                  </Link>
-                  <Link 
                     href="/packages/events" 
                     className={`block px-4 py-2 text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 ${
                       isScrolled ? 'text-xs' : 'text-sm'
@@ -330,12 +322,6 @@ const Navigation = () => {
                     className="block px-3 py-1.5 text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 text-xs lg:text-sm"
                   >
                     WEDDING
-                  </Link>
-                  <Link 
-                    href="/packages/graduation" 
-                    className="block px-3 py-1.5 text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 text-xs lg:text-sm"
-                  >
-                    GRADUATION
                   </Link>
                   <Link 
                     href="/packages/events" 
@@ -550,13 +536,6 @@ const Navigation = () => {
                       onClick={closeMobileMenu}
                     >
                       WEDDING EVENTS
-                    </Link>
-                    <Link 
-                      href="/packages/graduation" 
-                      className="text-white text-xl font-medium hover:text-blue-500 transition-colors"
-                      onClick={closeMobileMenu}
-                    >
-                      GRADUATION EVENTS
                     </Link>
                     <Link 
                       href="/packages/events" 

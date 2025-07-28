@@ -2,9 +2,13 @@ import { h } from 'preact';
 import Navigation from '../components/Navigation';
 import Footer from '../components/Footer';
 import { useState, useEffect } from 'preact/hooks';
+import { listImages } from '../services/cloudinaryService';
 
 const About = () => {
   const [isVisible, setIsVisible] = useState(false);
+  // State for gallery images from Cloudinary
+  const [galleryImages, setGalleryImages] = useState([]);
+  const [isLoadingGallery, setIsLoadingGallery] = useState(true);
   
   useEffect(() => {
     // Trigger animation after component mounts
@@ -23,6 +27,73 @@ const About = () => {
     
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Fetch images from Cloudinary
+  useEffect(() => {
+    const fetchCloudinaryImages = async () => {
+      try {
+        setIsLoadingGallery(true);
+        
+        // If Cloudinary is configured, fetch images from there
+        if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
+          try {
+            // Fetch images from the in-action folder in Cloudinary
+            const result = await listImages('in-action');
+            
+            console.log('About Us Gallery: Cloudinary images result:', result);
+            
+            if (result && result.resources && result.resources.length > 0) {
+              // Map the Cloudinary resources to our gallery format
+              const cloudinaryImages = result.resources.map((resource, index) => {
+                
+                return {
+                  id: index + 1,
+                  src: resource.secure_url
+                };
+              });
+              
+              setGalleryImages(cloudinaryImages);
+              setIsLoadingGallery(false);
+              return;
+            }
+          } catch (error) {
+            console.error('Error fetching Cloudinary images for About Us Gallery:', error);
+            // Fall back to local images
+          }
+        }
+        
+        // Fallback to local images if Cloudinary fetch fails or is not configured
+        const fallbackImages = [
+          {
+            id: 1,
+            src: "/images/3.jpeg",
+            alt: "Wedding Events",
+            caption: "Wedding Events"
+          },
+          {
+            id: 2,
+            src: "/images/4.jpeg",
+            alt: "Corporate Events",
+            caption: "Corporate Events"
+          },
+          {
+            id: 3,
+            src: "/images/5.jpeg",
+            alt: "Special Occasions",
+            caption: "Special Occasions"
+          }
+        ];
+        
+        setGalleryImages(fallbackImages);
+        setIsLoadingGallery(false);
+      } catch (err) {
+        console.error('Error fetching gallery images:', err);
+        setIsLoadingGallery(false);
+      }
+    };
+    
+    fetchCloudinaryImages();
   }, []);
 
   return (
@@ -202,47 +273,29 @@ const About = () => {
               <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-pink-500 rounded-full"></div>
             </h2>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="group relative overflow-hidden rounded-xl shadow-xl transform -rotate-2 transition-all duration-300 hover:rotate-0 hover:scale-105">
-                <img 
-                  src="/images/3.jpeg" 
-                  alt="Photo Booth Example 1" 
-                  className="w-full h-80 object-cover transition-transform group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <h3 className="text-xl font-bold">Wedding Events</h3>
-                    <p>Capturing special moments</p>
-                  </div>
-                </div>
+            {isLoadingGallery ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500"></div>
+                <p className="mt-4 text-gray-600">Loading gallery images...</p>
               </div>
-              <div className="group relative overflow-hidden rounded-xl shadow-xl transform rotate-1 transition-all duration-300 hover:rotate-0 hover:scale-105">
-                <img 
-                  src="/images/4.jpeg" 
-                  alt="Photo Booth Example 2" 
-                  className="w-full h-80 object-cover transition-transform group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <h3 className="text-xl font-bold">Corporate Events</h3>
-                    <p>Professional and fun</p>
-                  </div>
-                </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {galleryImages.slice(0, 3).map((image, index) => {
+                  const rotations = ['-rotate-2', 'rotate-1', '-rotate-1'];
+                  const rotation = rotations[index % rotations.length];
+                  
+                  return (
+                    <div key={image.id} className={`group relative overflow-hidden rounded-xl shadow-xl transform ${rotation} transition-all duration-300 hover:rotate-0 hover:scale-105`}>
+                      <img 
+                        src={image.src} 
+                        alt={image.alt} 
+                        className="w-full h-80 object-cover transition-transform group-hover:scale-110"
+                      />
+                    </div>
+                  );
+                })}
               </div>
-              <div className="group relative overflow-hidden rounded-xl shadow-xl transform -rotate-1 transition-all duration-300 hover:rotate-0 hover:scale-105">
-                <img 
-                  src="/images/5.jpeg" 
-                  alt="Photo Booth Example 3" 
-                  className="w-full h-80 object-cover transition-transform group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
-                  <div className="p-4 text-white">
-                    <h3 className="text-xl font-bold">Special Occasions</h3>
-                    <p>Making memories last</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+            )}
             
             <div className="mt-12 text-center">
               <a href="/gallery" className="inline-block btn-blue transform hover:scale-105">

@@ -61,7 +61,7 @@ const Corporate = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/corporate-event-hero.jpg" 
+                      src="/images/corporate.jpg" 
                       alt="Brand Engagement" 
                       className="w-full h-auto"
                     />
@@ -172,7 +172,7 @@ const Corporate = () => {
               <div className="text-center">
                 <div className="bg-white p-4 rounded-lg shadow-lg mb-6" style="height: 280px; overflow: hidden;">
                   <img 
-                    src="/images/8.jpg" 
+                    src="/images/CORP.jpg" 
                     alt="Corporate Events" 
                     className="w-full h-full object-cover rounded-lg"
                   />
