@@ -21,7 +21,7 @@ const JackSpot = () => {
         if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
           try {
             // Fetch images from the open-air folder in Cloudinary
-            const result = await listImages('photobooth');
+            const result = await listImages('in-action');
             
             console.log('Photobooth in Action: Cloudinary images result:', result);
             

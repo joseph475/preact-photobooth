@@ -100,7 +100,7 @@ const RetroJack = () => {
         if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
           try {
             // Fetch images from the selfie-station folder in Cloudinary
-            const result = await listImages('photobooth');
+            const result = await listImages('in-action');
             
             console.log('THE RETRO JACK: Cloudinary images result:', result);
             

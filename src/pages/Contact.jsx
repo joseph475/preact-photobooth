@@ -519,13 +519,8 @@ const Contact = () => {
                           className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                         >
                           <option value="">Select a Service</option>
-                          <option value="standard">Standard Photo Booth</option>
                           <option value="retrojack">JACKSPOT</option>
                           <option value="jackspot">RETROJACK</option>
-                          <option value="Jackspin">JACKSPIN</option>
-                          <option value="corporate">Corporate Event</option>
-                          <option value="wedding">Wedding Event</option>
-                          <option value="Special">Special Event</option>
                         </select>
                       </div>
                       

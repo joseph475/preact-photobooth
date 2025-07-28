@@ -20,7 +20,7 @@ const RecentImagesCarousel = () => {
           try {
             // Try with listImages using the asset_folder endpoint
             try {
-              const listResult = await listImages('photobooth');
+              const listResult = await listImages('in-action');
               
               console.log('Carousel: Cloudinary listImages result:', listResult);
               
