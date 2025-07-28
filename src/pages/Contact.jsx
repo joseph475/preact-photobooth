@@ -564,7 +564,7 @@ const Contact = () => {
             </h2>
             
             <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div className="h-96" id="map"></div>
+              <div className="h-96 relative z-10" id="map" style="z-index: 10 !important;"></div>
             </div>
           </div>
         </div>

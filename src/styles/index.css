@@ -122,3 +122,33 @@ html {
   background-clip: text;
   color: transparent;
 }
+
+/* Leaflet map z-index fix */
+.leaflet-container,
+.leaflet-pane,
+.leaflet-tile-pane,
+.leaflet-overlay-pane,
+.leaflet-shadow-pane,
+.leaflet-marker-pane,
+.leaflet-tooltip-pane,
+.leaflet-popup-pane,
+.leaflet-map-pane,
+.leaflet-objects-pane,
+.leaflet-control-container {
+  z-index: 10 !important;
+}
+
+.leaflet-control-zoom,
+.leaflet-control-attribution {
+  z-index: 15 !important;
+}
+
+/* Ensure map container stays below navigation */
+#map {
+  position: relative;
+  z-index: 10 !important;
+}
+
+#map * {
+  z-index: 10 !important;
+}
