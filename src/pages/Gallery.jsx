@@ -79,9 +79,9 @@ const Gallery = () => {
             let allImages = [];
             
             if (activeCategory === 'all') {
-              // Fetch from all available folders (excluding the excluded ones)
+              // Fetch from all available folders (folderCategories already excludes the excluded ones)
               const availableFolders = folderCategories
-                .filter(folder => folder.id !== 'all' && !excludedFolders.includes(folder.id))
+                .filter(folder => folder.id !== 'all')
                 .map(folder => folder.id);
               
               for (const folderName of availableFolders) {
