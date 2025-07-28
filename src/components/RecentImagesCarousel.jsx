@@ -20,7 +20,7 @@ const RecentImagesCarousel = () => {
           try {
             // Try with listImages using the asset_folder endpoint
             try {
-              const listResult = await listImages('in-action');
+              const listResult = await listImages('Backdrops');
               
               console.log('Carousel: Cloudinary listImages result:', listResult);
               
@@ -76,7 +76,7 @@ const RecentImagesCarousel = () => {
             
             // Fallback to search method
             const searchResult = await searchImages({
-              expression: 'folder:photobooth', // Use correct syntax for folder search
+              expression: 'folder:Backdrops', // Use correct syntax for folder search
               max_results: 5
             });
             
