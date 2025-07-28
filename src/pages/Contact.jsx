@@ -9,6 +9,34 @@ const Contact = () => {
   const [openFaqIndex, setOpenFaqIndex] = useState(null);
   
   useEffect(() => {
+    // Initialize EmailJS when it loads
+    const initEmailJS = () => {
+      if (typeof window !== 'undefined' && typeof window.emailjs !== 'undefined') {
+        try {
+          // Try the new initialization method first
+          window.emailjs.init('BxHFZdoaIB_wip1O-');
+          console.log('EmailJS initialized successfully');
+        } catch (error) {
+          console.error('EmailJS initialization failed:', error);
+          // Fallback to older method
+          try {
+            window.emailjs.init({
+              publicKey: 'BxHFZdoaIB_wip1O-',
+            });
+            console.log('EmailJS initialized with fallback method');
+          } catch (fallbackError) {
+            console.error('EmailJS fallback initialization failed:', fallbackError);
+          }
+        }
+      }
+    };
+    
+    // Try to initialize immediately
+    initEmailJS();
+    
+    // Also try after a short delay in case EmailJS is still loading
+    setTimeout(initEmailJS, 1000);
+    
     // Check if Leaflet is available
     if (typeof window !== 'undefined' && typeof window.L !== 'undefined') {
       // Initialize the map
@@ -95,44 +123,43 @@ const Contact = () => {
       message: 'Sending your message...'
     });
 
-    // Create form data to send via fetch
-    const formDataToSend = new FormData();
-    formDataToSend.append('to_email', 'info@jackphotobooth.ca');
-    formDataToSend.append('from_name', `${formData.firstName} ${formData.lastName}`);
-    formDataToSend.append('from_email', formData.email);
-    formDataToSend.append('phone', formData.phone);
-    formDataToSend.append('subject', 'New Photo Booth Booking Request');
-    
-    // Format message content
-    const messageContent = `
-Name: ${formData.firstName} ${formData.lastName}
-Email: ${formData.email}
-Phone: ${formData.phone}
+    // Check if EmailJS is loaded
+    if (typeof window.emailjs === 'undefined') {
+      setFormStatus({
+        submitted: false,
+        error: true,
+        message: 'Email service is not available. Please try again later.'
+      });
+      return;
+    }
 
-Event Details:
-- Date: ${formData.eventDate || 'Not specified'}
-- Time: ${formData.eventTime || 'Not specified'}
-- Estimated Guests: ${formData.guests || 'Not specified'}
-- Service: ${formData.service || 'Not specified'}
+    // Prepare template parameters for EmailJS
+    const templateParams = {
+      from_name: `${formData.firstName} ${formData.lastName}`,
+      from_email: formData.email,
+      phone: formData.phone,
+      event_date: formData.eventDate || 'Not specified',
+      event_time: formData.eventTime || 'Not specified',
+      guests: formData.guests || 'Not specified',
+      service: formData.service || 'Not specified',
+      venue_street: formData.venueStreet || 'Not specified',
+      city: formData.city || 'Not specified',
+      province: formData.province || 'Not specified',
+      postal_code: formData.postalCode || 'Not specified',
+      message: formData.message,
+      to_email: 'info@jackphotobooth.ca'
+    };
 
-Venue Address:
-${formData.venueStreet || 'Not specified'}
-${formData.city || 'Not specified'}, ${formData.province || 'Not specified'} ${formData.postalCode || 'Not specified'}
-
-Message:
-${formData.message}
-    `;
-    
-    formDataToSend.append('message', messageContent);
-    
-    // Use a free email sending service (formsubmit.co)
-    fetch(`https://formsubmit.co/ajax/info@jackphotobooth.ca`, {
-      method: 'POST',
-      body: formDataToSend
-    })
-    .then(response => response.json())
-    .then(data => {
-      console.log('SUCCESS!', data);
+    // Send email using EmailJS
+    console.log('Sending email with params:', templateParams);
+    window.emailjs.send(
+      'service_7r683w4',
+      'template_5kf6619',
+      templateParams,
+      'BxHFZdoaIB_wip1O-'
+    )
+    .then((response) => {
+      console.log('SUCCESS!', response.status, response.text);
       setFormStatus({
         submitted: true,
         error: false,
@@ -156,7 +183,7 @@ ${formData.message}
         message: ''
       });
     })
-    .catch(error => {
+    .catch((error) => {
       console.error('FAILED...', error);
       setFormStatus({
         submitted: false,
@@ -379,7 +406,7 @@ ${formData.message}
                         <div>
                           <label htmlFor="eventTime" className="block text-gray-700 font-medium mb-2">Event Time</label>
                           <input
-                            type="text"
+                            type="time"
                             id="eventTime"
                             name="eventTime"
                             value={formData.eventTime}
@@ -493,11 +520,12 @@ ${formData.message}
                         >
                           <option value="">Select a Service</option>
                           <option value="standard">Standard Photo Booth</option>
-                          <option value="ai-photobooth">AI Glam Booth</option>
-                          <option value="mirror">Mirror Booth</option>
-                          <option value="selfie">Self-Serve Booth</option>
-                          <option value="corporate">Corporate Event Package</option>
-                          <option value="wedding">Wedding Package</option>
+                          <option value="retrojack">JACKSPOT</option>
+                          <option value="jackspot">RETROJACK</option>
+                          <option value="Jackspin">JACKSPIN</option>
+                          <option value="corporate">Corporate Event</option>
+                          <option value="wedding">Wedding Event</option>
+                          <option value="Special">Special Event</option>
                         </select>
                       </div>
                       

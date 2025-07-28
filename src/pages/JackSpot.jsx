@@ -21,15 +21,15 @@ const JackSpot = () => {
         if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
           try {
             // Fetch images from the open-air folder in Cloudinary
-            const result = await listImages('open-air');
+            const result = await listImages('photobooth');
             
-            console.log('Open Air: Cloudinary images result:', result);
+            console.log('Photobooth in Action: Cloudinary images result:', result);
             
             if (result && result.resources && result.resources.length > 0) {
               // Map the Cloudinary resources to our gallery format
               const cloudinaryImages = result.resources.map((resource, index) => {
                 // Try to extract a caption from the resource
-                let caption = 'Open Air Photobooth';
+                let caption = 'Our Photo Booth In Action';
                 
                 // Try to get caption from display_name, context or tags
                 if (resource.display_name) {
@@ -153,7 +153,7 @@ const JackSpot = () => {
     <div className="min-h-screen flex flex-col">
       
       {/* Hero Section */}
-      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/event-booth.jpg')">
+      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/JACKSPOT.jpg')">
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
@@ -201,9 +201,9 @@ const JackSpot = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/event-booth.jpg" 
+                      src="/images/20250627_170411.jpg" 
                       alt="Spacious Design" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Spacious Design</h3>
@@ -216,9 +216,9 @@ const JackSpot = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/wedding-booth.jpg" 
+                      src="/images/THE EQUIPMENT.jpg" 
                       alt="Professional Equipment" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Professional Equipment</h3>
@@ -231,9 +231,9 @@ const JackSpot = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/corporate-booth.jpg" 
+                      src="/images/NSTANT SHARING.jpg" 
                       alt="Instant Sharing" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Instant Sharing</h3>

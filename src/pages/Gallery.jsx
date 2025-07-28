@@ -7,12 +7,15 @@ import { getOptimizedImageUrl, isCloudinaryUrl } from '../utils/imageUtils';
 import { listImages, searchImages, listAllImages, listFolders } from '../services/cloudinaryService';
 
 const Gallery = () => {
+  // Array of folders to exclude from tab filter and fetching
+  const excludedFolders = ['pos-products', 'in-action'];
+
+  // State for active category
+  const [activeCategory, setActiveCategory] = useState('all');
+
   // State for folder categories
   const [folderCategories, setFolderCategories] = useState([
-    { id: 'all', name: 'All Photos' },
-    { id: 'photobooth', name: 'Photobooth' },
-    { id: 'selfie-station', name: 'THE RETRO JACK' },
-    { id: 'open-air', name: 'Open Air' }
+    { id: 'all', name: 'All Photos' }
   ]);
 
   // State for gallery images
@@ -32,15 +35,20 @@ const Gallery = () => {
             console.log('Cloudinary folders result:', foldersResult);
             
             if (foldersResult && foldersResult.folders && foldersResult.folders.length > 0) {
-              // Create folder categories from the result
+              // Filter out excluded folders from the folder categories
+              const filteredFolders = foldersResult.folders.filter(folder => 
+                !excludedFolders.includes(folder.path)
+              );
+              
+              // Create folder categories from the filtered result
               const folderCats = [
                 { id: 'all', name: 'All Photos' },
-                ...foldersResult.folders.map(folder => ({
+                ...filteredFolders.map(folder => ({
                   id: folder.path,
                   name: folder.name.charAt(0).toUpperCase() + folder.name.slice(1).replace(/-/g, ' ')
                 }))
               ];
-              
+              console.log('Filtered folder categories:', folderCats);
               setFolderCategories(folderCats);
             }
           } catch (error) {
@@ -55,7 +63,7 @@ const Gallery = () => {
     fetchFolders();
   }, []);
 
-  // Fetch images from Cloudinary
+  // Fetch images from Cloudinary based on active category
   useEffect(() => {
     const fetchImages = async () => {
       try {
@@ -64,33 +72,74 @@ const Gallery = () => {
         // If Cloudinary is configured, fetch images from there
         if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
           try {
-            // Fetch all images from Cloudinary, sorted by upload date (max 100)
-            const allImagesResult = await listAllImages({ max_results: 100 });
+            let allImages = [];
             
-            console.log('Cloudinary all images result:', allImagesResult);
-            
-            if (allImagesResult && allImagesResult.resources && allImagesResult.resources.length > 0) {
-              // Map the Cloudinary resources to our gallery format
-              const cloudinaryImages = allImagesResult.resources.map((resource, index) => {
-                // Extract folder from public_id
-                const pathParts = resource.public_id.split('/');
-                const folder = pathParts.length > 1 ? pathParts[0] : 'uncategorized';
-                
-                return {
-                  id: index + 1,
-                  publicId: resource.public_id,
-                  src: resource.secure_url || getOptimizedImageUrl(resource.public_id, {
-                    width: 600,
-                    height: 600,
-                    crop: 'fill',
-                    quality: 'auto'
-                  }),
-                  folder: folder,
-                  created_at: resource.created_at
-                };
-              });
+            if (activeCategory === 'all') {
+              // Fetch from all available folders (excluding the excluded ones)
+              const availableFolders = folderCategories
+                .filter(folder => folder.id !== 'all' && !excludedFolders.includes(folder.id))
+                .map(folder => folder.id);
               
-              setGalleryImages(cloudinaryImages);
+              for (const folderName of availableFolders) {
+                try {
+                  const folderResult = await listImages(folderName, { max_results: 50 });
+                  
+                  console.log(`Cloudinary ${folderName} folder result:`, folderResult);
+                  
+                  if (folderResult && folderResult.resources && folderResult.resources.length > 0) {
+                    const folderImages = folderResult.resources.map((resource, index) => ({
+                      id: `${folderName}-${index + 1}`,
+                      publicId: resource.public_id,
+                      src: resource.secure_url || getOptimizedImageUrl(resource.public_id, {
+                        width: 600,
+                        height: 600,
+                        crop: 'fill',
+                        quality: 'auto'
+                      }),
+                      folder: folderName,
+                      created_at: resource.created_at
+                    }));
+                    
+                    allImages = [...allImages, ...folderImages];
+                  }
+                } catch (folderError) {
+                  console.error(`Error fetching ${folderName} folder:`, folderError);
+                  // Continue with other folders
+                }
+              }
+            } else {
+              // Fetch from specific folder only
+              try {
+                const folderResult = await listImages(activeCategory, { max_results: 50 });
+                
+                console.log(`Cloudinary ${activeCategory} folder result:`, folderResult);
+                
+                if (folderResult && folderResult.resources && folderResult.resources.length > 0) {
+                  allImages = folderResult.resources.map((resource, index) => ({
+                    id: `${activeCategory}-${index + 1}`,
+                    publicId: resource.public_id,
+                    src: resource.secure_url || getOptimizedImageUrl(resource.public_id, {
+                      width: 600,
+                      height: 600,
+                      crop: 'fill',
+                      quality: 'auto'
+                    }),
+                    folder: activeCategory,
+                    created_at: resource.created_at
+                  }));
+                }
+              } catch (folderError) {
+                console.error(`Error fetching ${activeCategory} folder:`, folderError);
+              }
+            }
+            
+            // Sort all images by creation date (newest first)
+            allImages.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+            
+            console.log('All fetched images:', allImages);
+            
+            if (allImages.length > 0) {
+              setGalleryImages(allImages);
               setIsLoading(false);
               return;
             }
@@ -121,7 +170,12 @@ const Gallery = () => {
           { id: 17, src: '/images/self-serve-booth.jpg', publicId: 'selfie-station/self-serve-booth', folder: 'selfie-station', created_at: '2023-05-17T12:00:00Z' }
         ];
         
-        setGalleryImages(fallbackImages);
+        // Filter fallback images based on active category
+        const filteredFallbackImages = activeCategory === 'all' 
+          ? fallbackImages 
+          : fallbackImages.filter(img => img.folder === activeCategory);
+        
+        setGalleryImages(filteredFallbackImages);
         setIsLoading(false);
       } catch (err) {
         console.error('Error fetching gallery images:', err);
@@ -131,7 +185,7 @@ const Gallery = () => {
     };
     
     fetchImages();
-  }, []);
+  }, [activeCategory, folderCategories]);
   
   // Helper function to determine category from tags, public ID, or asset folder
   const getCategoryFromTags = (tags = [], publicId = '', assetFolder = '') => {
@@ -168,13 +222,9 @@ const Gallery = () => {
     return 'party';
   };
 
-  // State for active category
-  const [activeCategory, setActiveCategory] = useState('all');
-
-  // Filter images based on active folder
-  const filteredImages = activeCategory === 'all' 
-    ? galleryImages 
-    : galleryImages.filter(img => img.folder === activeCategory);
+  // Since images are now fetched dynamically based on activeCategory, 
+  // we don't need additional filtering
+  const filteredImages = galleryImages;
 
   // State for lightbox
   const [lightboxOpen, setLightboxOpen] = useState(false);

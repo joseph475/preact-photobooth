@@ -208,6 +208,15 @@ const JackSpin = () => {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
+              JACKSPIN section
+            </h1>
+            <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
+              under construction
+            </h1>
+            <h1 className="text-2xl md:text-4xl text-white font-bold mb-6">
+              (SPINNING SOON)
+            </h1>
+            {/* <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
               JackSpin (360 Booth)
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
@@ -221,7 +230,7 @@ const JackSpin = () => {
             </p>
             <a href="/contact" className="inline-block btn-blue">
               GET A QUOTE
-            </a>
+            </a> */}
           </div>
         </div>
       </div>

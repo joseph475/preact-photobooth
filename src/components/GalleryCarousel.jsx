@@ -13,7 +13,7 @@ import { useState } from 'preact/hooks';
  */
 const GalleryCarousel = ({ 
   images, 
-  itemsPerSlide = 5, 
+  itemsPerSlide = 3, 
   title = "Gallery"
 }) => {
   // Calculate how many "pages" of images we have
@@ -80,9 +80,9 @@ const GalleryCarousel = ({
                           className="w-full h-full object-cover"
                         />
                       </div>
-                      <div className="p-4 text-center border-t">
+                      {/* <div className="p-4 text-center border-t">
                         <h3 className="text-xl font-bold text-gray-800">{image.caption}</h3>
-                      </div>
+                      </div> */}
                     </div>
                   ))}
                   

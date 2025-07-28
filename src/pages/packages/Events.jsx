@@ -61,7 +61,7 @@ const Events = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/7.jpg" 
+                      src="/images/SSSS2.jpg" 
                       alt="Guest Entertainment" 
                       className="w-full h-auto"
                     />
@@ -83,7 +83,7 @@ const Events = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/wedding-decor.jpg" 
+                      src="/images/BDAY SS.jpg" 
                       alt="Personalized Experience" 
                       className="w-full h-auto"
                     />
@@ -105,7 +105,7 @@ const Events = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/10.jpg" 
+                      src="/images/HALLOWEEN 2.jpg" 
                       alt="Digital Sharing" 
                       className="w-full h-auto"
                     />

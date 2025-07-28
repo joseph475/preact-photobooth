@@ -62,7 +62,7 @@ const Wedding = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/corporate-event-hero.jpg" 
+                      src="/images/wedding-feature.jpg" 
                       alt="Wedding Photo Booth" 
                       className="w-full h-auto"
                     />
@@ -84,7 +84,7 @@ const Wedding = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/10.jpg" 
+                      src="/images/ssss.jpg" 
                       alt="Wedding Guest Entertainment" 
                       className="w-full h-auto"
                     />
@@ -106,7 +106,7 @@ const Wedding = () => {
                 <div className="md:w-1/2">
                   <div className="rounded-lg overflow-hidden shadow-lg">
                     <img 
-                      src="/images/11.jpg" 
+                      src="/images/lasting-memories.jpg" 
                       alt="Wedding Memories" 
                       className="w-full h-auto"
                     />
@@ -139,7 +139,7 @@ const Wedding = () => {
               <div className="text-center">
                 <div className="bg-white p-4 rounded-lg shadow-lg mb-6" style="height: 280px; overflow: hidden;">
                   <img 
-                    src="/images/wedding-booth.jpg" 
+                    src="/images/WEDDING.png" 
                     alt="Bride & Groom" 
                     className="w-full h-full object-cover rounded-lg"
                   />

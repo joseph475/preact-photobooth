@@ -100,7 +100,7 @@ const RetroJack = () => {
         if (process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME) {
           try {
             // Fetch images from the selfie-station folder in Cloudinary
-            const result = await listImages('selfie-station');
+            const result = await listImages('photobooth');
             
             console.log('THE RETRO JACK: Cloudinary images result:', result);
             
@@ -331,12 +331,12 @@ const RetroJack = () => {
     <div className="min-h-screen flex flex-col">
       
       {/* Hero Section */}
-      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/self-serve-booth.jpg')">
+      <div className="relative bg-cover bg-center h-screen flex items-center" style="background-image: url('/images/20250701_200610.jpg')">
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <h1 className="text-4xl md:text-6xl text-white font-bold mb-6">
-              Rent Modern THE RETRO JACK
+              THE RETRO JACK
             </h1>
             <p className="text-xl text-white opacity-90 max-w-3xl mb-8">
               Modern photo booth kiosk that allows people to create and share personalized content using Photos, GIFs, or Boomerang!
@@ -381,9 +381,9 @@ const RetroJack = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/self-serve-booth.jpg" 
+                      src="/images/20250701_200610.jpg" 
                       alt="Video, GIF & Boomerang Features" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Video, GIF & Boomerang</h3>
@@ -396,9 +396,9 @@ const RetroJack = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/8.jpg" 
+                      src="/images/social media sharing.jpg" 
                       alt="Social Media Sharing" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Social Media Sharing</h3>
@@ -411,9 +411,9 @@ const RetroJack = () => {
                 <div className="flex flex-col">
                   <div className="rounded-lg overflow-hidden shadow-lg mb-4">
                     <img 
-                      src="/images/corporate-booth.jpg" 
+                      src="/images/Screenshot 2025-07-20 220138.jpg" 
                       alt="Fully Branded Experience" 
-                      className="w-full h-48 object-cover"
+                      className="w-full h-auto object-cover"
                     />
                   </div>
                   <h3 className="text-xl font-bold text-blue-600 mb-3">Fully Branded Experience</h3>
@@ -448,100 +448,6 @@ const RetroJack = () => {
           </div>
         </div>
         
-        {/* How It Works Section with Parallax */}
-        <div 
-          className="py-24 bg-fixed bg-center bg-cover relative"
-          style="background-image: url('/images/self-serve-booth.jpg'); min-height: 70vh;"
-        >
-          <div className="absolute inset-0 bg-blue-500 bg-opacity-90"></div>
-          <div className="container mx-auto px-4 relative z-10 h-full flex flex-col items-center justify-center">
-            <div className="text-center max-w-4xl mb-12">
-              <h1 className="text-white text-5xl md:text-6xl lg:text-7xl font-bold mb-6" style="font-family: 'Dancing Script', cursive;">How it works</h1>
-            </div>
-            
-            {/* Steps Row */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 w-full max-w-6xl">
-              {/* Step 1 */}
-              <div className="flex flex-col items-center">
-                <div className="relative mb-6">
-                  <div className="w-40 h-40 rounded-full bg-white overflow-hidden shadow-lg">
-                    <img 
-                      src="/images/1.jpeg" 
-                      alt="Choose your experience" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
-                    1
-                  </div>
-                </div>
-                <h3 className="text-white text-xl font-bold mb-2">Choose your experience</h3>
-                <p className="text-white text-center">Select from photos, GIFs, or boomerangs</p>
-              </div>
-              
-              {/* Step 2 */}
-              <div className="flex flex-col items-center">
-                <div className="relative mb-6">
-                  <div className="w-40 h-40 rounded-full bg-white overflow-hidden shadow-lg">
-                    <img 
-                      src="/images/2.jpeg" 
-                      alt="Take a photo or GIFs" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
-                    2
-                  </div>
-                </div>
-                <h3 className="text-white text-xl font-bold mb-2">Take a photo or GIFs</h3>
-                <p className="text-white text-center">Capture your perfect moment</p>
-              </div>
-              
-              {/* Step 3 */}
-              <div className="flex flex-col items-center">
-                <div className="relative mb-6">
-                  <div className="w-40 h-40 rounded-full bg-white overflow-hidden shadow-lg">
-                    <img 
-                      src="/images/3.jpeg" 
-                      alt="Email or Text your photo/video" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
-                    3
-                  </div>
-                </div>
-                <h3 className="text-white text-xl font-bold mb-2">Email or Text your photo/video</h3>
-                <p className="text-white text-center">Instantly receive your creation</p>
-              </div>
-              
-              {/* Step 4 */}
-              <div className="flex flex-col items-center">
-                <div className="relative mb-6">
-                  <div className="w-40 h-40 rounded-full bg-white overflow-hidden shadow-lg">
-                    <img 
-                      src="/images/4.jpeg" 
-                      alt="Share your photo and repeat step 1" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                  <div className="absolute -top-2 -left-2 w-12 h-12 rounded-full bg-white flex items-center justify-center text-3xl font-bold text-blue-600">
-                    4
-                  </div>
-                </div>
-                <h3 className="text-white text-xl font-bold mb-2">Share your photo and repeat step 1</h3>
-                <p className="text-white text-center">Share on social media and do it again!</p>
-              </div>
-            </div>
-            
-            <div className="mt-12 text-center">
-              <p className="text-white text-xl">
-                Compact and highly portable, our THE RETRO JACK can be shipped anywhere or picked up from our studio.
-              </p>
-            </div>
-          </div>
-        </div>
-        
         {/* Fully Branded Experience Section with Parallax */}
         <div 
           className="py-24 bg-fixed bg-center bg-cover relative"
@@ -564,7 +470,7 @@ const RetroJack = () => {
               <div className="md:w-1/2 relative">
                 <div className="rounded-lg overflow-hidden shadow-2xl relative">
                   <img 
-                    src="/images/corporate-booth.jpg" 
+                    src="/images/Screenshot 2025-07-20 221306.jpg" 
                     alt="Branded THE RETRO JACK Example" 
                     className="w-full h-auto"
                   />
@@ -581,36 +487,6 @@ const RetroJack = () => {
           </div>
         </div>
         
-        {/* Ships Free Right To Your Door Section */}
-        <div className="py-20 bg-white">
-          <div className="container mx-auto px-4">
-            <div className="flex flex-col md:flex-row items-center max-w-6xl mx-auto">
-              <div className="md:w-1/2 relative mb-10 md:mb-0">
-                <div className="relative">
-                  <span className="absolute -top-4 -left-4 bg-gray-700 text-white px-3 py-1 text-sm font-semibold rounded">
-                    Ready-to-ship
-                  </span>
-                  <img 
-                    src="/images/self-serve-booth.jpg" 
-                    alt="THE RETRO JACK in shipping case" 
-                    className="w-full h-auto rounded-lg shadow-xl"
-                  />
-                </div>
-              </div>
-              <div className="md:w-1/2 md:pl-12">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-800 mb-6">
-                  Ships Free Right To Your Door
-                </h2>
-                <p className="text-gray-700 text-lg mb-6">
-                  Compact and highly portable, we can ship this THE RETRO JACK anywhere in Canada for free or you can pick it up yourself from our studio. Don't like hassle? Then let us set up the THE RETRO JACK and take it down for you so you can focus on the rest of your event-planning.
-                </p>
-                <a href="/contact" className="inline-block btn-blue btn-hover-effect">
-                  BOOK NOW
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
         
         {/* Gallery Carousel Section */}
         <GalleryCarousel 
