@@ -290,9 +290,10 @@ const Backdrops = () => {
                 <div className="text-center">
                   <a 
                     href="/contact" 
-                    className="btn-blue"
+                    className="btn-blue inline-block text-center leading-tight"
                   >
-                    INQUIRE ABOUT CUSTOM BACKDROPS
+                    <span className="block sm:inline">INQUIRE ABOUT</span>
+                    <span className="block sm:inline sm:ml-1">CUSTOM BACKDROPS</span>
                   </a>
                 </div>
               </div>
