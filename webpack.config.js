@@ -57,10 +57,10 @@ module.exports = {
       'process.env.PREACT_APP_FACEBOOK_APP_SECRET': JSON.stringify(process.env.PREACT_APP_FACEBOOK_APP_SECRET),
       'process.env.PREACT_APP_FACEBOOK_PAGE_TOKEN': JSON.stringify(process.env.PREACT_APP_FACEBOOK_PAGE_TOKEN),
       'process.env.PREACT_APP_FACEBOOK_REDIRECT_URI': JSON.stringify(process.env.PREACT_APP_FACEBOOK_REDIRECT_URI),
+      // Only include public Cloudinary variables in frontend
       'process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME': JSON.stringify(process.env.PREACT_APP_CLOUDINARY_CLOUD_NAME),
-      'process.env.PREACT_APP_CLOUDINARY_API_KEY': JSON.stringify(process.env.PREACT_APP_CLOUDINARY_API_KEY),
-      'process.env.PREACT_APP_CLOUDINARY_API_SECRET': JSON.stringify(process.env.PREACT_APP_CLOUDINARY_API_SECRET),
       'process.env.PREACT_APP_CLOUDINARY_UPLOAD_PRESET': JSON.stringify(process.env.PREACT_APP_CLOUDINARY_UPLOAD_PRESET),
+      // API_KEY and API_SECRET are now only used server-side in Vercel functions
     }),
   ],
   devServer: {
